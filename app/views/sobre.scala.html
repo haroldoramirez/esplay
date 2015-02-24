@@ -1,0 +1,50 @@
+@(sistema : String)(versaoDoPlay : String)
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>@sistema</title>
+
+    <!--Jquery-->
+    <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+    <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!--CSS Personalisados-->
+    <link rel="stylesheet" href="assets/stylesheets/background.css"/>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div style="min-height:590px">
+        <div class="header">
+            <h3 class="text-muted">@sistema</h3>
+        </div>
+        <div class="jumbotron">
+            <p><a class="btn btn-lg btn-success" href="">
+                powered by Play Framework @versaoDoPlay</a></p>
+        </div>
+        <div align="center" class="error-actions">
+            <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                Início </a>
+        </div>
+    </div>
+</div>
+<!--Rodapé-->
+<div align="center">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+
+                </div>
+            </div>
+            <p>&copy; 2015 Sistema Es -
+                <a>Powered by Play Framework
+                </a>.Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

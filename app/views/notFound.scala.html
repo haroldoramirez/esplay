@@ -1,0 +1,57 @@
+@(url: String)
+<html>
+<body>
+<head>
+    <meta charset="UTF-8">
+    <title>Página Não Encontrada</title>
+
+    <!--Jquery-->
+    <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+    <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!--CSS Personalisados-->
+    <link rel="stylesheet" href="assets/stylesheets/background.css"/>
+
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+        <div style="min-height:625px" class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Sistema Es
+                </h1>
+                <h2>
+                    Erro 404
+                </h2>
+                <div class="error-details">
+                    Esta página não existe -> <b>@url</b>
+                </div>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Início </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Rodapé-->
+<div align="center">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+
+                </div>
+            </div>
+            <p>&copy; 2015 Sistema Es -
+                <a>Powered by Play Framework
+                </a>.Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
