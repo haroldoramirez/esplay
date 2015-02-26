@@ -1,36 +1,79 @@
-@main("Play - Filmes") {
+@main("Sistema Es") {
 
-<style>
-    <!--
-    body {
-        padding-top: 50px;
-    }
-    .startertemplate {
-        padding: 40px 15px;
-        text-align: center;
-    }
-    -->
-</style>
-<div class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
     <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapser"></button>
-            <a class="navbar-brand" href="/">Sistema Es</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">
+                 <b>Sistema Es</b>
+            </a>
         </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/item1">ItemMenu1</a></li>
-                <li><a href="/item2">ItemMenu2</a></li>
-                <li><a href="/sobre">Sobre o sistema</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="starter-template">
-        <h1>Sistema Es</h1>
-        <p class="lead">Matéria de Engenharia de Software</p>
-    </div>
-</div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">
+                    <span class="glyphicon glyphicon-home"></span> Início</a></li>
+                <li><a href="/eventos"> <span class="glyphicon glyphicon-calendar"></span> Eventos</a></li>
+                <li><a href="/usuarios"> <span class="glyphicon glyphicon-user"></span> Usuários</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog"></span> <b>Opções</b> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">Sistema</li>
+                        <li><a href="/sobre">
+                            <span class="glyphicon glyphicon-triangle-right"></span> Sobre</a>
+                        </li>
+                        <li><a href="/ajuda">
+                            <span class="glyphicon glyphicon-question-sign"></span> Ajuda</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Autenticação</li>
+                        <li><a href="/login">
+                            <span class="glyphicon glyphicon-ok-sign"></span> Entrar</a>
+                        </li>
+                        <li><a href="">
+                            <span class="glyphicon glyphicon-off"></span> Sair</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Início</h1>
+        <p>Sistema de Engenharia de Software</p>
+        <p><a class="" href="" role="button"></a></p>
+        <a href="#" class="btn btn-primary btn-lg"
+           data-toggle="modal"
+           data-target="#informacoesModal">Mais Informações</a>
+    </div>
+</div>
+<div class="modal fade" id="informacoesModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Informações</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Sistema Es</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 }
