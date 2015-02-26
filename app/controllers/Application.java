@@ -4,7 +4,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.index;
 import views.html.inicio;
-import views.html.sobre;
 
 public class Application extends Controller {
 
