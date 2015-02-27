@@ -2,19 +2,32 @@
 
 <html>
     <head>
-        <title>Sistema Es</title>
+        <title>Agenda</title>
 
-        <!--jquery-->
-        <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+        <!--Jquery-->
+        <script src="/assets/bower_components/jquery/dist/jquery.js"></script>
 
         <!--Icone-->
         <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 
         <!--Bootstrap-->
-        <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
-        <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
+        <script src="/assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     </head>
     <body>
+    @if(flash.containsKey("sucesso")){
+    <div class="alert alert-success">
+        @flash.get("sucesso")
+    </div>
+    }
+    @if(flash.containsKey("erro")){
+    <div class="alert alert-danger">
+        @flash.get("erro")
+    </div>
+    }
+
+    <section id="main">
         @content
+    </section>
     </body>
 </html>

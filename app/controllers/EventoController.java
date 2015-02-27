@@ -5,7 +5,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-public class EventosController extends Controller {
+public class EventoController extends Controller {
     
     private static final Form<Evento> eventoForm = Form.form(Evento.class);
 
