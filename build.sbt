@@ -11,7 +11,5 @@ libraryDependencies ++= Seq(
   javaEbean,
   cache,
   javaWs,
-  "mysql" % "mysql-connector-java" % "5.1.34",
-  "org.webjars" % "jquery" % "2.1.3",
-  "org.webjars" % "bootstrap" % "3.3.2-1"
+  "mysql" % "mysql-connector-java" % "5.1.34"
 )
