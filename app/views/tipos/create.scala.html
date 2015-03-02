@@ -1,8 +1,7 @@
 @(tipoForm: Form[Tipo])
 
 @import helper._
-
-@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+@implicitFieldConstructor = @{ FieldConstructor(helpers.twitterBootstrapInput.render) }
 
 @main("Novo Tipo de Evento") {
 <html>
@@ -29,7 +28,7 @@
                     <div class="form-group">
                         <!--Input do Nome-->
                         <div class="col-lg-12">
-                            @helper.inputText(tipoForm("nome"))
+                            @inputText(tipoForm("nome"), 'placeholder -> "Entre com o nome", '_label -> "Nome")
                         </div>
                         <!--Botões-->
                         <div class="col-lg-8">
