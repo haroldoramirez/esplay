@@ -1,13 +1,13 @@
-@(tipoForm: Form[Tipo])
+@(eventoForm: Form[Evento])
 
 @import helper._
 @implicitFieldConstructor = @{ FieldConstructor(helpers.twitterBootstrapInput.render) }
 
-@main("Novo Tipo de Evento") {
+@main("Novo Evento") {
 <html>
 <body>
 <head>
-    <title>Cadastrar País</title>
+    <title>Cadastrar Evento</title>
 </head>
 <div class="container">
     <div class="row">
@@ -16,24 +16,24 @@
                 <div id="legend">
                     <legend>
                         <h3>
-                            Cadastrar Tipo de Evento <a href="/" class="btn btn-link pull-right">
+                            Cadastrar Evento <a href="/" class="btn btn-link pull-right">
                             <span class="glyphicon glyphicon-home"></span><b> Início</b></a>
                         </h3>
                     </legend>
                 </div>
-                @form(routes.TipoController.salvar()) {
+                @form(routes.EventoController.salvar()) {
                 <form class="form-horizontal">
                     <div class="form-group">
                         <!--Input do Nome-->
                         <div class="col-lg-4">
-                            @inputText(tipoForm("nome"), 'placeholder -> "Entre com o nome", '_label -> "Nome", 'class -> "form-control")
+                            @inputText(eventoForm("nome"), 'placeholder -> "Entre com o nome", '_label -> "Nome", 'class -> "form-control")
                         </div>
                         <!--Botões-->
                         <div class="col-lg-12">
                             <div class="control-group">
                                 <br>
                                 <input type="submit" value="Salvar" class="btn btn-success">
-                                <a href="@routes.TipoController.lista()" class="btn btn-default">Cancelar</a>
+                                <a href="@routes.EventoController.lista()" class="btn btn-default">Cancelar</a>
                             </div>
                         </div>
                     </div>

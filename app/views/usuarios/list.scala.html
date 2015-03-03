@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Lista de Usuários</title>
-</head>
-<body>
-
-</body>
-</html>
+@(usuarios: List[Usuario])
+@main("Usuários"){
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class="active">
+                <a href="@routes.UsuarioController.novo()">Novo Usuário</a>
+            </li>
+            <li class="active"><a href="/">Início</a></li>
+        </ul>
+        <h3 class="text-muted">Todos os Usuários</h3>
+    </div>
+    <table class="table table-striped table-bordered" id="example" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tfoot>
+        @for(usuario <- usuarios) {
+        <tr>
+            <th>
+                <a href="@routes.UsuarioController.detalhar(usuario.id)">
+                    @usuario.nome
+                </a>
+            </th>
+        </tr>
+        }
+        </tfoot>
+    </table>
+</div>
+}

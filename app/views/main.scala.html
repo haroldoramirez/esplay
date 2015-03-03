@@ -14,6 +14,9 @@
         <!--Bootstrap-->
         <link type="text/css" media="screen" rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
         <script type="text/javascript" src="/assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        
+        <!--Awesome-->
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/awesome/css/font-awesome.css")"/>
     </head>
     <body>
     @if(flash.containsKey("sucesso")){
@@ -27,8 +30,10 @@
     </div>
     }
 
-    <section id="main">
-        @content
-    </section>
+    <div class="container">
+        <div class="row">
+            @content
+        </div>
+    </div>
     </body>
 </html>

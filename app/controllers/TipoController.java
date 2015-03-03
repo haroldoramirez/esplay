@@ -5,6 +5,9 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.io.IOException;
+import java.util.List;
+
 public class TipoController extends Controller {
     
     public static final Form<Tipo> tipoForm = Form.form(Tipo.class);
@@ -14,11 +17,24 @@ public class TipoController extends Controller {
     }
     
     public static Result salvar() {
+        Form<Tipo> form = tipoForm.bindFromRequest();
+        if (form.hasErrors()) {
+            flash("erro","Erro ao adicionar o tipo do Evento");
+            return badRequest(views.html.tipos.create.render(form));
+        }
+        Tipo tipo = form.get();
+        tipo.save();
+        flash("sucesso","Tipo do Evento gravado com sucesso");
+        return redirect(routes.TipoController.lista());
+    }
+    
+    public static Result detalhar(Long id) {
         return TODO;
     }
 
     public static Result lista() {
-        return TODO;
+        List<Tipo> tipos = Tipo.find.findList();
+        return ok(views.html.tipos.list.render(tipos));
     }
 
     public static Result detalhar() {
