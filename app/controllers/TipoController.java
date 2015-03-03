@@ -18,10 +18,6 @@ public class TipoController extends Controller {
     
     public static Result salvar() {
         Form<Tipo> form = tipoForm.bindFromRequest();
-        if (form.hasErrors()) {
-            flash("erro","Erro ao adicionar o tipo do Evento");
-            return badRequest(views.html.tipos.create.render(form));
-        }
         Tipo tipo = form.get();
         tipo.save();
         flash("sucesso","Tipo do Evento gravado com sucesso");
