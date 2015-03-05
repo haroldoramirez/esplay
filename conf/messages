@@ -1,7 +1,0 @@
-title=esplay
-
-# Default messages
-
-# --- Constraints
-constraint.required = obrigatório
-error.required = O campo não foi preenchido

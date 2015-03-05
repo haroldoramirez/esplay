@@ -2,34 +2,8 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                               controllers.Application.inicio()
-GET     /play                           controllers.Application.index()
-GET     /sobre                          controllers.Application.sobre()
-
-# Eventos
-GET     /eventos                        controllers.EventoController.lista()
-GET     /eventos/novo                   controllers.EventoController.novo()
-GET     /eventos/:id                    controllers.EventoController.detalhar(id:Long)
-POST    /eventos/                       controllers.EventoController.salvar()
-
-# Usuarios
-GET     /usuarios                       controllers.UsuarioController.lista()
-GET     /usuarios/novo                  controllers.UsuarioController.novo()
-GET     /usuarios/:id                   controllers.UsuarioController.detalhar(id:Long)
-POST    /usuarios/                      controllers.UsuarioController.salvar()
-
-# Categorias
-GET     /categorias                     controllers.CategoriaController.lista()
-GET     /categorias/novo                controllers.CategoriaController.novo()
-GET     /categorias/:id                 controllers.CategoriaController.detalhar(id:Long)
-POST    /categorias/                    controllers.CategoriaController.salvar()
-
-# Tipos
-GET     /tipos                          controllers.TipoController.lista()
-GET     /tipos/novo                     controllers.TipoController.novo()
-GET     /tipos/:id                      controllers.TipoController.detalhar(id:Long)
-POST    /tipos/                         controllers.TipoController.salvar()
+# Index page
+GET     /                           controllers.Assets.at(path="/public", file="/index.html")
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
