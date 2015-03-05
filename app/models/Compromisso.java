@@ -1,20 +1,20 @@
 package models;
 
-import play.data.validation.Constraints;
 import play.db.ebean.Model;
+import play.libs.Json;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import javax.persistence.*;
 
 @Entity
 public class Compromisso extends Model {
+
+    private static final long serialVersionUID = 1L;
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-    
-    @Constraints.Required
+
+    @Column(nullable = false)
     public String nome;
 
     public Long getId() {
@@ -33,13 +33,8 @@ public class Compromisso extends Model {
         this.nome = nome;
     }
 
-    public static Model.Finder<Long, Compromisso> find = new Model.Finder<Long, Compromisso>(Long.class, Compromisso.class);
-
-    public static Map<String,String> options() {
-        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
-        for (Compromisso c : Compromisso.find.orderBy("nome").findList()) {
-            options.put(c.id.toString(),c.nome);
-        }
-        return options;
+    @Override
+    public String toString() {
+        return Json.toJson(this).toString();
     }
 }

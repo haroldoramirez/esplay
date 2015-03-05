@@ -3,27 +3,38 @@
 
 # --- !Ups
 
+create table agenda (
+  id                        bigint auto_increment not null,
+  constraint pk_agenda primary key (id))
+;
+
 create table categoria (
   id                        bigint auto_increment not null,
-  nome                      varchar(255),
+  nome                      varchar(255) not null,
   constraint pk_categoria primary key (id))
 ;
 
-create table evento (
+create table compromisso (
   id                        bigint auto_increment not null,
-  nome                      varchar(255),
-  constraint pk_evento primary key (id))
+  nome                      varchar(255) not null,
+  constraint pk_compromisso primary key (id))
+;
+
+create table contato (
+  id                        bigint auto_increment not null,
+  nome                      varchar(255) not null,
+  constraint pk_contato primary key (id))
 ;
 
 create table tipo (
   id                        bigint auto_increment not null,
-  nome                      varchar(255),
+  nome                      varchar(255) not null,
   constraint pk_tipo primary key (id))
 ;
 
 create table usuario (
   id                        bigint auto_increment not null,
-  nome                      varchar(255),
+  nome                      varchar(255) not null,
   constraint pk_usuario primary key (id))
 ;
 
@@ -34,9 +45,13 @@ create table usuario (
 
 SET FOREIGN_KEY_CHECKS=0;
 
+drop table agenda;
+
 drop table categoria;
 
-drop table evento;
+drop table compromisso;
+
+drop table contato;
 
 drop table tipo;
 

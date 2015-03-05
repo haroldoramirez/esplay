@@ -5,23 +5,23 @@ import play.mvc.Result;
 
 public class TipoController extends Controller {
 
-    public static Result novo() {
+    public static Result inserir() {
         return TODO;
     }
 
-    public static Result lista() {
+    public static Result atualizar() {
         return TODO;
     }
 
-    public static Result detalhar(Long id) {
+    public static Result buscaPorId(Long id) {
         return TODO;
     }
 
-    public static Result salvar() {
+    public static Result buscaTodos() {
         return TODO;
     }
 
-    public static Result alterar() {
+    public static Result buscaPorPaginas(Long pagina) {
         return TODO;
     }
 

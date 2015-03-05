@@ -1,0 +1,15 @@
+<div class="popover" tabindex="-1" ng-show="content">
+    <div class="arrow"></div>
+    <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
+    <div class="popover-content">
+        <form name="popoverForm">
+            <div align="center" class="form-actions">
+                <div align="center">
+                    <h4 ng-bind="content"></h4>
+                </div>
+                <button type="button" id="delete" class="btn btn-danger btn-sm" ng-click="delete()">Sim
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

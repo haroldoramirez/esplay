@@ -22,6 +22,7 @@
 
     <!--Awesome Icons-->
     <link rel="stylesheet" href="assets/stylesheets/awesome/css/font-awesome.css"/>
+
     <!--app-->
     <script src="assets/app/app.js"></script>
 
@@ -32,6 +33,12 @@
     <!--Controllers AngularJS-->
     <script src="assets/app/controllers/HomeController.js"></script>
     <script src="assets/app/controllers/HelpController.js"></script>
+    <script src="assets/app/controllers/AgendaController.js"></script>
+    <script src="assets/app/controllers/CategoriaController.js"></script>
+    <script src="assets/app/controllers/CompromissoController.js"></script>
+    <script src="assets/app/controllers/ContatoController.js"></script>
+    <script src="assets/app/controllers/TipoController.js"></script>
+    <script src="assets/app/controllers/UsuarioController.js"></script>
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Agenda</title>
@@ -47,20 +54,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand">
-                <i class="fa fa-calendar-o"></i> Agenda
+            <a href="#/" class="navbar-brand">
+                <i class="fa fa-home"></i> Início
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">
-                    <span class="fa fa-home"></span> Início</a></li>
-                <li><a href="/eventos"> <span class="fa fa-star-half-o"></span> Eventos</a></li>
-                <li><a href="/usuarios"> <span class="fa fa-users"></span> Usuários</a></li>
-                <li><a href="/tipos"> <span class="fa fa-bookmark-o"></span> Tipos</a></li>
-                <li><a href="/categorias"> <span class="fa fa-bookmark"></span> Categorias</a></li>
+                <li class="active"><a href="/#/agenda">
+                    <span class="fa fa-calendar-o"></span> Agenda</a></li>
+                <li><a href="/#/eventos"> <span class="fa fa-star-half-o"></span> Compromissos</a></li>
+                <li><a href="/#/tipos"> <span class="fa fa-bookmark-o"></span> Tipos</a></li>
+                <li><a href="/#/categorias"> <span class="fa fa-bookmark"></span> Categorias</a></li>
+                <li><a href="/#/contatos"> <span class="fa fa-bookmark"></span> Contatos</a></li>
+                <li><a href="/#/usuarios"> <span class="fa fa-users"></span> Usuários</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -69,15 +77,15 @@
                         <span class="fa fa-cog"></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-header">Sistema</li>
-                        <li><a href="/sobre">
+                        <li><a href="/#/sobre">
                             <span class="fa fa-chevron-right"></span> Sobre</a>
                         </li>
-                        <li><a href="/ajuda">
+                        <li><a href="/#/ajuda">
                             <span class="fa fa-question-circle"></span> Ajuda</a>
                         </li>
                         <li class="divider"></li>
                         <li class="dropdown-header">Autenticação</li>
-                        <li><a href="/login">
+                        <li><a href="/#/login">
                             <span class="fa fa-sign-in"></span> Entrar</a>
                         </li>
                         <li><a href="">
