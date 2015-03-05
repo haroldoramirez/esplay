@@ -3,7 +3,12 @@ angular.module('agenda')
     function($resource, BaseUrl){
       return $resource(BaseUrl + '/categorias/:id', {}, {
          getAll: {method: 'GET', url: BaseUrl + '/categorias', isArray: true},
-         getPagina: {method: 'GET', url: BaseUrl + '/categoriasPagina/:pagina', isArray: true},
          update: {method: 'PUT', url: BaseUrl + '/categorias/:id', isArray: false}
       });
+  }]).service('Contato',['$resource', 'BaseUrl',
+     function($resource, BaseUrl){
+       return $resource(BaseUrl + '/contatos/:id', {}, {
+          getAll: {method: 'GET', url: BaseUrl + '/contatos', isArray: true},
+          update: {method: 'PUT', url: BaseUrl + '/contatos/:id', isArray: false}
+       });
   }]);

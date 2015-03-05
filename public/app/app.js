@@ -17,6 +17,26 @@ angular
             .when('/ajuda', {
                 templateUrl: '/assets/app/views/help.html',
                 controller: 'HelpController'
+            })
+            .when('/categorias', {
+                templateUrl: '/assets/app/views/categorias/list.html',
+                controller: 'CategoriaListController'
+            })
+            .when('/categorias/novo', {
+                templateUrl: '/assets/app/views/categorias/create.html',
+                controller: 'CategoriaCreateController'
+            })
+            .when('/categorias/detalhe/:id', {
+                templateUrl: '/assets/app/views/categorias/detail.html',
+                controller: 'CategoriaDetailController'
+            })
+            .when('/contatos', {
+                templateUrl: '/assets/app/views/contatos/list.html',
+                controller: 'ContatoListController'
+            })
+            .when('/contatos/novo', {
+                templateUrl: '/assets/app/views/contatos/create.html',
+                controller: 'ContatoCreateController'
             });
    //Configuração das notificações
    }).config(function(toastrConfig) {

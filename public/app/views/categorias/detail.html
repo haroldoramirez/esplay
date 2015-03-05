@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Detalhe Categorias</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <div id="legend">
+                <legend>
+                    <h2>
+                        Detalhe Categoria
+                    </h2>
+                </legend>
+            </div>
+            <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+                <div class="form-group">
+                    <!--Input do Nome-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="nome">Nome</label>
+                        <div ng-class="{'has-error': !categoria.nome}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                <input autofocus placeholder="Insira o nome da Categoria" maxlength="100" class="form-control" type="text" ng-model="categoria.nome" id="nome" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="col-lg-8">
+                        <div class="control-group">
+                            <br>
+                            <button type="submit" id="save" class="btn btn-success" ng-disabled="!categoria.nome">
+                                Atualizar
+                            </button>
+                            <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                                Voltar
+                            </button>
+                            <button  data-animation="am-flip-x"  data-trigger="focus"  type="button" class="btn btn-danger" data-template="assets/popover/confirmacaoPopover.html" bs-popover="popoverConfirmacao">
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+<hr>
+<!--Rodapé-->
+<div align="center">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+
+                </div>
+            </div>
+            <p>&copy; 2015 Gerenciador de Compromissos -
+                <a data-template="assets/modal/informacoesModal.html" bs-modal="modalInformacoes">Powered by Play Framework e AngularJS
+                </a>.Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Lista de Categorias</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <fieldset>
+            <div id="legend">
+                <legend>
+                    <h2>
+                        Lista de Categorias<a class="btn btn-success pull-right" href="#/categorias/novo">
+                        Nova Categoria</a>
+                    </h2>
+                </legend>
+            </div>
+
+            <!--Input de Busca-->
+            <div class="col-lg-5">
+                <div class="input-group">
+                    <input autofocus type="search" class="form-control" placeholder="digite o nome da categoria">
+                         <span class="input-group-btn">
+                              <button class="btn btn-primary">
+                                  Buscar
+                              </button>
+                        </span>
+                </div>
+                <br>
+            </div>
+
+            <!--Tabela-->
+                <table ng-init="init()" class="table-striped table table-hover table-bordered">
+                    <br>
+                    <tr>
+                        <th>Categoria</th>
+                        <!--<th></th>-->
+                    </tr>
+                    <tr ng-repeat="categoria in categorias">
+                        <td><b><a href="#/categorias/detalhe/{{categoria.id}}">{{categoria.nome}}</a></b></td>
+                        <!--<td>-->
+                        <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
+                        <!--</td>-->
+                    </tr>
+                </table>
+        </fieldset>
+    </div>
+</div>
+<hr>
+
+<!--Rodapé-->
+<div align="center">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+
+                </div>
+            </div>
+            <p>&copy; 2015 Gerenciador de Compromissos -
+                <a data-template="assets/modal/informacoesModal.html" bs-modal="modalInformacoes">Powered by Play Framework e AngularJS
+                </a>.Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

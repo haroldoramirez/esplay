@@ -12,5 +12,12 @@ GET     /categorias                       controllers.CategoriaController.buscaT
 GET     /categorias/:id                   controllers.CategoriaController.buscaPorId(id:Long)
 DELETE  /categorias/:id                   controllers.CategoriaController.remover(id:Long)
 
+# Rotas Contatos
+POST    /contatos                       controllers.ContatoController.inserir()
+PUT     /contatos/:id                   controllers.ContatoController.atualizar(id:Long)
+GET     /contatos                       controllers.ContatoController.buscaTodos()
+GET     /contatos/:id                   controllers.ContatoController.buscaPorId(id:Long)
+DELETE  /contatos/:id                   controllers.ContatoController.remover(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
