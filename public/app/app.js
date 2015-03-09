@@ -14,6 +14,10 @@ angular
                 templateUrl: '/assets/app/views/home.html',
                 controller: 'HomeController'
             })
+             .when('/agenda', {
+                templateUrl: '/assets/app/views/agenda/agenda.html',
+                controller: 'AgendaListController'
+            })
             .when('/ajuda', {
                 templateUrl: '/assets/app/views/help.html',
                 controller: 'HelpController'
@@ -53,6 +57,14 @@ angular
              .when('/tipos/detalhe/:id', {
                  templateUrl: '/assets/app/views/tipos/detail.html',
                  controller: 'TipoDetailController'
+             })
+             .when('/compromissos/novo', {
+                 templateUrl: '/assets/app/views/compromissos/create.html',
+                 controller: 'CompromissoCreateController'
+             })
+             .when('/compromissos/detalhe/:id', {
+                 templateUrl: '/assets/app/views/compromissos/detail.html',
+                 controller: 'ComrpDetailController'
              });
    //Configuração das notificações
    }).config(function(toastrConfig) {

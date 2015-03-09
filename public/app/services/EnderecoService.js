@@ -1,5 +1,10 @@
 angular.module('agenda')
-  .service('Categoria',['$resource', 'BaseUrl',
+.service('Agenda',['$resource', 'BaseUrl',
+     function($resource, BaseUrl){
+        return $resource(BaseUrl + '/agenda/:id', {}, {
+           getAll: {method: 'GET', url: BaseUrl + '/agenda', isArray: true},
+        });
+  }]).service('Categoria',['$resource', 'BaseUrl',
     function($resource, BaseUrl){
       return $resource(BaseUrl + '/categorias/:id', {}, {
          getAll: {method: 'GET', url: BaseUrl + '/categorias', isArray: true},
@@ -16,5 +21,11 @@ angular.module('agenda')
         return $resource(BaseUrl + '/tipos/:id', {}, {
            getAll: {method: 'GET', url: BaseUrl + '/tipos', isArray: true},
            update: {method: 'PUT', url: BaseUrl + '/tipos/:id', isArray: false}
+        });
+  }])
+  .service('Compromisso',['$resource', 'BaseUrl',
+     function($resource, BaseUrl){
+        return $resource(BaseUrl + '/compromissos/:id', {}, {
+           update: {method: 'PUT', url: BaseUrl + '/compromissos/:id', isArray: false}
         });
   }]);

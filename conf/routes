@@ -26,5 +26,10 @@ GET     /contatos                         controllers.ContatoController.buscaTod
 GET     /contatos/:id                     controllers.ContatoController.buscaPorId(id:Long)
 DELETE  /contatos/:id                     controllers.ContatoController.remover(id:Long)
 
+# Rotas Compromissos
+POST    /compromissos                         controllers.CompromissoController.inserir()
+PUT     /compromissos/:id                     controllers.CompromissoController.atualizar(id:Long)
+DELETE  /compromissos/:id                     controllers.CompromissoController.remover(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
