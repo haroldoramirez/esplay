@@ -2,28 +2,28 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Detalhe Categorias</title>
+    <title>Cadastrar Tipo</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <fieldset>
-            <h2>
-                Detalhe da Categoria <a class="btn btn-link pull-right">
-                <button type="button" class="btn btn-danger" data-template="assets/popover/confirmacaoPopover.html" bs-popover="popoverConfirmacao">
-                    Remover
-                </button></a>
-            </h2>
-            <hr>
-            <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+            <div id="legend">
+                <legend>
+                    <h2>
+                        Novo Tipo
+                    </h2>
+                </legend>
+            </div>
+            <form class="form-horizontal" ng-submit="save()">
                 <div class="form-group">
                     <!--Input do Nome-->
                     <div class="col-lg-5">
                         <label class="control-label" for="nome">Nome</label>
-                        <div ng-class="{'has-error': !categoria.nome}">
+                        <div ng-class="{'has-error': !tipo.nome}">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                                <input autofocus placeholder="Insira o nome da Categoria" maxlength="100" class="form-control" type="text" ng-model="categoria.nome" id="nome" required/>
+                                <span class="input-group-addon"><i class="fa fa-bookmark-o"></i></span>
+                                <input autofocus placeholder="Insira o tipo" maxlength="100" class="form-control" type="text" ng-model="tipo.nome" id="nome" required/>
                             </div>
                         </div>
                     </div>
@@ -32,8 +32,8 @@
                     <div class="col-lg-8">
                         <div class="control-group">
                             <br>
-                            <button type="submit" id="save" class="btn btn-success" ng-disabled="!categoria.nome">
-                                Atualizar
+                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!tipo.nome">
+                                Salvar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
                                 Voltar

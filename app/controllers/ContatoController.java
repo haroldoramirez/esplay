@@ -64,7 +64,7 @@ public class ContatoController extends Controller {
         try {
             Ebean.delete(contato);
         } catch (PersistenceException e) {
-            return badRequest("Existem dados que dependem a este Contato, remova-os primeiro");
+            return badRequest("Existem dados que dependem deste Contato, remova-os primeiro");
         } catch (Exception e) {
             return internalServerError("Erro interno de sistema");
         }

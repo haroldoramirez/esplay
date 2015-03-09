@@ -11,4 +11,10 @@ angular.module('agenda')
           getAll: {method: 'GET', url: BaseUrl + '/contatos', isArray: true},
           update: {method: 'PUT', url: BaseUrl + '/contatos/:id', isArray: false}
        });
+  }]).service('Tipo',['$resource', 'BaseUrl',
+     function($resource, BaseUrl){
+        return $resource(BaseUrl + '/tipos/:id', {}, {
+           getAll: {method: 'GET', url: BaseUrl + '/tipos', isArray: true},
+           update: {method: 'PUT', url: BaseUrl + '/tipos/:id', isArray: false}
+        });
   }]);

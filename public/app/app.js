@@ -37,7 +37,23 @@ angular
             .when('/contatos/novo', {
                 templateUrl: '/assets/app/views/contatos/create.html',
                 controller: 'ContatoCreateController'
-            });
+            })
+            .when('/contatos/detalhe/:id', {
+                templateUrl: '/assets/app/views/contatos/detail.html',
+                controller: 'ContatoDetailController'
+            })
+             .when('/tipos', {
+                templateUrl: '/assets/app/views/tipos/list.html',
+                controller: 'TipoListController'
+            })
+             .when('/tipos/novo', {
+                templateUrl: '/assets/app/views/tipos/create.html',
+                controller: 'TipoCreateController'
+             })
+             .when('/tipos/detalhe/:id', {
+                 templateUrl: '/assets/app/views/tipos/detail.html',
+                 controller: 'TipoDetailController'
+             });
    //Configuração das notificações
    }).config(function(toastrConfig) {
         angular.extend(toastrConfig, {
@@ -63,9 +79,16 @@ angular
         })
   //Configuração do datepicker
    }).config(function($datepickerProvider) {
-        angular.extend($datepickerProvider.defaults, {
-          iconLeft: 'glyphicon glyphicon-triangle-left',
-          iconRight: 'glyphicon glyphicon-triangle-right',
-          placement: 'bottom'
-        });
+       angular.extend($datepickerProvider.defaults, {
+         iconLeft: 'glyphicon glyphicon-triangle-left',
+         iconRight: 'glyphicon glyphicon-triangle-right',
+         placement: 'bottom'
+       });
+  //Configuração do popover
+  }).config(function($popoverProvider) {
+       angular.extend($popoverProvider.defaults, {
+         animation: 'am-flip-x',
+         trigger: 'focus',
+         placement: 'auto'
+       });
   });

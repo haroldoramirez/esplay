@@ -2,14 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Detalhe Categorias</title>
+    <title>Detalhe Contatos</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <fieldset>
             <h2>
-                Detalhe da Categoria <a class="btn btn-link pull-right">
+                Detalhe do Contato <a class="btn btn-link pull-right">
                 <button type="button" class="btn btn-danger" data-template="assets/popover/confirmacaoPopover.html" bs-popover="popoverConfirmacao">
                     Remover
                 </button></a>
@@ -20,10 +20,10 @@
                     <!--Input do Nome-->
                     <div class="col-lg-5">
                         <label class="control-label" for="nome">Nome</label>
-                        <div ng-class="{'has-error': !categoria.nome}">
+                        <div ng-class="{'has-error': !contato.nome}">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                                <input autofocus placeholder="Insira o nome da Categoria" maxlength="100" class="form-control" type="text" ng-model="categoria.nome" id="nome" required/>
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input autofocus placeholder="Insira o nome do Contato" maxlength="100" class="form-control" type="text" ng-model="contato.nome" id="nome" required/>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="col-lg-8">
                         <div class="control-group">
                             <br>
-                            <button type="submit" id="save" class="btn btn-success" ng-disabled="!categoria.nome">
+                            <button type="submit" id="save" class="btn btn-success" ng-disabled="!contato.nome">
                                 Atualizar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">

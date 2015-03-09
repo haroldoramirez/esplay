@@ -3,6 +3,7 @@
 
 # --- !Ups
 
+# --- Categorias
 insert into categoria (nome) values ('zzzzzz');
 insert into categoria (nome) values ('aaaaaa');
 insert into categoria (nome) values ('eeeeeeeeeeeeeeeeeeeeeeeee');
@@ -20,7 +21,7 @@ insert into categoria (nome) values ('jtyryjrtyjrtyjjrt');
 insert into categoria (nome) values ('hreheyjtryjrtyjt');
 insert into categoria (nome) values ('jtjrtjrtyjrtyjrtyryj');
 
-
+# --- Contatos
 insert into contato (nome) values ('teteeryretyertyer');
 insert into contato (nome) values ('dhdtydjdtyjtdyjtd');
 insert into contato (nome) values ('jtyryjrtyjrtyjjrt');
@@ -37,3 +38,21 @@ insert into contato (nome) values ('wgasstgsrtsrhsr');
 insert into contato (nome) values ('wegrwergwergwer');
 insert into contato (nome) values ('AWDASD');
 insert into contato (nome) values ('wererth');
+
+# --- Tipos
+insert into tipo (nome) values ('teteeryretyertyer');
+insert into tipo (nome) values ('eeeeeeeeeeeeeeeeeeeeeeeee');
+insert into tipo (nome) values ('rrrrrrrrrrrrrrrrrrrrr');
+insert into tipo (nome) values ('hhhhhhhhhhhhhhhhhhhh');
+insert into tipo (nome) values ('dhdtydjdtyjtdyjtd');
+insert into tipo (nome) values ('jtyryjrtyjrtyjjrt');
+insert into tipo (nome) values ('hreheyjtryjrtyjt');
+insert into tipo (nome) values ('jtjrtjrtyjrtyjrtyryj');
+insert into tipo (nome) values ('zzzzzz');
+insert into tipo (nome) values ('aaaaaa');
+insert into tipo (nome) values ("egeregreg");
+insert into tipo (nome) values ('iuaohiuwheifuhawie');
+insert into tipo (nome) values ('wgasstgsrtsrhsr');
+insert into tipo (nome) values ('wegrwergwergwer');
+insert into tipo (nome) values ('AWDASD');
+insert into tipo (nome) values ('wererth');

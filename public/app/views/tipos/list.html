@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Lista de Categorias</title>
+    <title>Lista de Tipos</title>
 </head>
 <body>
 <div class="container">
@@ -11,8 +11,8 @@
             <div id="legend">
                 <legend>
                     <h2>
-                        Lista de Categorias<a class="btn btn-success pull-right" href="#/categorias/novo">
-                        Nova Categoria</a>
+                        Lista de Tipos<a class="btn btn-success pull-right" href="#/tipos/novo">
+                        Novo Tipo</a>
                     </h2>
                 </legend>
             </div>
@@ -20,7 +20,7 @@
             <!--Input de Busca-->
             <div class="col-lg-5">
                 <div class="input-group">
-                    <input autofocus type="search" class="form-control" placeholder="digite o nome da categoria">
+                    <input autofocus type="search" class="form-control" placeholder="digite o nome">
                          <span class="input-group-btn">
                               <button class="btn btn-primary">
                                   Buscar
@@ -31,19 +31,19 @@
             </div>
 
             <!--Tabela-->
-                <table ng-init="init()" class="table-striped table table-hover table-bordered">
-                    <br>
-                    <tr>
-                        <th>Categoria</th>
-                        <!--<th></th>-->
-                    </tr>
-                    <tr ng-repeat="categoria in categorias">
-                        <td><b><a href="#/categorias/detalhe/{{categoria.id}}">{{categoria.nome}}</a></b></td>
-                        <!--<td>-->
-                        <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
-                        <!--</td>-->
-                    </tr>
-                </table>
+            <table ng-init="init()" class="table-striped table table-hover table-bordered">
+                <br>
+                <tr>
+                    <th>Nome</th>
+                    <!--<th></th>-->
+                </tr>
+                <tr ng-repeat="tipo in tipos">
+                    <td><b><a href="#/tipos/detalhe/{{tipo.id}}">{{tipo.nome}}</a></b></td>
+                    <!--<td>-->
+                    <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
+                    <!--</td>-->
+                </tr>
+            </table>
         </fieldset>
     </div>
 </div>

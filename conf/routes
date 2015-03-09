@@ -3,7 +3,7 @@
 # ~~~~
 
 # Index page
-GET     /                           controllers.Assets.at(path="/public", file="/index.html")
+GET     /                                 controllers.Assets.at(path="/public", file="/index.html")
 
 # Rotas Categorias
 POST    /categorias                       controllers.CategoriaController.inserir()
@@ -12,12 +12,19 @@ GET     /categorias                       controllers.CategoriaController.buscaT
 GET     /categorias/:id                   controllers.CategoriaController.buscaPorId(id:Long)
 DELETE  /categorias/:id                   controllers.CategoriaController.remover(id:Long)
 
+# Rotas Tipos
+POST    /tipos                            controllers.TipoController.inserir()
+PUT     /tipos/:id                        controllers.TipoController.atualizar(id:Long)
+GET     /tipos                            controllers.TipoController.buscaTodos()
+GET     /tipos/:id                        controllers.TipoController.buscaPorId(id:Long)
+DELETE  /tipos/:id                        controllers.TipoController.remover(id:Long)
+
 # Rotas Contatos
-POST    /contatos                       controllers.ContatoController.inserir()
-PUT     /contatos/:id                   controllers.ContatoController.atualizar(id:Long)
-GET     /contatos                       controllers.ContatoController.buscaTodos()
-GET     /contatos/:id                   controllers.ContatoController.buscaPorId(id:Long)
-DELETE  /contatos/:id                   controllers.ContatoController.remover(id:Long)
+POST    /contatos                         controllers.ContatoController.inserir()
+PUT     /contatos/:id                     controllers.ContatoController.atualizar(id:Long)
+GET     /contatos                         controllers.ContatoController.buscaTodos()
+GET     /contatos/:id                     controllers.ContatoController.buscaPorId(id:Long)
+DELETE  /contatos/:id                     controllers.ContatoController.remover(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

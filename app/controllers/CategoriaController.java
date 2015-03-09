@@ -67,7 +67,7 @@ public class CategoriaController extends Controller {
         try {
             Ebean.delete(categoria);
         } catch (PersistenceException e) {
-            return badRequest("Existem dados que dependem a esta categoria, remova-os primeiro");
+            return badRequest("Existem dados que dependem desta categoria de Compromisso, remova-os primeiro");
         } catch (Exception e) {
             return internalServerError("Erro interno de sistema");
         }
