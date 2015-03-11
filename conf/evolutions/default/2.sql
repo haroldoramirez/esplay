@@ -38,6 +38,7 @@ insert into contato (nome) values ('wgasstgsrtsrhsr');
 insert into contato (nome) values ('wegrwergwergwer');
 insert into contato (nome) values ('AWDASD');
 insert into contato (nome) values ('wererth');
+insert into contato (nome) values ('Pacheco');
 
 # --- Tipos
 insert into tipo (nome) values ('teteeryretyertyer');
