@@ -1,8 +1,4 @@
 angular.module('agenda')
-    .controller('HomeController', function ($scope, $location, $modal, $log) {
+    .controller('HomeController', function ($scope, $modal, $log) {
 
-         $scope.popoverInformacoes = {
-           "title": "Informações",
-           "content": "Home"
-         };
     });

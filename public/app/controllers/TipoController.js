@@ -22,6 +22,7 @@ angular.module('agenda')
 
         $scope.init = function(){
             Tipo.getAll(function(data){
+
                 $scope.tipos = data;
             });
         };

@@ -1,54 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="agenda">
 <head>
-    <!--Jquery-->
-    <script src="assets/bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="assets/bower_components/jquery-ui/ui/jquery-ui.js"></script>
-
-    <!--Scripts Personalisados-->
-    <script src="assets/javascripts/active.js"></script>
-
-    <!--AngularJS-->
-    <script src="assets/bower_components/angular/angular.js"></script>
-    <script src="assets/bower_components/angular-translate/angular-translate.js"></script>
-    <script src="assets/bower_components/angular-resource/angular-resource.js"></script>
-    <script src="assets/bower_components/angular-route/angular-route.js"></script>
-    <script src="assets/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="assets/bower_components/angular-strap/dist/angular-strap.js"></script>
-    <script src="assets/bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
-    <script src="assets/bower_components/angular-toastr/dist/angular-toastr.js"></script>
+    <!--Toastr-->
     <link rel="stylesheet" href="assets/bower_components/angular-toastr/dist/angular-toastr.css"/>
-    <link rel="stylesheet" href="assets/bower_components/angular-motion/dist/angular-motion.css"/>
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
-    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
     <!--Calendar-->
-    <link rel="stylesheet" href="assets/bower_components/fullcalendar/dist/fullcalendar.css"/>
-    <!--<script type="text/javascript" src="assets/bower_components/fullcalendar/dist/gcal.js"></script>-->
-    <script type="text/javascript" src="assets/bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <link rel="stylesheet" href="assets/bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.css">
 
     <!--Awesome Icons-->
     <link rel="stylesheet" href="assets/stylesheets/awesome/css/font-awesome.css"/>
 
-    <!--app-->
-    <script src="assets/app/app.js"></script>
-
-    <!--Servicos-->
-    <script src="assets/app/services/EnderecoService.js"></script>
-    <script src="assets/app/services/baseUrl.js"></script>
-    
-    <!--Controllers AngularJS-->
-    <script src="assets/app/controllers/HomeController.js"></script>
-    <script src="assets/app/controllers/HelpController.js"></script>
-    <script src="assets/app/controllers/AgendaController.js"></script>
-    <script src="assets/app/controllers/CategoriaController.js"></script>
-    <script src="assets/app/controllers/CompromissoController.js"></script>
-    <script src="assets/app/controllers/ContatoController.js"></script>
-    <script src="assets/app/controllers/TipoController.js"></script>
-    <script src="assets/app/controllers/UsuarioController.js"></script>
-    
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Agenda</title>
 </head>
@@ -71,7 +35,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/#/agenda">
+                <li><a href="/#/agenda">
                     <span class="fa fa-calendar-o"></span> Agenda</a></li>
                 <li><a href="/#/tipos"> <span class="fa fa-bookmark-o"></span> Tipos</a></li>
                 <li><a href="/#/categorias"> <span class="fa fa-bookmark"></span> Categorias</a></li>
@@ -110,5 +74,67 @@
         <div ng-view=""></div>
     </div>
 </div>
+<hr>
+<!--Rodapé-->
+<div align="center">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+
+                </div>
+            </div>
+            <p>&copy; 2015 Gerenciador de Compromissos -
+                <a href="">Powered by Play Framework e AngularJS
+                </a>.Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!--Jquery-->
+<script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+<!--Bootstrap-->
+<script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<!--AngularJS-->
+<script src="assets/bower_components/angular/angular.js"></script>
+<script src="assets/bower_components/angular-resource/angular-resource.js"></script>
+<script src="assets/bower_components/angular-route/angular-route.js"></script>
+<script src="assets/bower_components/angular-animate/angular-animate.js"></script>
+
+<!--Toastr-->
+<script src="assets/bower_components/angular-toastr/dist/angular-toastr.js"></script>
+
+<!--Moment-->
+<script src="assets/bower_components/moment/moment.js"></script>
+
+<!--Locale-->
+<script src="assets/bower_components/moment/locale/pt-br.js"></script>
+
+<!--UI Boostrap-->
+<script src="assets/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<!--Calendar-->
+<script src="assets/bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
+
+<!--app-->
+<script src="assets/app/app.js"></script>
+
+<!--Servicos-->
+<script src="assets/app/services/EnderecoService.js"></script>
+<script src="assets/app/services/baseUrl.js"></script>
+
+<!--Controllers AngularJS-->
+<script src="assets/app/controllers/IndexController.js"></script>
+<script src="assets/app/controllers/HomeController.js"></script>
+<script src="assets/app/controllers/HelpController.js"></script>
+<script src="assets/app/controllers/AgendaController.js"></script>
+<script src="assets/app/controllers/CategoriaController.js"></script>
+<script src="assets/app/controllers/CompromissoController.js"></script>
+<script src="assets/app/controllers/ContatoController.js"></script>
+<script src="assets/app/controllers/TipoController.js"></script>
+<script src="assets/app/controllers/UsuarioController.js"></script>
 </body>
 </html>

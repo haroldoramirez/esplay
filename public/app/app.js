@@ -1,11 +1,13 @@
 angular
     .module
         ('agenda',
-            ['ngRoute',
+            [
+             'ngRoute',
              'ngResource',
+             'ngAnimate',
              'toastr',
-             'mgcrea.ngStrap',
-             'ngAnimate'
+             'ui.bootstrap',
+             'mwl.calendar'
             ]
         )
     .config(function ($routeProvider) {
@@ -89,18 +91,4 @@ angular
           titleClass: 'toast-title',
           toastClass: 'toast'
         })
-  //Configuração do datepicker
-   }).config(function($datepickerProvider) {
-       angular.extend($datepickerProvider.defaults, {
-         iconLeft: 'glyphicon glyphicon-triangle-left',
-         iconRight: 'glyphicon glyphicon-triangle-right',
-         placement: 'bottom'
-       });
-  //Configuração do popover
-  }).config(function($popoverProvider) {
-       angular.extend($popoverProvider.defaults, {
-         animation: 'am-flip-x',
-         trigger: 'focus',
-         placement: 'auto'
-       });
-  });
+   });
