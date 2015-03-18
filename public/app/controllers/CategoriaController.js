@@ -107,14 +107,4 @@ angular.module('agenda')
                 toastr.error(data.data,'Não foi possível Remover a Categoria');
             });
         };
-
-        $scope.confirmacaoModal = {
-             "title": "Confirmação",
-             "content": "Deseja excluir?"
-        };
-
-        $scope.popoverConfirmacao = {
-             "title": "Confirmação",
-             "content": "Excluir?"
-        };
   });

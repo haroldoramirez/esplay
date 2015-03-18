@@ -4,6 +4,7 @@ import play.db.ebean.Model;
 import play.libs.Json;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Compromisso extends Model {
@@ -16,6 +17,26 @@ public class Compromisso extends Model {
 
     @Column(nullable = false)
     public String nome;
+
+    //muitos compromissos para uma agenda
+    @ManyToOne
+    public Agenda agenda;
+
+   //muitos compromissos para muitos contatos
+   @ManyToMany
+    public List<Contato> contatos;
+
+    //muitos compromissos para um usuario
+    @ManyToOne
+    public Usuario usuario;
+
+    //muitos compromissos para um tipo
+    @ManyToOne
+    public Tipo tipo;
+
+    //muitos compromissos para muitas categorias
+    @ManyToMany
+    public List<Categoria> categorias;
 
     public Long getId() {
         return id;

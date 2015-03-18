@@ -17,6 +17,14 @@ public class Contato extends Model {
     @Column(nullable = false)
     public String nome;
 
+    //um contato tem um usuario
+    @OneToOne
+    public Usuario dono;
+
+    //varios contatos tem um usuario
+    @ManyToOne
+    public Usuario usuario;
+
     public Long getId() {
         return id;
     }

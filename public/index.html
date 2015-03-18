@@ -2,7 +2,7 @@
 <html ng-app="agenda">
 <head>
     <!--Toastr-->
-    <link rel="stylesheet" href="assets/bower_components/angular-toastr/dist/angular-toastr.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/bower_components/angular-toastr/dist/angular-toastr.css"/>
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
@@ -52,9 +52,9 @@
                         <li><a href="/#/sobre">
                             <span class="fa fa-chevron-right"></span> Sobre</a>
                         </li>
-                        <li><a href="/#/ajuda">
-                            <span class="fa fa-question-circle"></span> Ajuda</a>
-                        </li>
+                        <!--<li><a href="/#/ajuda">-->
+                            <!--<span class="fa fa-question-circle"></span> Ajuda</a>-->
+                        <!--</li>-->
                         <li class="divider"></li>
                         <li class="dropdown-header">Autenticação</li>
                         <li><a href="/#/login">
@@ -71,22 +71,18 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div ng-view=""></div>
+        <div ng-view="">
+        </div>
+        <hr>
     </div>
 </div>
-<hr>
 <!--Rodapé-->
 <div align="center">
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-
-                </div>
-            </div>
             <p>&copy; 2015 Gerenciador de Compromissos -
-                <a href="">Powered by Play Framework e AngularJS
-                </a>.Todos os direitos reservados.
+                <b>Powered by Play Framework e AngularJS
+                </b>.Todos os direitos reservados.
             </p>
         </div>
     </footer>
@@ -94,6 +90,10 @@
 
 <!--Jquery-->
 <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+<!--Javascripts Personalizados-->
+<script src="assets/javascripts/active.js"></script>
+<script src="assets/javascripts/hello.js"></script>
 
 <!--Bootstrap-->
 <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -105,7 +105,7 @@
 <script src="assets/bower_components/angular-animate/angular-animate.js"></script>
 
 <!--Toastr-->
-<script src="assets/bower_components/angular-toastr/dist/angular-toastr.js"></script>
+<script src="assets/bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
 <!--Moment-->
 <script src="assets/bower_components/moment/moment.js"></script>
@@ -127,9 +127,7 @@
 <script src="assets/app/services/baseUrl.js"></script>
 
 <!--Controllers AngularJS-->
-<script src="assets/app/controllers/IndexController.js"></script>
 <script src="assets/app/controllers/HomeController.js"></script>
-<script src="assets/app/controllers/HelpController.js"></script>
 <script src="assets/app/controllers/AgendaController.js"></script>
 <script src="assets/app/controllers/CategoriaController.js"></script>
 <script src="assets/app/controllers/CompromissoController.js"></script>

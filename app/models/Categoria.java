@@ -17,6 +17,10 @@ public class Categoria extends Model {
     @Column(nullable = false)
     public String nome;
 
+    //muitas categorias para um usuario
+    @ManyToOne
+    public Usuario dono;
+
     public Long getId() {
         return id;
     }

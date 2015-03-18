@@ -13,4 +13,6 @@ public class Agenda extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
+
 }

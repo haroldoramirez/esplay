@@ -51,13 +51,4 @@ angular.module('agenda')
             });
         };
 
-        $scope.confirmacaoModal = {
-             "title": "Confirmação",
-             "content": "Deseja excluir?"
-        };
-
-        $scope.popoverConfirmacao = {
-             "title": "Confirmação",
-             "content": "Excluir?"
-        };
   });

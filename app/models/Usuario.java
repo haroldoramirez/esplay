@@ -17,6 +17,10 @@ public class Usuario extends Model {
     @Column(nullable = false)
     public String nome;
 
+    //muitos usuarios para uma agenda
+    @ManyToOne
+    public Agenda agenda;
+
     public Long getId() {
         return id;
     }
