@@ -12,14 +12,17 @@ public class Usuario extends Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false)
-    public String nome;
+    private String login;
+
+    @Column(nullable = false)
+    private String senha;
 
     //muitos usuarios para uma agenda
     @ManyToOne
-    public Agenda agenda;
+    private Agenda agenda;
 
     public Long getId() {
         return id;
@@ -29,12 +32,28 @@ public class Usuario extends Model {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getLogin() {
+        return login;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     @Override

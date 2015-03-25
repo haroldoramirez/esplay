@@ -12,10 +12,10 @@ public class Tipo extends Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false)
-    public String nome;
+    private String nome;
 
     public Long getId() {
         return id;

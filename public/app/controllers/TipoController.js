@@ -80,6 +80,13 @@ angular.module('agenda')
 
   }).controller('TipoDetailController', function ($scope, $modal, $routeParams, $location, Tipo, toastr){
 
+        $scope.open = function (size) {
+
+            var modalInstance = $modal.open({
+                  templateUrl: 'modalConfirmacao.html',
+                  controller: 'TipoDetailController',
+            });
+        };
         $scope.init = function(){
             $scope.tipo = Tipo.get({id:$routeParams.id});
         };

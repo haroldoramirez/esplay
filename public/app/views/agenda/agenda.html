@@ -1,5 +1,20 @@
 <div class="container">
     <div class="row">
+        <button ng-click="open()" type="button" class="btn btn btn-primary">
+            Teste Modal Confirmação
+        </button>
+        <script type="text/ng-template" id="modalConfirmacao.html">
+            <div class="modal-header">
+                <h3 align="center" class="modal-title">Confirmação:</h3>
+            </div>
+            <div align="center" class="modal-body">
+                Deseja Remover?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="">Sim</button>
+                <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
+            </div>
+        </script>
         <div id="legend">
             <legend>
                 <h2>
@@ -9,9 +24,17 @@
             </legend>
         </div>
         <div ng-controller="AgendaController">
-            <button ng-click="changeView('year')">
-                Year
+            <button class="btn btn-primary" ng-click="changeView('year')">
+                Ano
             </button>
+            <button class="btn btn-primary" ng-click="changeView('month')">
+                Mes
+            </button>
+            <button class="btn btn-primary" ng-click="changeView('day')">
+                Dia
+            </button>
+            <br>
+            <br>
             <mwl-calendar
                     calendar-events="events"
                     calendar-view="calendarView"

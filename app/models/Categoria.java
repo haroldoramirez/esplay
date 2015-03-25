@@ -12,10 +12,10 @@ public class Categoria extends Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @Column(nullable = false)
-    public String nome;
+    private String nome;
 
     //muitas categorias para um usuario
     @ManyToOne

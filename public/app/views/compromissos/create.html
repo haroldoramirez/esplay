@@ -10,14 +10,68 @@
             </div>
             <form class="form-horizontal" ng-submit="save()">
                 <div class="form-group">
-                    <!--Input do Nome-->
+                    <!--Input do Título-->
                     <div class="col-lg-5">
-                        <label class="control-label" for="nome">Nome</label>
-                        <div ng-class="{'has-error': !compromisso.nome}">
+                        <label class="control-label" for="titulo">Título</label>
+                        <div ng-class="{'has-error': !compromisso.titulo}">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                                <input autofocus placeholder="Insira o compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.nome" id="nome" required/>
+                                <input autofocus placeholder="Insira o título compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.titulo" id="titulo" required/>
                             </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Descrição-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="descricao">Descrição</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                                <input autofocus placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao" required/>
+                            </div>
+                    </div>
+
+                    <!--Input do Observações-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="observacoes">Observações</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                            <input autofocus placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes" required/>
+                        </div>
+                    </div>
+
+                    <!--Input do Local-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="local">Local</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                            <input autofocus placeholder="Insira o local" maxlength="100" class="form-control" type="text" ng-model="compromisso.local" id="local" required/>
+                        </div>
+                    </div>
+
+                    <!--Input do Contatos-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="contato">Contatos</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                            <input autofocus placeholder="Adicione contatos" maxlength="100" class="form-control" type="text" ng-model="compromisso.contato" id="contato" required/>
+                        </div>
+                    </div>
+
+                    <!--Input do Tipo-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="tipo">Tipos</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                            <input autofocus placeholder="Adicione o tipo do compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.tipo" id="tipo" required/>
+                        </div>
+                    </div>
+
+                    <!--Input do Categoria-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="categoria">Categoria</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                            <input autofocus placeholder="Adicione o tipo do compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.categoria" id="categoria" required/>
                         </div>
                     </div>
 
@@ -25,7 +79,7 @@
                     <div class="col-lg-8">
                         <div class="control-group">
                             <br>
-                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!compromisso.nome">
+                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!compromisso.titulo">
                                 Salvar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">

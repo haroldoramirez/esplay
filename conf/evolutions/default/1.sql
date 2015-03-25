@@ -5,6 +5,8 @@
 
 create table agenda (
   id                        bigint auto_increment not null,
+  data_inicio               datetime,
+  data_fim                  datetime,
   constraint pk_agenda primary key (id))
 ;
 
@@ -17,7 +19,11 @@ create table categoria (
 
 create table compromisso (
   id                        bigint auto_increment not null,
-  nome                      varchar(255) not null,
+  titulo                    varchar(255) not null,
+  descricao                 varchar(255),
+  observacoes               varchar(255),
+  local                     varchar(255),
+  status                    tinyint(1) default 0,
   agenda_id                 bigint,
   usuario_id                bigint,
   tipo_id                   bigint,
@@ -27,6 +33,8 @@ create table compromisso (
 create table contato (
   id                        bigint auto_increment not null,
   nome                      varchar(255) not null,
+  email                     varchar(255) not null,
+  telefone                  varchar(255),
   dono_id                   bigint,
   usuario_id                bigint,
   constraint pk_contato primary key (id))
@@ -40,7 +48,8 @@ create table tipo (
 
 create table usuario (
   id                        bigint auto_increment not null,
-  nome                      varchar(255) not null,
+  login                     varchar(255) not null,
+  senha                     varchar(255) not null,
   agenda_id                 bigint,
   constraint pk_usuario primary key (id))
 ;
