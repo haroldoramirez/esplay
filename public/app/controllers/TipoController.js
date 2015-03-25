@@ -6,9 +6,9 @@ angular.module('agenda')
   .controller('TipoCreateController', function ($scope, $modal, $location, Tipo, toastr) {
         $scope.tipo = {};
         $scope.save = function(){
-            console.log($scope.categoria);
+            console.log($scope.tipo);
             Tipo.save($scope.tipo, function(data){
-                toastr.success(data.data,'Tipo Salvo com Sucesso');
+                toastr.success('Tipo Salvo com Sucesso');
                 $location.path('/tipos');
             }, function(data){
                 console.log(data);
@@ -82,18 +82,24 @@ angular.module('agenda')
 
         $scope.open = function (size) {
 
-            var modalInstance = $modal.open({
+            $modalInstance = $modal.open({
                   templateUrl: 'modalConfirmacao.html',
                   controller: 'TipoDetailController',
+                   size: size,
             });
         };
+
+        $scope.cancelModal = function () {
+            $modalInstance.dismiss('cancelModal');
+        };
+
         $scope.init = function(){
             $scope.tipo = Tipo.get({id:$routeParams.id});
         };
 
         $scope.update = function(){
             Tipo.update({id:$routeParams.id},$scope.tipo, function(data){
-                toastr.success(data.data,'Tipo Atualizado com Sucesso');
+                toastr.info('Tipo Atualizado com Sucesso');
                 $location.path('/tipos');
             },function(data){
                console.log(data);
@@ -108,7 +114,8 @@ angular.module('agenda')
 
         $scope.delete = function(){
             Tipo.delete({id:$routeParams.id}, function(){
-                toastr.success('Tipo Removido com Sucesso');
+                toastr.warning('Tipo Removido com Sucesso');
+                $modalInstance.close();
                 $location.path('/tipos');
             }, function(data){
             console.log(data);

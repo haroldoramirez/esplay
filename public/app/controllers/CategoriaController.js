@@ -8,7 +8,7 @@ angular.module('agenda')
         $scope.save = function(){
             console.log($scope.categoria);
             Categoria.save($scope.categoria, function(data){
-                toastr.success(data.data,'Categoria Salvo com Sucesso');
+                toastr.success('Categoria Salvo com Sucesso');
                 $location.path('/categorias');
             }, function(data){
                 console.log(data);
@@ -70,7 +70,7 @@ angular.module('agenda')
         //deletar opcional
         $scope.delete = function(id){
            Categoria.delete({id:id}, function(){
-               toastr.success('Categoria Removida com Sucesso');
+               toastr.warning('Categoria Removida com Sucesso');
                $scope.init();
            }, function(data){
                toastr.error(data.data,'Não foi possível Remover a Categoria');
@@ -79,13 +79,25 @@ angular.module('agenda')
 
   }).controller('CategoriaDetailController', function ($scope, $modal, $routeParams, $location, Categoria, toastr){
 
+        $scope.open = function (size) {
+
+            $modalInstance = $modal.open({
+                  templateUrl: 'modalConfirmacao.html',
+                  controller: 'CategoriaDetailController',
+                  size: size,
+            });
+        };
+
+        $scope.cancelModal = function () {
+            $modalInstance.dismiss('cancelModal');
+        };
         $scope.init = function(){
             $scope.categoria = Categoria.get({id:$routeParams.id});
         };
 
         $scope.update = function(){
             Categoria.update({id:$routeParams.id},$scope.categoria, function(data){
-                toastr.success(data.data,'Categoria Atualizada com Sucesso');
+                toastr.info('Categoria Atualizada com Sucesso');
                 $location.path('/categorias');
             },function(data){
                console.log(data);
@@ -100,7 +112,8 @@ angular.module('agenda')
 
         $scope.delete = function(){
             Categoria.delete({id:$routeParams.id}, function(){
-                toastr.success('Categoria Removida com Sucesso');
+                toastr.warning('Categoria Removida com Sucesso');
+                $modalInstance.close();
                 $location.path('/categorias');
             }, function(data){
             console.log(data);
