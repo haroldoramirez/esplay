@@ -3,11 +3,23 @@
         <fieldset>
             <h2>
                 Detalhe do Contato <a class="btn btn-link pull-right">
-                <button type="button" class="btn btn-danger" data-template="assets/popover/confirmacaoPopover.html" bs-popover="popoverConfirmacao">
+                <button type="button" class="btn btn-danger" ng-click="open('sm')">
                     Remover
                 </button></a>
             </h2>
             <hr>
+            <script type="text/ng-template" id="modalConfirmacao.html">
+                <div class="modal-header">
+                    <h3 align="center" class="modal-title">Confirmação:</h3>
+                </div>
+                <div align="center" class="modal-body">
+                    Deseja Remover o Contato?
+                </div>
+                <div class="modal-footer">
+                    <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
+                    <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
+                </div>
+            </script>
             <form ng-init="init()" class="form-horizontal" ng-submit="update()">
                 <div class="form-group">
                     <!--Input do Nome-->

@@ -8,7 +8,7 @@ angular.module('agenda')
         $scope.save = function(){
             console.log($scope.contato);
             Contato.save($scope.contato, function(data){
-                toastr.success(data.data,'Contato Salvo com Sucesso');
+                toastr.success('Contato Salvo com Sucesso');
                 $location.path('/contatos');
             }, function(data){
                 console.log(data);
@@ -70,7 +70,7 @@ angular.module('agenda')
         //deletar opcional
         $scope.delete = function(id){
            Contato.delete({id:id}, function(){
-               toastr.success('Contato Removido com Sucesso');
+               toastr.warning('Contato Removido com Sucesso');
                $scope.init();
            }, function(data){
                toastr.error(data.data,'Não foi possível Remover o Contato');
@@ -79,13 +79,25 @@ angular.module('agenda')
 
   }).controller('ContatoDetailController', function ($scope, $modal, $routeParams, $location, Contato, toastr){
 
+        $scope.open = function (size) {
+
+            $modalInstance = $modal.open({
+                  templateUrl: 'modalConfirmacao.html',
+                  controller: 'ContatoDetailController',
+                  size: size,
+            });
+        };
+
+        $scope.cancelModal = function () {
+            $modalInstance.dismiss('cancelModal');
+        };
         $scope.init = function(){
             $scope.contato = Contato.get({id:$routeParams.id});
         };
 
         $scope.update = function(){
             Contato.update({id:$routeParams.id},$scope.contato, function(data){
-                toastr.success(data.data,'Contato Atualizado com Sucesso');
+                toastr.info('Contato Atualizado com Sucesso');
                 $location.path('/contatos');
             },function(data){
                console.log(data);
@@ -101,6 +113,7 @@ angular.module('agenda')
         $scope.delete = function(){
             Contato.delete({id:$routeParams.id}, function(){
                 toastr.success('Contato Removido com Sucesso');
+                $modalInstance.close();
                 $location.path('/contatos');
             }, function(data){
             console.log(data);
