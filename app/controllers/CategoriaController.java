@@ -14,13 +14,18 @@ public class CategoriaController extends Controller {
 
         Categoria categoria = Json.fromJson(request().body().asJson(), Categoria.class);
 
+        Categoria categoriaBusca = Ebean.find(Categoria.class).where().eq("nome", categoria.getNome()).findUnique();
+
+        if (categoriaBusca != null) {
+            return badRequest("Categoria de Compromisso já Cadastrado");
+        }
+
         try {
             Ebean.save(categoria);
-        } catch (PersistenceException e) {
-            return badRequest("Categoria já Cadastrada");
         } catch (Exception e) {
             return internalServerError("Erro interno de sistema");
         }
+
         return created(Json.toJson(categoria));
     }
 

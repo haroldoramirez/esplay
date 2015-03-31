@@ -15,7 +15,7 @@ public class Compromisso extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String titulo;
 
     private String descricao;
@@ -24,8 +24,7 @@ public class Compromisso extends Model {
 
     private String local;
 
-    //private Integer frequencia;
-
+    @Column(nullable = false)
     private Boolean status;
 
     //muitos compromissos para uma agenda
@@ -42,6 +41,7 @@ public class Compromisso extends Model {
 
     //muitos compromissos para um tipo
     @ManyToOne
+    @Column(nullable = false)
     private Tipo tipo;
 
     //muitos compromissos para muitas categorias

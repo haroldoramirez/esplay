@@ -14,7 +14,7 @@ public class Categoria extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
     //muitas categorias para um usuario

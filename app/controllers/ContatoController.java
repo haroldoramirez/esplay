@@ -13,10 +13,14 @@ public class ContatoController extends Controller {
     public static Result inserir() {
         Contato contato = Json.fromJson(request().body().asJson(), Contato.class);
 
+        Contato contatoBusca = Ebean.find(Contato.class).where().eq("nome", contato.getNome()).findUnique();
+
+        if (contatoBusca != null) {
+            return badRequest("Contato já Cadastrado");
+        }
+
         try {
             Ebean.save(contato);
-        } catch (PersistenceException e) {
-            return badRequest("Contato já Cadastrado");
         } catch (Exception e) {
             return internalServerError("Erro interno de sistema");
         }

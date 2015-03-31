@@ -1,0 +1,38 @@
+@(url: String)
+<head>
+    <meta charset="UTF-8">
+    <title>Página Não Encontrada</title>
+
+    <!--Awesome Icons-->
+    <link rel="stylesheet" href="assets/stylesheets/awesome/css/font-awesome.css"/>
+
+    <!--Jquery-->
+    <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+    <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!--CSS Personalisados-->
+    <link rel="stylesheet" href="assets/stylesheets/background.css"/>
+
+</head>
+
+<div class="container-fluid">
+    <div class="row">
+        <div style="min-height:905px" class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Erro 404</h1>
+                <h2>
+                    Esta página não existe -> <b>@url</b></h2>
+                <div class="error-details">
+                    Gerenciador de Compromissos
+                </div>
+                <div class="error-actions">
+                    <a href="/#/" class="btn btn-primary btn-lg"><span class="fa fa-home"></span>
+                        Início </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

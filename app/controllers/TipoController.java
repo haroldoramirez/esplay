@@ -13,13 +13,18 @@ public class TipoController extends Controller {
     public static Result inserir() {
         Tipo tipo = Json.fromJson(request().body().asJson(), Tipo.class);
 
+        Tipo tipoBusca = Ebean.find(Tipo.class).where().eq("nome", tipo.getNome()).findUnique();
+
+        if (tipoBusca != null) {
+            return badRequest("Tipo de Compromisso já Cadastrado");
+        }
+
         try {
             Ebean.save(tipo);
-        } catch (PersistenceException e) {
-            return badRequest("Tipo já Cadastrado");
         } catch (Exception e) {
             return internalServerError("Erro interno de sistema");
         }
+
         return created(Json.toJson(tipo));
     }
 

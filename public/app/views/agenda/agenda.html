@@ -1,20 +1,80 @@
-<div class="container">
+<script type="text/ng-template" id="modalCompromisso.html">
+    <!--Input do Título-->
+    <div class="col-lg-6">
+        <label class="control-label" for="titulo">Título</label>
+        <div ng-class="{'has-error': !compromisso.titulo}">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+                <input autofocus placeholder="Insira o título compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.titulo" id="titulo" required/>
+            </div>
+        </div>
+    </div>
+
+    <!--Input do Descrição-->
+    <div class="col-lg-6">
+        <label class="control-label" for="descricao">Descrição</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
+            <input autofocus placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao" required/>
+        </div>
+    </div>
+
+    <!--Input do Observações-->
+    <div class="col-lg-7">
+        <label class="control-label" for="observacoes">Observações</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+            <input autofocus placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes" required/>
+        </div>
+    </div>
+
+    <!--Input do Local-->
+    <div class="col-lg-5">
+        <label class="control-label" for="local">Local</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-street-view"></i></span>
+            <input autofocus placeholder="Insira o local" maxlength="100" class="form-control" type="text" ng-model="compromisso.local" id="local" required/>
+        </div>
+    </div>
+
+    <!--Input do Contatos-->
+    <div class="col-lg-4">
+        <label class="control-label" for="contato">Contatos</label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-users"></i></span>
+            <input autofocus placeholder="Adicione contatos" maxlength="100" class="form-control" type="text" ng-model="compromisso.contato" id="contato" required/>
+        </div>
+    </div>
+
+    <!--Input do Tipo-->
+    <div class="col-lg-4">
+        <label class="control-label" for="tipo">Tipo do Compromisso</label>
+        <div ng-class="{'has-error': !compromisso.tipo}">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-bookmark-o"></i></span>
+                <select ng-model="compromisso.tipo" class="form-control" ng-options="tipo.nome for tipo in tipos" id="tipo">
+                    <option value="">Selecione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!--Input do Categoria-->
+    <div class="col-lg-4">
+        <label class="control-label" for="categoria">Categoria de Compromisso</label>
+        <div ng-class="{'has-error': !compromisso.categoria}">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                <select ng-model="compromisso.categoria" class="form-control" ng-options="categoria.nome for categoria in categorias" id="categoria">
+                    <option value="">Selecione</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</script>
+<div ng-controller="AgendaController" class="container">
     <div class="row">
-        <button ng-click="open()" type="button" class="btn btn btn-primary">
-            Teste Modal Confirmação
-        </button>
-        <script type="text/ng-template" id="modalConfirmacao.html">
-            <div class="modal-header">
-                <h3 align="center" class="modal-title">Confirmação:</h3>
-            </div>
-            <div align="center" class="modal-body">
-                Deseja Remover?
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" ng-click="">Sim</button>
-                <button class="btn btn-default" ng-click="cancel()">Cancelar</button>
-            </div>
-        </script>
+        <h2 class="text-center">{{ calendarControl.getTitle() }}</h2>
         <div id="legend">
             <legend>
                 <h2>
@@ -23,16 +83,37 @@
                 </h2>
             </legend>
         </div>
-        <div ng-controller="AgendaController">
-            <button class="btn btn-primary" ng-click="changeView('year')">
-                Ano
-            </button>
-            <button class="btn btn-primary" ng-click="changeView('month')">
-                Mes
-            </button>
-            <button class="btn btn-primary" ng-click="changeView('day')">
-                Dia
-            </button>
+            <div class="col-md-6 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-primary" ng-click="changeView('year')">
+                        Ano
+                    </button>
+                    <button class="btn btn-primary" ng-click="changeView('month')">
+                        Mes
+                    </button>
+                    <button class="btn btn-primary" ng-click="changeView('week')">
+                        Semana
+                    </button>
+                    <button class="btn btn-primary" ng-click="changeView('day')">
+                        Dia
+                    </button>
+                </div>
+            </div>
+            <br class="visible-xs visible-sm">
+            <div class="col-md-6 text-center">
+                <div class="btn-group">
+                    <button class="btn btn-primary" ng-click="calendarControl.prev()">
+                        Anterior
+                    </button>
+                    <button class="btn btn-default" ng-click="setCalendarToToday()">
+                        Hoje
+                    </button>
+                    <button class="btn btn-primary" ng-click="calendarControl.next()">
+                        Próximo
+                    </button>
+                </div>
+            </div>
+            <br>
             <br>
             <br>
             <mwl-calendar
@@ -40,13 +121,16 @@
                     calendar-view="calendarView"
                     calendar-current-day="calendarDay"
                     calendar-control="calendarControl"
-                    calendar-event-click="eventClicked($event)"
+                    calendar-event-click="eventClicked(calendarEvent)"
                     calendar-edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
                     calendar-delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
-                    calendar-edit-event-click="eventEdited($event)"
-                    calendar-delete-event-click="eventDeleted($event)"
+                    calendar-edit-event-click="eventEdited(calendarEvent)"
+                    calendar-delete-event-click="eventDeleted(calendarEvent)"
                     calendar-auto-open="true"
+                    calendar-day-view-start="06:00"
+                    calendar-day-view-end="22:00"
+                    calendar-timespan-click="dayClicked($date)"
+                    calendar-day-view-split="30"
                     ></mwl-calendar>
-        </div>
     </div>
 </div>

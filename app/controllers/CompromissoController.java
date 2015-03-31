@@ -13,13 +13,18 @@ public class CompromissoController extends Controller {
     public static Result inserir() {
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
+        Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("nome", compromisso.getDescricao()).findUnique();
+
+        if (compromissoBusca != null) {
+            return badRequest("Compromisso já Cadastrado");
+        }
+
         try {
             Ebean.save(compromisso);
-        } catch (PersistenceException e) {
-            return badRequest("Compromisso já cadastrado");
         } catch (Exception e) {
             return internalServerError("Erro interno de sistema");
         }
+
         return created(Json.toJson(compromisso));
     }
 
