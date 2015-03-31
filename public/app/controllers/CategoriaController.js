@@ -91,6 +91,7 @@ angular.module('agenda')
         $scope.cancelModal = function () {
             $modalInstance.dismiss('cancelModal');
         };
+
         $scope.init = function(){
             $scope.categoria = Categoria.get({id:$routeParams.id});
         };
