@@ -23,7 +23,7 @@ public class CategoriaController extends Controller {
         try {
             Ebean.save(categoria);
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return created(Json.toJson(categoria));
@@ -38,7 +38,7 @@ public class CategoriaController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Categoria já Cadastrada");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
         return ok(Json.toJson(categoria));
     }
@@ -74,7 +74,7 @@ public class CategoriaController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem desta categoria de Compromisso, remova-os primeiro");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return ok(Json.toJson(categoria));

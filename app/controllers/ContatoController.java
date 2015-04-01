@@ -22,7 +22,7 @@ public class ContatoController extends Controller {
         try {
             Ebean.save(contato);
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
         return created(Json.toJson(contato));
     }
@@ -35,7 +35,7 @@ public class ContatoController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Contato já Cadastrado");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
         return ok(Json.toJson(contato));
     }
@@ -70,7 +70,7 @@ public class ContatoController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste Contato, remova-os primeiro");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return ok(Json.toJson(contato));

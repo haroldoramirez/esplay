@@ -7,7 +7,8 @@ angular
              'ngAnimate',
              'toastr',
              'mwl.calendar',
-             'ui.bootstrap'
+             'ui.bootstrap',
+             'ui.utils.masks'
             ]
         )
     .config(function ($routeProvider) {

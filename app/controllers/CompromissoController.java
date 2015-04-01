@@ -22,7 +22,7 @@ public class CompromissoController extends Controller {
         try {
             Ebean.save(compromisso);
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return created(Json.toJson(compromisso));
@@ -36,7 +36,7 @@ public class CompromissoController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Categoria já Cadastrada");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
         return ok(Json.toJson(compromisso));
     }
@@ -53,7 +53,7 @@ public class CompromissoController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste Compromisso, remova-os primeiro");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return ok(Json.toJson(compromisso));

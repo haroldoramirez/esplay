@@ -22,7 +22,7 @@ public class TipoController extends Controller {
         try {
             Ebean.save(tipo);
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return created(Json.toJson(tipo));
@@ -36,7 +36,7 @@ public class TipoController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Tipo já Cadastrado");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
         return ok(Json.toJson(tipo));
     }
@@ -71,7 +71,7 @@ public class TipoController extends Controller {
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste tipo de Compromisso, remova-os primeiro");
         } catch (Exception e) {
-            return internalServerError("Erro interno de sistema");
+            return badRequest("Erro interno de sistema");
         }
 
         return ok(Json.toJson(tipo));

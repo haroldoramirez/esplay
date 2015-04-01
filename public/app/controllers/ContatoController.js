@@ -112,7 +112,7 @@ angular.module('agenda')
 
         $scope.delete = function(){
             Contato.delete({id:$routeParams.id}, function(){
-                toastr.success('Contato Removido com Sucesso');
+                toastr.warning('Contato Removido com Sucesso');
                 $modalInstance.close();
                 $location.path('/contatos');
             }, function(data){
