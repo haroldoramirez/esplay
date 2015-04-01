@@ -7,6 +7,15 @@ angular.module('agenda')
           });
         };
 
+          $scope.open = function (size) {
+
+                $modalInstance = $modal.open({
+                    templateUrl: 'modalCompromisso.html',
+                    controller: 'AgendaController',
+                    size: size,
+                });
+          };
+
     }).controller("AgendaController", function($scope){
       var currentYear = moment().year();
       var currentMonth = moment().month();
@@ -85,15 +94,6 @@ angular.module('agenda')
                 }
               });
             }
-
-                    $scope.open = function (size) {
-
-                        $modalInstance = $modal.open({
-                              templateUrl: 'modalConfirmacao.html',
-                              controller: 'CategoriaDetailController',
-                              size: size,
-                        });
-                    };
 
     $scope.eventClicked = function(event) {
       showModal('Clicked', event);

@@ -74,11 +74,10 @@
 </script>
 <div ng-controller="AgendaController" class="container">
     <div class="row">
-        <h2 class="text-center">{{ calendarControl.getTitle() }}</h2>
         <div id="legend">
             <legend>
                 <h2>
-                    Agenda<a class="btn btn-success pull-right" href="#/compromissos/novo">
+                    {{ calendarControl.getTitle() }}<a class="btn btn-success pull-right" href="#/compromissos/novo">
                     Novo Compromisso</a>
                 </h2>
             </legend>

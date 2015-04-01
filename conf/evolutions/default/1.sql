@@ -14,6 +14,7 @@ create table categoria (
   id                        bigint auto_increment not null,
   nome                      varchar(255) not null,
   dono_id                   bigint,
+  constraint uq_categoria_nome unique (nome),
   constraint pk_categoria primary key (id))
 ;
 
@@ -23,10 +24,11 @@ create table compromisso (
   descricao                 varchar(255),
   observacoes               varchar(255),
   local                     varchar(255),
-  status                    tinyint(1) default 0,
+  status                    tinyint(1) default 0 not null,
   agenda_id                 bigint,
   usuario_id                bigint,
   tipo_id                   bigint,
+  constraint uq_compromisso_titulo unique (titulo),
   constraint pk_compromisso primary key (id))
 ;
 
@@ -43,6 +45,7 @@ create table contato (
 create table tipo (
   id                        bigint auto_increment not null,
   nome                      varchar(255) not null,
+  constraint uq_tipo_nome unique (nome),
   constraint pk_tipo primary key (id))
 ;
 
@@ -51,6 +54,7 @@ create table usuario (
   login                     varchar(255) not null,
   senha                     varchar(255) not null,
   agenda_id                 bigint,
+  constraint uq_usuario_login unique (login),
   constraint pk_usuario primary key (id))
 ;
 

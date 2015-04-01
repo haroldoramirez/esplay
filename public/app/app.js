@@ -6,8 +6,8 @@ angular
              'ngResource',
              'ngAnimate',
              'toastr',
-             'ui.bootstrap',
-             'mwl.calendar'
+             'mwl.calendar',
+             'ui.bootstrap'
             ]
         )
     .config(function ($routeProvider) {
