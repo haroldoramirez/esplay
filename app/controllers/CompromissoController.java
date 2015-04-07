@@ -1,27 +1,38 @@
 package controllers;
 
 import com.avaje.ebean.Ebean;
+import models.Categoria;
 import models.Compromisso;
+import models.Tipo;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 public class CompromissoController extends Controller {
 
     public static Result inserir() {
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
-        Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("nome", compromisso.getDescricao()).findUnique();
+        Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("titulo", compromisso.getTitulo()).findUnique();
+
 
         if (compromissoBusca != null) {
             return badRequest("Compromisso já Cadastrado");
         }
 
+        Tipo tipo = Ebean.find(Tipo.class, compromisso.getTipo().getId());
+        Categoria categoria = Ebean.find(Categoria.class, compromisso.getCategoria().getId());
+        //List<Categoria> categorias...
+
+        compromisso.setTipo(tipo);
+
         try {
             Ebean.save(compromisso);
         } catch (Exception e) {
+            e.printStackTrace();
             return badRequest("Erro interno de sistema");
         }
 

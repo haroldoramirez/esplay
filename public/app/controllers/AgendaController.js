@@ -31,7 +31,7 @@ angular.module('agenda')
                 type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
                 starts_at: new Date(2015,4,3,31), // A javascript date object for when the event starts
                 ends_at: new Date(2015,4,3,15), // A javascript date object for when the event ends
-                editable: false, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
                 deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
             },
             {
