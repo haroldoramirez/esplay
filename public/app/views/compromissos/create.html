@@ -11,21 +11,21 @@
             <form ng-init="init()" class="form-horizontal" ng-submit="save()">
                 <div class="form-group">
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 well">
                         <h3 align="center">Data de Início</h3>
                         <!--Input do Data Início-->
                             <div align="center" ng-controller="DataInicioController">
                                 <div ng-class="">
                                     <div ng-class="{'has-error': !compromisso.dataInicio}">
                                         <div class="input-group">
-                                            <input placeholder="Escolha a data de início do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                            <input autofocus placeholder="Escolha a data de início do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-                                <pre>Data inicial: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
+                                <pre class="alert alert-info">Data inicial: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
                             </div>
 
                         <!--Input do Hora Início-->
@@ -39,7 +39,7 @@
                         <hr>
                     </div>
 
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 well">
                         <h3 align="center">Data Final</h3>
                         <!--Input do Data Fim-->
                         <div align="center" ng-controller="DataFimController">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                                 </div>
-                            <pre>Data final : <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
+                            <pre class="alert alert-info">Data final : <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
                         </div>
 
                         <!--Input do Hora Fim-->
@@ -98,7 +98,7 @@
                         <label class="control-label" for="descricao">Descrição</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
-                                <input autofocus placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao"/>
+                                <input placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao"/>
                             </div>
                     </div>
 
@@ -107,7 +107,7 @@
                         <label class="control-label" for="observacoes">Observações</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
-                            <input autofocus placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes"/>
+                            <input placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes"/>
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                         <label class="control-label" for="local">Local</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-street-view"></i></span>
-                            <input autofocus placeholder="Insira o local" maxlength="100" class="form-control" type="text" ng-model="compromisso.local" id="local"/>
+                            <input placeholder="Insira o local" maxlength="100" class="form-control" type="text" ng-model="compromisso.local" id="local"/>
                         </div>
                     </div>
 
@@ -125,7 +125,7 @@
                         <label class="control-label" for="contato">Contatos</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                            <input autofocus placeholder="Adicione contatos" maxlength="100" class="form-control" type="text" ng-model="compromisso.contato" id="contato"/>
+                            <input placeholder="Adicione contatos" maxlength="100" class="form-control" type="text" ng-model="compromisso.contato" id="contato"/>
                         </div>
                     </div>
 
