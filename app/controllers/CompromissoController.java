@@ -3,13 +3,13 @@ package controllers;
 import com.avaje.ebean.Ebean;
 import models.Categoria;
 import models.Compromisso;
+import models.Contato;
 import models.Tipo;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.persistence.PersistenceException;
-import java.util.List;
 
 public class CompromissoController extends Controller {
 
@@ -18,16 +18,17 @@ public class CompromissoController extends Controller {
 
         Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("titulo", compromisso.getTitulo()).findUnique();
 
-
         if (compromissoBusca != null) {
             return badRequest("Compromisso já Cadastrado");
         }
 
         Tipo tipo = Ebean.find(Tipo.class, compromisso.getTipo().getId());
         Categoria categoria = Ebean.find(Categoria.class, compromisso.getCategoria().getId());
-        //List<Categoria> categorias...
+        Contato contato = Ebean.find(Contato.class, compromisso.getContato().getId());
 
         compromisso.setTipo(tipo);
+        compromisso.setCategoria(categoria);
+        compromisso.setContato(contato);
 
         try {
             Ebean.save(compromisso);
@@ -44,11 +45,21 @@ public class CompromissoController extends Controller {
 
         try {
             Ebean.update(compromisso);
-        } catch (PersistenceException e) {
-            return badRequest("Categoria já Cadastrada");
         } catch (Exception e) {
+            e.printStackTrace();
             return badRequest("Erro interno de sistema");
         }
+
+        return ok(Json.toJson(compromisso));
+    }
+
+    public static Result buscaPorId(Long id) {
+        Compromisso compromisso = Ebean.find(Compromisso.class, id);
+
+        if (compromisso == null) {
+            return notFound("Compromisso não encontrado");
+        }
+
         return ok(Json.toJson(compromisso));
     }
 
@@ -68,5 +79,9 @@ public class CompromissoController extends Controller {
         }
 
         return ok(Json.toJson(compromisso));
+    }
+
+    public static Result buscaTodos() {
+        return ok(Json.toJson(Ebean.find(Compromisso.class).findList()));
     }
 }

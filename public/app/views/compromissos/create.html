@@ -10,61 +10,61 @@
             </div>
             <form ng-init="init()" class="form-horizontal" ng-submit="save()">
                 <div class="form-group">
-
-                    <div class="col-lg-6 well">
-                        <h3 align="center">Data de Início</h3>
-                        <!--Input do Data Início-->
+                        <div class="col-lg-6 well well-sm">
+                            <h3 align="center">Início</h3>
+                            <!--Input do Data Início-->
                             <div align="center" ng-controller="DataInicioController">
-                                <div ng-class="">
-                                    <div ng-class="{'has-error': !compromisso.dataInicio}">
-                                        <div class="input-group">
-                                            <input autofocus placeholder="Escolha a data de início do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                <label class="control-label">Data</label>
+                                <div ng-class="{'has-error': !compromisso.dataInicio}">
+                                    <div class="input-group">
+                                        <input autofocus placeholder="Data de início" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
-                                        </div>
                                     </div>
                                 </div>
-                                <pre class="alert alert-info">Data inicial: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
+                                <div align="" ng-controller="HoraInicioController">
+                                    <label class="control-label">Hora</label>
+                                    <div ng-class="{'has-error': !compromisso.horaInicio}">
+                                        <timepicker ng-model="compromisso.horaInicio" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                    </div>
+                                </div>
                             </div>
-
-                        <!--Input do Hora Início-->
-                        <h4 align="center">Hora</h4>
-                        <div align="center" ng-controller="HoraInicioController">
-                            <div ng-class="{'has-error': !compromisso.horaInicio}">
-                                <timepicker ng-model="compromisso.horaInicio" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                            <div class="col-lg-8">
+                                <pre class="alert alert-info">Data: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
                             </div>
-                            <pre class="alert alert-info">Início: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
+                            <div class="col-lg-4">
+                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
+                            </div>
                         </div>
-                        <hr>
-                    </div>
-
-                    <div class="col-lg-6 well">
-                        <h3 align="center">Data Final</h3>
-                        <!--Input do Data Fim-->
-                        <div align="center" ng-controller="DataFimController">
-                            <div ng-class="">
+                        <div class="col-lg-6 well well-sm">
+                            <h3 align="center">Final</h3>
+                            <!--Input do Data Fim-->
+                            <div align="center" ng-controller="DataFimController">
+                                <label class="control-label">Data</label>
                                 <div ng-class="{'has-error': !compromisso.dataFim}">
-                                <div class="input-group">
-                                    <input placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <div class="input-group">
+                                        <input placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
+                                    </div>
+                                </div>
+                                <div align="center" ng-controller="HoraFimController">
+                                    <label class="control-label">Hora</label>
+                                    <div ng-class="{'has-error': !compromisso.horaFim}">
+                                        <timepicker ng-model="compromisso.horaFim" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                    </div>
                                 </div>
                             </div>
-                                </div>
-                            <pre class="alert alert-info">Data final : <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
-                        </div>
 
-                        <!--Input do Hora Fim-->
-                        <h4 align="center">Hora</h4>
-                        <div align="center" ng-controller="HoraFimController">
-                            <div ng-class="{'has-error': !compromisso.horaFim}">
-                            <timepicker ng-model="compromisso.horaFim" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
-                                <pre class="alert alert-info">Fim: <b>{{compromisso.horaFim | date:'shortTime' }}</b></pre>
+                            <div class="col-lg-8">
+                                <pre class="alert alert-info">Data: <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
+                            </div>
+                            <div class="col-lg-4">
+                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaFim | date:'shortTime' }}</b></pre>
                             </div>
                         </div>
-                        <hr>
                     </div>
 
                     <!--Input Status-->
@@ -120,12 +120,16 @@
                         </div>
                     </div>
 
-                    <!--Input do Contatos-->
+                    <!--Input do Contato-->
                     <div class="col-lg-4">
-                        <label class="control-label" for="contato">Contatos</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                            <input placeholder="Adicione contatos" maxlength="100" class="form-control" type="text" ng-model="compromisso.contato" id="contato"/>
+                        <label class="control-label">Contato</label>
+                        <div ng-class="{'has-error': !compromisso.contato}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                                <select ng-model="compromisso.contato" class="form-control" ng-options="contato.nome for contato in contatos">
+                                    <option value="">Selecione</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 

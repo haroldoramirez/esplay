@@ -4,8 +4,7 @@
             <div id="legend">
                 <legend>
                     <h2>
-                        Lista de Contatos<a class="btn btn-success pull-right" href="#/contatos/novo">
-                        Novo Contato</a>
+                        Lista de Compromissos
                     </h2>
                 </legend>
             </div>
@@ -13,7 +12,7 @@
             <!--Input de Busca-->
             <div class="col-lg-5">
                 <div class="input-group">
-                    <input autofocus type="search" class="form-control" placeholder="digite o nome">
+                    <input autofocus type="search" class="form-control" placeholder="digite o nome da categoria de compromisso">
                          <span class="input-group-btn">
                               <button class="btn btn-primary">
                                   Buscar
@@ -27,15 +26,17 @@
             <table ng-init="init()" class="table-striped table table-hover table-bordered">
                 <br>
                 <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Observações</th>
+                    <th>Tipo</th>
                     <!--<th></th>-->
                 </tr>
-                <tr ng-repeat="contato in contatos">
-                    <td><b><a href="#/contatos/detalhe/{{contato.id}}">{{contato.nome}}</a></b></td>
-                    <td>{{contato.email}}</td>
-                    <td>{{contato.telefone}}</td>
+                <tr ng-repeat="compromisso in compromissos">
+                    <td><b><a href="#/compromissos/detalhe/{{compromisso.id}}">{{compromisso.titulo}}</a></b></td>
+                    <td>{{compromisso.descricao}}</td>
+                    <td>{{compromisso.observacoes}}</td>
+                    <td>{{compromisso.tipo.nome}}</td>
                     <!--<td>-->
                     <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
                     <!--</td>-->

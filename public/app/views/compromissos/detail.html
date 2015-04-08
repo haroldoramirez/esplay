@@ -3,20 +3,171 @@
         <fieldset>
             <h2>
                 Detalhe do Compromisso <a class="btn btn-link pull-right">
-                <button type="button" class="btn btn-danger" data-template="assets/popover/confirmacaoPopover.html" bs-popover="popoverConfirmacao">
+                <button type="button" class="btn btn-danger" ng-click="open('sm')">
                     Remover
                 </button></a>
             </h2>
             <hr>
+            <script type="text/ng-template" id="modalConfirmacao.html">
+                <div class="modal-header">
+                    <h3 align="center" class="modal-title">Confirmação:</h3>
+                </div>
+                <div align="center" class="modal-body">
+                    Deseja Remover o Compromisso?
+                </div>
+                <div class="modal-footer">
+                    <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
+                    <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
+                </div>
+            </script>
             <form ng-init="init()" class="form-horizontal" ng-submit="update()">
                 <div class="form-group">
-                    <!--Input do Nome-->
-                    <div class="col-lg-5">
-                        <label class="control-label" for="nome">Nome</label>
-                        <div ng-class="{'has-error': !compromisso.nome}">
+                    <div class="form-group">
+                        <div class="col-lg-6 well well-sm">
+                            <h3 align="center">Início</h3>
+                            <!--Input do Data Início-->
+                            <div align="center" ng-controller="DataInicioController">
+                                <label class="control-label">Data</label>
+                                <div ng-class="{'has-error': !compromisso.dataInicio}">
+                                    <div class="input-group">
+                                        <input autofocus placeholder="Data de início" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                    </div>
+                                </div>
+                                <div align="" ng-controller="HoraInicioController">
+                                    <label class="control-label">Hora</label>
+                                    <div ng-class="{'has-error': !compromisso.horaInicio}">
+                                        <timepicker ng-model="compromisso.horaInicio" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <pre class="alert alert-info">Data: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
+                            </div>
+                            <div class="col-lg-4">
+                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 well well-sm">
+                            <h3 align="center">Final</h3>
+                            <!--Input do Data Fim-->
+                            <div align="center" ng-controller="DataFimController">
+                                <label class="control-label">Data</label>
+                                <div ng-class="{'has-error': !compromisso.dataFim}">
+                                    <div class="input-group">
+                                        <input placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div align="center" ng-controller="HoraFimController">
+                                    <label class="control-label">Hora</label>
+                                    <div ng-class="{'has-error': !compromisso.horaFim}">
+                                        <timepicker ng-model="compromisso.horaFim" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8">
+                                <pre class="alert alert-info">Data: <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
+                            </div>
+                            <div class="col-lg-4">
+                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaFim | date:'shortTime' }}</b></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input Status-->
+                    <div class="col-lg-2">
+                        <label class="control-label">Status</label>
+                        <div ng-class="{'has-error': !compromisso.status}">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input autofocus placeholder="Insira o compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.nome" id="nome" required/>
+                                <span class="input-group-addon"><i class="fa fa-bullhorn"></i></span>
+                                <select ng-model="compromisso.status" class="form-control">
+                                    <option selected value="">Selecione</option>
+                                    <option value="OCUPADO">Ocupado</option>
+                                    <option value="LIVRE">Livre</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Título-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="titulo">Título</label>
+                        <div ng-class="{'has-error': !compromisso.titulo}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-thumb-tack"></i></span>
+                                <input placeholder="Insira o título compromisso" maxlength="100" class="form-control" type="text" ng-model="compromisso.titulo" id="titulo" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Descrição-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="descricao">Descrição</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
+                            <input placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao"/>
+                        </div>
+                    </div>
+
+                    <!--Input do Observações-->
+                    <div class="col-lg-7">
+                        <label class="control-label" for="observacoes">Observações</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                            <input placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes"/>
+                        </div>
+                    </div>
+
+                    <!--Input do Local-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="local">Local</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-street-view"></i></span>
+                            <input placeholder="Insira o local" maxlength="100" class="form-control" type="text" ng-model="compromisso.local" id="local"/>
+                        </div>
+                    </div>
+
+                    <!--Input do Contato-->
+                    <div class="col-lg-3">
+                        <label class="control-label" for="compromisso.contato">Contato</label>
+                        <div ng-class="{'has-error': !compromisso.contato}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-ice-lolly"></i></span>
+                                <select ng-model="compromisso.contato" class="form-control" ng-options="contato.nome for contato in contatos" id="compromisso.contato">
+                                    <option disabled ng-show="!compromisso.contato.id" value="">{{compromisso.contato.nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Tipo-->
+                    <div class="col-lg-3">
+                        <label class="control-label" for="compromisso.tipo">Tipo de Compromisso</label>
+                        <div ng-class="{'has-error': !compromisso.tipo}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-ice-lolly"></i></span>
+                                <select ng-model="compromisso.tipo" class="form-control" ng-options="tipo.nome for tipo in tipos" id="compromisso.tipo">
+                                    <option disabled ng-show="!compromisso.tipo.id" value="">{{compromisso.tipo.nome}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Categoria-->
+                    <div class="col-lg-3">
+                        <label class="control-label" for="compromisso.categoria">Categoria de Compromisso</label>
+                        <div ng-class="{'has-error': !compromisso.categoria}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-ice-lolly"></i></span>
+                                <select ng-model="compromisso.categoria" class="form-control" ng-options="categoria.nome for categoria in categorias" id="compromisso.categoria">
+                                    <option disabled ng-show="!compromisso.categoria.id" value="">{{compromisso.categoria.nome}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -25,7 +176,7 @@
                     <div class="col-lg-8">
                         <div class="control-group">
                             <br>
-                            <button type="submit" id="save" class="btn btn-success" ng-disabled="!compromisso.nome">
+                            <button class="btn btn-primary" type="submit" ng-disabled="!compromisso.titulo || !compromisso.tipo || !compromisso.categoria || !compromisso.dataInicio || !compromisso.dataFim || !compromisso.horaInicio || !compromisso.horaFim || !compromisso.status">
                                 Atualizar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">

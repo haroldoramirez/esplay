@@ -19,8 +19,8 @@ function openLoadingScreen() {
 
         //td.innerHTML = "Carregando...";
         //td.style.color = "#fff";
-        td.style.fontFamily = "Arial";
-        td.style.fontSize = "30px";
+        //td.style.fontFamily = "Arial";
+        //td.style.fontSize = "30px";
 
         div.appendChild(table);
         table.appendChild(tr);

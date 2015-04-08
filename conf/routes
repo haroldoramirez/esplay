@@ -33,6 +33,8 @@ DELETE  /contatos/:id                     controllers.ContatoController.remover(
 # Rotas Compromissos
 POST    /compromissos                         controllers.CompromissoController.inserir()
 PUT     /compromissos/:id                     controllers.CompromissoController.atualizar(id:Long)
+GET     /compromissos                         controllers.CompromissoController.buscaTodos()
+GET     /compromissos/:id                     controllers.CompromissoController.buscaPorId(id:Long)
 DELETE  /compromissos/:id                     controllers.CompromissoController.remover(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path

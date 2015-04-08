@@ -3,12 +3,12 @@ function updateActivedPage(scope) {
 }
 
 angular.module('agenda')
-  .controller('CompromissoCreateController', function ($scope, $modal, $location, Compromisso, Tipo, Categoria, toastr) {
+  .controller('CompromissoCreateController', function ($scope, $modal, $location, Compromisso, Tipo, Categoria, Contato, toastr) {
         $scope.compromisso = {};
         $scope.save = function(){
             console.log($scope.compromisso);
             Compromisso.save($scope.compromisso, function(data){
-                toastr.success(data.data,'Compromisso Salvo com Sucesso');
+                toastr.success('Compromisso Salvo com Sucesso');
                 $location.path('/agenda');
             }, function(data){
                 console.log(data);
@@ -28,18 +28,94 @@ angular.module('agenda')
              Categoria.getAll(function(data){
                 $scope.categorias = data;
               });
+
+             Contato.getAll(function(data){
+                $scope.contatos = data;
+             })
         };
 
 
-  }).controller('CompromissoDetailController', function ($scope, $modal, $routeParams, $location, Compromisso, toastr){
+  }).controller('CompromissoListController', function ($scope, Compromisso, toastr){
+          $scope.compromissos = [];
+          $scope.init = function(){
+            Compromisso.getAll(function(data){
+              $scope.compromissos = data;
+            });
+            $scope.pagina = 0;
+            updateActivedPage(this);
+          };
+
+          //botão de páginas
+          $scope._pagina = function(val){
+          $scope.pagina = val;
+              Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
+                  $scope.tipos = data;
+              });
+              updateActivedPage(this);
+          };
+
+          //botão próximo
+          $scope.proximo = function(val){
+          $scope.pagina = val + 1;
+              Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
+                  if (data.length===0) {
+                      $scope.pagina = $scope.pagina - 1;
+                  }else{
+                      $scope.tipos = data;
+                  };
+              });
+              updateActivedPage(this);
+           }
+
+          //botão anterior
+          $scope.anterior = function(val){
+          $scope.pagina = val - 1;
+              Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
+                  $scope.tipos = data;
+              });
+              updateActivedPage(this);
+           }
+
+          //deletar opcional
+          $scope.delete = function(id){
+             Tipo.delete({id:id}, function(){
+                 toastr.success('Tipo Removido com Sucesso');
+                 $scope.init();
+             }, function(data){
+                 toastr.error(data.data,'Não foi possível Remover o Tipo');
+             });
+          };
+
+    }).controller('CompromissoDetailController', function ($scope, $modal, $routeParams, $location, Compromisso, Tipo, Categoria, Contato, toastr){
+
+        $scope.open = function (size) {
+
+            $modalInstance = $modal.open({
+                  templateUrl: 'modalConfirmacao.html',
+                  controller: 'CompromissoDetailController',
+                  size: size,
+            });
+        };
+
+        $scope.cancelModal = function () {
+            $modalInstance.dismiss('cancelModal');
+        };
 
         $scope.init = function(){
             $scope.compromisso = Compromisso.get({id:$routeParams.id});
         };
 
+
+        $scope.init = function(){
+            $scope.compromisso = Compromisso.get({id:$routeParams.id});
+            $scope.tipos = Tipo.getAll();
+            $scope.categorias = Categoria.getAll();
+            $scope.contatos = Contato.getAll();
+        };
+
         $scope.update = function(){
             Compromisso.update({id:$routeParams.id},$scope.compromisso, function(data){
-                toastr.success(data.data,'Compromisso Atualizado com Sucesso');
+                toastr.success('Compromisso Atualizado com Sucesso');
                 $location.path('/agenda');
             },function(data){
                console.log(data);
@@ -55,6 +131,7 @@ angular.module('agenda')
         $scope.delete = function(){
             Compromisso.delete({id:$routeParams.id}, function(){
                 toastr.success('Compromisso Removido com Sucesso');
+                $modalInstance.close();
                 $location.path('/agenda');
             }, function(data){
             console.log(data);

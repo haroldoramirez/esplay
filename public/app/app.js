@@ -67,7 +67,11 @@ angular
              })
              .when('/compromissos/detalhe/:id', {
                  templateUrl: '/assets/app/views/compromissos/detail.html',
-                 controller: 'ComrpDetailController'
+                 controller: 'CompromissoDetailController'
+             })
+              .when('/compromissos', {
+                 templateUrl: '/assets/app/views/compromissos/list.html',
+                 controller: 'CompromissoListController'
              });
    //Configuração das notificações
    }).config(function(toastrConfig) {

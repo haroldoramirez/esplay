@@ -26,6 +26,7 @@ angular.module('agenda')
   .service('Compromisso',['$resource', 'BaseUrl',
      function($resource, BaseUrl){
         return $resource(BaseUrl + '/compromissos/:id', {}, {
+           getAll: {method: 'GET', url: BaseUrl + '/compromissos', isArray: true},
            update: {method: 'PUT', url: BaseUrl + '/compromissos/:id', isArray: false}
         });
   }]);
