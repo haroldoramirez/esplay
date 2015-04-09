@@ -2,9 +2,12 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+
+# Login
+GET		/login					          controllers.Application.login()
+
 # Applications
 GET		/versaoplay					      controllers.Application.versaoplay()
-GET		/login					          controllers.Application.login()
 
 # Index page
 GET     /                                 controllers.Assets.at(path="/public", file="/index.html")
