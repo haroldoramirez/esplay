@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <div id="legend">
+                <legend>
+                    <h2>
+                        Novo Usuário
+                    </h2>
+                </legend>
+            </div>
+            <form class="form-horizontal" ng-submit="save()">
+                <div class="form-group">
+                    <!--Input do Email-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="email">Email</label>
+                        <div ng-class="{'has-error': !usuario.email}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input autofocus placeholder="Insira um email válido" maxlength="100" class="form-control" type="email" ng-model="usuario.email" id="email" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Senha-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="senha">Senha</label>
+                        <div ng-class="{'has-error': !usuario.senha}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input placeholder="Insira a senha" maxlength="100" class="form-control" type="password" ng-model="usuario.senha" id="senha" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="col-lg-8">
+                        <div class="control-group">
+                            <br>
+                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!usuario.email || !usuario.senha">
+                                Salvar
+                            </button>
+                            <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                                Voltar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

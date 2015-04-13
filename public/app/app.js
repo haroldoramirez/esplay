@@ -72,6 +72,18 @@ angular
               .when('/compromissos', {
                  templateUrl: '/assets/app/views/compromissos/list.html',
                  controller: 'CompromissoListController'
+             })
+               .when('/usuarios', {
+                  templateUrl: '/assets/app/views/usuarios/list.html',
+                  controller: 'UsuarioListController'
+             })
+               .when('/usuarios/detalhe/:id', {
+                  templateUrl: '/assets/app/views/usuarios/detail.html',
+                  controller: 'UsuarioDetailController'
+             })
+               .when('/usuarios/novo', {
+                  templateUrl: '/assets/app/views/usuarios/create.html',
+                  controller: 'UsuarioCreateController'
              });
    //Configuração das notificações
    }).config(function(toastrConfig) {

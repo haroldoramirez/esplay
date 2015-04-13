@@ -33,8 +33,6 @@ public class TipoController extends Controller {
 
         try {
             Ebean.update(tipo);
-        } catch (PersistenceException e) {
-            return badRequest("Tipo já Cadastrado");
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }

@@ -29,4 +29,11 @@ angular.module('agenda')
            getAll: {method: 'GET', url: BaseUrl + '/compromissos', isArray: true},
            update: {method: 'PUT', url: BaseUrl + '/compromissos/:id', isArray: false}
         });
-  }]);
+  }])
+    .service('Usuario',['$resource', 'BaseUrl',
+       function($resource, BaseUrl){
+          return $resource(BaseUrl + '/usuarios/:id', {}, {
+             getAll: {method: 'GET', url: BaseUrl + '/usuarios', isArray: true},
+             update: {method: 'PUT', url: BaseUrl + '/usuarios/:id', isArray: false}
+          });
+    }]);

@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <fieldset>
+            <h2>
+                Detalhe do Usuário<a class="btn btn-link pull-right">
+                <button type="button" class="btn btn-danger" ng-click="open('sm')">
+                    Remover
+                </button></a>
+            </h2>
+            <hr>
+            <script type="text/ng-template" id="modalConfirmacao.html">
+                <div class="modal-header">
+                    <h3 align="center" class="modal-title">Confirmação:</h3>
+                </div>
+                <div align="center" class="modal-body">
+                    Deseja Remover o Usuário?
+                </div>
+                <div class="modal-footer">
+                    <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
+                    <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
+                </div>
+            </script>
+            <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+                <div class="form-group">
+                    <!--Input do Email-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="email">Email</label>
+                        <div ng-class="{'has-error': !usuario.email}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input autofocus placeholder="Insira um email válido" maxlength="100" class="form-control" type="email" ng-model="usuario.email" id="email" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Senha-->
+                    <div class="col-lg-5">
+                        <label class="control-label" for="senha">Senha</label>
+                        <div ng-class="{'has-error': !usuario.senha}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                                <input placeholder="Insira a senha" maxlength="100" class="form-control" type="password" ng-model="usuario.senha" id="senha" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Botões-->
+                    <div class="col-lg-8">
+                        <div class="control-group">
+                            <br>
+                            <button type="submit" id="save" class="btn btn-primary" ng-disabled="!usuario.email || !usuario.senha">
+                                Atualizar
+                            </button>
+                            <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                                Voltar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

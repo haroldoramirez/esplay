@@ -58,10 +58,10 @@ create table tipo (
 
 create table usuario (
   id                        bigint auto_increment not null,
-  login                     varchar(255) not null,
+  email                     varchar(255) not null,
   senha                     varchar(255) not null,
   agenda_id                 bigint,
-  constraint uq_usuario_login unique (login),
+  constraint uq_usuario_email unique (email),
   constraint pk_usuario primary key (id))
 ;
 
