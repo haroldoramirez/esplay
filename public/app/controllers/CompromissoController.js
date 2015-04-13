@@ -38,8 +38,9 @@ angular.module('agenda')
   }).controller('CompromissoListController', function ($scope, Compromisso, toastr){
           $scope.compromissos = [];
           $scope.init = function(){
-            Compromisso.getAll(function(data){
+            Compromisso.getAll($scope.compromissos, function(data){
               $scope.compromissos = data;
+              //console.log($scope.compromissos.length);
             });
             $scope.pagina = 0;
             updateActivedPage(this);
@@ -115,7 +116,7 @@ angular.module('agenda')
 
         $scope.update = function(){
             Compromisso.update({id:$routeParams.id},$scope.compromisso, function(data){
-                toastr.success('Compromisso Atualizado com Sucesso');
+                toastr.info('Compromisso Atualizado com Sucesso');
                 $location.path('/agenda');
             },function(data){
                console.log(data);
@@ -130,7 +131,7 @@ angular.module('agenda')
 
         $scope.delete = function(){
             Compromisso.delete({id:$routeParams.id}, function(){
-                toastr.success('Compromisso Removido com Sucesso');
+                toastr.warning('Compromisso Removido com Sucesso');
                 $modalInstance.close();
                 $location.path('/agenda');
             }, function(data){
