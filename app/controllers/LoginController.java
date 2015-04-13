@@ -17,6 +17,10 @@ public class LoginController extends Controller {
         return ok(views.html.login.render(form));
     }
 
+    public static Result telaAutenticado() {
+        return ok(views.html.autenticado.render());
+    }
+
     public static Result autenticar() {
 
         Form<DynamicForm.Dynamic> requestForm = form.bindFromRequest();
@@ -28,7 +32,7 @@ public class LoginController extends Controller {
 
         if (talvesUmUsuario.isDefined()) {
             session().put("email", talvesUmUsuario.get().getEmail());
-            return redirect(controllers.admin.routes.AdminController.buscaTodosOsUsuarios());
+            return redirect(routes.LoginController.telaAutenticado());
         }
 
         DynamicForm formDeErro = form.fill(requestForm.data());

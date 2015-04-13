@@ -3,10 +3,10 @@
 # ~~~~
 
 # Admin
-GET     /usuarios                         controllers.admin.AdminController.buscaTodosOsUsuarios()
 
 # Login
 GET     /login                            controllers.LoginController.loginTela()
+GET     /autenticado                      controllers.LoginController.telaAutenticado()
 POST    /autenticar                       controllers.LoginController.autenticar()
 GET     /logout                           controllers.LoginController.logout()
 
@@ -49,6 +49,7 @@ POST    /usuarios                         controllers.UsuarioController.inserir(
 PUT     /usuarios/:id                     controllers.UsuarioController.atualizar(id:Long)
 GET     /usuarios/:id                     controllers.UsuarioController.buscaPorId(id:Long)
 DELETE  /usuarios/:id                     controllers.UsuarioController.remover(id:Long)
+GET     /usuarios                         controllers.UsuarioController.buscaTodos()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

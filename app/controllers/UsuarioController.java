@@ -1,5 +1,6 @@
 package controllers;
 
+import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
 import models.Usuario;
 import play.libs.Json;
@@ -18,6 +19,10 @@ public class UsuarioController extends Controller {
         if (usuarioBusca != null) {
             return badRequest("Usuário já Cadastrado");
         }
+
+        String senha = Crypt.sha1(usuario.getSenha());
+
+        usuario.setSenha(senha);
 
         try {
             Ebean.save(usuario);
@@ -69,5 +74,9 @@ public class UsuarioController extends Controller {
         }
 
         return ok(Json.toJson(usuario));
+    }
+
+    public static Result buscaTodos() {
+            return ok(Json.toJson(Ebean.find(Usuario.class).findList()));
     }
 }

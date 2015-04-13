@@ -15,16 +15,16 @@
 
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
+    @if(usuarioForm.hasGlobalErrors) {
+    <p class="alert alert-danger">
+        @usuarioForm.globalError.message
+    </p>
+    }
     <div align="center" class="header">
         <h3 class="text-muted">Login</h3>
     </div>
     <div align="center">
-        @if(usuarioForm.hasGlobalErrors) {
-        <p class="alert alert-danger">
-            @usuarioForm.globalError.message
-        </p>
-        }
         @form(routes.LoginController.autenticar()) {
         @inputText(usuarioForm("email"))
         @inputPassword(usuarioForm("senha"))
