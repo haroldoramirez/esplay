@@ -8,10 +8,9 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
-
+@Security.Authenticated(PlayAuthenticatedSecured.class)
 public class AdminController extends Controller {
 
-    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodosOsUsuarios() {
         if (session().containsKey("email")) {
             return ok(Json.toJson(Ebean.find(Usuario.class).findList()));

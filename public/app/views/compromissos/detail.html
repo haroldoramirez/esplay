@@ -2,7 +2,7 @@
     <div class="row">
         <fieldset>
             <h2>
-                Detalhe do Compromisso <a class="btn btn-link pull-right">
+                <i class="fa fa-clock-o"></i> Detalhe do Compromisso <a class="btn btn-link pull-right">
                 <button type="button" class="btn btn-danger" ng-click="open('sm')">
                     Remover
                 </button></a>
@@ -22,63 +22,62 @@
             </script>
             <form ng-init="init()" class="form-horizontal" ng-submit="update()">
                 <div class="form-group">
-                    <div class="form-group">
-                        <div class="col-lg-6 well well-sm">
-                            <h3 align="center">Início</h3>
-                            <!--Input do Data Início-->
-                            <div align="center" ng-controller="DataInicioController">
-                                <label class="control-label">Data</label>
-                                <div ng-class="{'has-error': !compromisso.dataInicio}">
-                                    <div class="input-group">
-                                        <input autofocus placeholder="Data de início" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                    <div class="col-lg-6 well well-sm">
+                        <h3 align="center">Início</h3>
+                        <!--Input do Data Início-->
+                        <div align="center" ng-controller="DataInicioController">
+                            <label class="control-label">Data</label>
+                            <div ng-class="{'has-error': !compromisso.dataInicio}">
+                                <div class="input-group">
+                                    <input autofocus placeholder="Data de início" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
-                                    </div>
-                                </div>
-                                <div align="" ng-controller="HoraInicioController">
-                                    <label class="control-label">Hora</label>
-                                    <div ng-class="{'has-error': !compromisso.horaInicio}">
-                                        <timepicker ng-model="compromisso.horaInicio" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8">
-                                <pre class="alert alert-info">Data: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
-                            </div>
-                            <div class="col-lg-4">
-                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
+                            <div align="" ng-controller="HoraInicioController">
+                                <label class="control-label">Hora</label>
+                                <div ng-class="{'has-error': !compromisso.horaInicio}">
+                                    <timepicker ng-model="compromisso.horaInicio" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 well well-sm">
-                            <h3 align="center">Final</h3>
-                            <!--Input do Data Fim-->
-                            <div align="center" ng-controller="DataFimController">
-                                <label class="control-label">Data</label>
-                                <div ng-class="{'has-error': !compromisso.dataFim}">
-                                    <div class="input-group">
-                                        <input placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <div class="col-lg-8">
+                            <pre class="alert alert-info">Data: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
+                        </div>
+                        <div class="col-lg-4">
+                            <pre class="alert alert-info">Hora: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 well well-sm">
+                        <h3 align="center">Final</h3>
+                        <!--Input do Data Fim-->
+                        <div align="center" ng-controller="DataFimController">
+                            <label class="control-label">Data</label>
+                            <div ng-class="{'has-error': !compromisso.dataFim}">
+                                <div class="input-group">
+                                    <input placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
-                                    </div>
-                                </div>
-                                <div align="center" ng-controller="HoraFimController">
-                                    <label class="control-label">Hora</label>
-                                    <div ng-class="{'has-error': !compromisso.horaFim}">
-                                        <timepicker ng-model="compromisso.horaFim" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
-                                    </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-8">
-                                <pre class="alert alert-info">Data: <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
-                            </div>
-                            <div class="col-lg-4">
-                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaFim | date:'shortTime' }}</b></pre>
+                            <div align="center" ng-controller="HoraFimController">
+                                <label class="control-label">Hora</label>
+                                <div ng-class="{'has-error': !compromisso.horaFim}">
+                                    <timepicker ng-model="compromisso.horaFim" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></timepicker>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-8">
+                            <pre class="alert alert-info">Data: <b>{{compromisso.dataFim | date:'fullDate' }}</b></pre>
+                        </div>
+                        <div class="col-lg-4">
+                            <pre class="alert alert-info">Hora: <b>{{compromisso.horaFim | date:'shortTime' }}</b></pre>
+                        </div>
                     </div>
+                </div>
 
                     <!--Input Status-->
                     <div class="col-lg-2">

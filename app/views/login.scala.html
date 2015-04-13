@@ -1,24 +1,37 @@
 @(usuarioForm:DynamicForm)
 @import helper._
 <html>
+<head>
+    <meta charset="UTF-8">
+
+    <!--Jquery-->
+    <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+    <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <!--CSS Personalisados-->
+    <link rel="stylesheet" href="assets/stylesheets/background.css"/>
+
+</head>
 <body>
 <div class="container-fluid">
-    <div class="header">
+    <div align="center" class="header">
         <h3 class="text-muted">Login</h3>
     </div>
-    @if(usuarioForm.hasGlobalErrors) {
-    <p class="error">
-        @usuarioForm.globalError.message
-    </p>
-    }
-    @form(routes.LoginController.autenticar()) {
-    @inputText(usuarioForm("email"))
-    @inputPassword(usuarioForm("senha"))
-    <input type="submit" value="Autenticar">
-    }
-    <div align="center" class="error-actions">
-        <a href="/#/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+    <div align="center">
+        @if(usuarioForm.hasGlobalErrors) {
+        <p class="alert alert-danger">
+            @usuarioForm.globalError.message
+        </p>
+        }
+        @form(routes.LoginController.autenticar()) {
+        @inputText(usuarioForm("email"))
+        @inputPassword(usuarioForm("senha"))
+        <input class="btn btn-success" type="submit" value="Autenticar">
+        <a href="/#/" class="btn btn-default"><span class="glyphicon glyphicon-home"></span>
             Início </a>
+        }
     </div>
 </div>
 </body>

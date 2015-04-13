@@ -2,7 +2,7 @@
     <div class="row">
         <fieldset>
             <h2>
-                Detalhe do Contato <a class="btn btn-link pull-right">
+                <i class="fa fa-user"></i> Detalhe do Contato <a class="btn btn-link pull-right">
                 <button type="button" class="btn btn-danger" ng-click="open('sm')">
                     Remover
                 </button></a>
@@ -56,7 +56,7 @@
                     <div class="col-lg-8">
                         <div class="control-group">
                             <br>
-                            <button type="submit" id="save" class="btn btn-success" ng-disabled="!contato.nome || !contato.email">
+                            <button type="submit" id="save" class="btn btn-primary" ng-disabled="!contato.nome || !contato.email">
                                 Atualizar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">

@@ -12,6 +12,6 @@ public class Usuarios {
             return F.Option.<Usuario>None();
         }
 
-        return F.Some(usuario);
+        return F.Option.Some(usuario);
     }
 }

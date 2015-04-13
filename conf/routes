@@ -8,6 +8,7 @@ GET     /usuarios                         controllers.admin.AdminController.busc
 # Login
 GET     /login                            controllers.LoginController.loginTela()
 POST    /usuario/autenticar               controllers.LoginController.autenticar()
+GET     /logout                           controllers.LoginController.logout()
 
 # Applications
 GET		/versaoplay					      controllers.Application.versaoplay()

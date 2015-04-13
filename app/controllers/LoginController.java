@@ -35,4 +35,9 @@ public class LoginController extends Controller {
         formDeErro.reject("O email ou senha não existem");
         return forbidden(views.html.login.render(formDeErro));
     }
+
+    public static Result logout() {
+        session().clear();
+        return redirect(routes.LoginController.loginTela());
+    }
 }

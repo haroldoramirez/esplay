@@ -24,6 +24,7 @@ public class Usuario extends Model {
     @ManyToOne
     private Agenda agenda;
 
+    @Deprecated
     public Usuario() {
     }
 

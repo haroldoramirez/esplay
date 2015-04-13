@@ -2,7 +2,7 @@
     <div class="row">
         <fieldset>
             <h2>
-                Detalhe do Tipo de Compromisso<a class="btn btn-link pull-right">
+                <i class="fa fa-tags"></i> Detalhe do Tipo <small>de Compromisso</small><a class="btn btn-link pull-right">
                 <button type="button" class="btn btn-danger" ng-click="open('sm')">
                     Remover
                 </button></a>
@@ -27,7 +27,7 @@
                         <label class="control-label" for="nome">Nome</label>
                         <div ng-class="{'has-error': !tipo.nome}">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-bookmark-o"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-tags"></i></span>
                                 <input autofocus placeholder="Insira o tipo" maxlength="100" class="form-control" type="text" ng-model="tipo.nome" id="nome" required/>
                             </div>
                         </div>
