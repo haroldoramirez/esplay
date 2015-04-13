@@ -1,11 +1,13 @@
 package controllers;
 
+import actions.PlayAuthenticatedSecured;
 import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
 import models.Usuario;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
 
@@ -76,7 +78,8 @@ public class UsuarioController extends Controller {
         return ok(Json.toJson(usuario));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
-            return ok(Json.toJson(Ebean.find(Usuario.class).findList()));
+        return ok(Json.toJson(Ebean.find(Usuario.class).findList()));
     }
 }

@@ -21,6 +21,10 @@ public class LoginController extends Controller {
         return ok(views.html.autenticado.render());
     }
 
+    public static Result telaLogout() {
+        return ok(views.html.logout.render());
+    }
+
     public static Result autenticar() {
 
         Form<DynamicForm.Dynamic> requestForm = form.bindFromRequest();
@@ -42,6 +46,6 @@ public class LoginController extends Controller {
 
     public static Result logout() {
         session().clear();
-        return redirect(routes.LoginController.loginTela());
+        return redirect(routes.LoginController.telaLogout());
     }
 }

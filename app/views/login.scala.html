@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
-    <!--CSS Personalisados-->
-    <link rel="stylesheet" href="assets/stylesheets/background.css"/>
+
+    <!--Awesome Icons-->
+    <link rel="stylesheet" href="assets/stylesheets/awesome/css/font-awesome.css"/>
 
     <!--Jquery-->
     <script src="assets/bower_components/jquery/dist/jquery.js"></script>
@@ -16,14 +17,13 @@
 </head>
 <body>
 <div class="container">
+    <h3 align="center" class="text-muted">Gerenciador de Compromissos</h3>
+    <hr>
     @if(usuarioForm.hasGlobalErrors) {
     <p class="alert alert-danger">
         @usuarioForm.globalError.message
     </p>
     }
-    <div align="center" class="header">
-        <h3 class="text-muted">Login</h3>
-    </div>
     <div align="center">
         @form(routes.LoginController.autenticar()) {
         @inputText(usuarioForm("email"))
@@ -33,6 +33,18 @@
             Início </a>
         }
     </div>
+    <hr>
+</div>
+<!--Rodapé-->
+<div align="center">
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2015 Gerenciador de Compromissos -
+                <b>Powered by Play Framework e AngularJS
+                </b>.Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
 </div>
 </body>
 </html>
