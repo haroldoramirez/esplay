@@ -6,6 +6,7 @@ import play.libs.F;
 public class Usuarios {
     
     public static F.Option<Usuario> existe(String email, String senha) {
+
         Usuario usuario = Ebean.find(Usuario.class).where().eq("email", email).eq("senha", senha).findUnique();
 
         if (usuario == null) {

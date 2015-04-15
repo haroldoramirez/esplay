@@ -8,11 +8,12 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 
 ## Características
 
-* Sistema para...
+* Sistema de Gerenciamento de Compromissos
 * Aplicação Web OpenSource.
 * Utiliza Várias Dependências:
 
 	* Bootstrap.
+	* AngularJS.
 
 
 ### Idiomas
@@ -21,17 +22,27 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 ## Versões
 * **0.0.1** [2015-02-24]
   * Criado o Projeto do Play em Java.
+* **0.0.2** [2015-04-07]
+  * Entregue o Módulo 1.
 
 ## Funções
 * **Cadastros**
-  * Nada Implementado - **Ok**
+  * Cadastro de Categorias de Compromisso - **Ok**
+  * Cadastro de Tipo de Compromisso - **Ok**
+  * Cadastro de Compromissos - **Ok**
+  * Cadastro de Contatos - **Ok**
+  * Cadastro de Usuários - **Ok**
 
 * **Validações**
-  * Nada Implementado - **OK**
-
+  * Não Cadastrar Compromisso sem nome ou nomes iguais - **OK**
+  * Não Cadastrar Categoria de Compromisso sem nome ou nomes iguais - **OK**
+  * Não Cadastrar Tipo de Compromisso sem nome ou nomes iguais- **OK**
+  * Não Contato sem nome ou nomes iguais- **OK**
+  * Não Usuario sem email e sem senha ou usuario com nomes iguais- **OK**
 ## Links
 
 * [Play Framework](https://www.playframework.com/)
+* [AngularJS](https://angularjs.org/)
 * [Bootstrap](http://getbootstrap.com/)
 * [Jquery](http://jquery.com/)
 * [Bower](http://bower.io/)
