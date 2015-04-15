@@ -55,7 +55,7 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 
 ## Documentation
 
-There is a single directive exposed to create the calendar, use it like so:
+Há uma única directiva para criar o calendário, use-a da seguinte forma:
 ```javascript
 <mwl-calendar
     events="events"
@@ -69,6 +69,22 @@ There is a single directive exposed to create the calendar, use it like so:
     on-delete-event-click="eventDeleted(calendarEvent)"
     auto-open="true">
 </mwl-calendar>
+```
+### events
+
+Uma lista de eventos para exibir no calendário. Por exemplo:
+```javascript
+$scope.events = [
+  {
+    title: 'My event title', // The title of the event
+    type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+    startsAt: new Date(2013,5,1,1), // A javascript date object for when the event starts
+    endsAt: new Date(2014,8,26,15), // A javascript date object for when the event ends
+    editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable
+    deletable: false, // If delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+    incrementsBadgeTotal: true //If set to false then will not count towards the badge total amount on the month and year view
+  }
+];
 ```
 
 ## Informações Adicionais
