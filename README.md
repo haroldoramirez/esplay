@@ -1,6 +1,6 @@
 # Engenharia de Software
 
-#### Version information
+#### Informação da Versão
 PlayFramework 2.3.8
 
 ## Quickstart
@@ -53,7 +53,7 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 * [MySQL](http://www.mysql.com/)
 * [Java8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-## Documentation
+## Documentação
 
 Há uma única directiva para criar o calendário, use-a da seguinte forma:
 ```javascript
@@ -70,16 +70,16 @@ Há uma única directiva para criar o calendário, use-a da seguinte forma:
     auto-open="true">
 </mwl-calendar>
 ```
-### events
+### eventos
 
 Uma lista de eventos para exibir no calendário. Por exemplo:
 ```javascript
 $scope.events = [
   {
-    title: 'My event title', // The title of the event
-    type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
-    startsAt: new Date(2013,5,1,1), // A javascript date object for when the event starts
-    endsAt: new Date(2014,8,26,15), // A javascript date object for when the event ends
+    title: 'My event title', // O título do evento
+    type: 'info', // Este é o tipo do evento (determinado pela cor). Pode ser importante: warning, info, inverse, success or special
+    startsAt: new Date(2013,5,1,1), // Data Início - Um javascript date object para quando o evento iniciar
+    endsAt: new Date(2014,8,26,15), // Data termino - Um javascript date object para quando o evento terminar
     editable: false, // If edit-event-html is set and this field is explicitly set to false then dont make it editable
     deletable: false, // If delete-event-html is set and this field is explicitly set to false then dont make it deleteable
     incrementsBadgeTotal: true //If set to false then will not count towards the badge total amount on the month and year view

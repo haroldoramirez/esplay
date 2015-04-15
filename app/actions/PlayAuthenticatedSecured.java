@@ -14,7 +14,6 @@ public class PlayAuthenticatedSecured extends Security.Authenticator {
 
     @Override
     public Result onUnauthorized(Http.Context ctx) {
-        ctx.flash().put("nao_logado","Para continuar precisa estar logado");
-        return redirect(routes.LoginController.loginTela());
+        return forbidden("Não autorizado");
     }
 }

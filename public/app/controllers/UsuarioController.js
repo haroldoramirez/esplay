@@ -32,6 +32,8 @@ angular.module('agenda')
         $scope.init = function(){
           Usuario.getAll(function(data){
             $scope.usuarios = data;
+          }, function(data){
+            toastr.error(data.data);
           });
           $scope.pagina = 0;
           updateActivedPage(this);

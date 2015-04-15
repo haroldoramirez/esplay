@@ -1,3 +1,4 @@
+@(username: String)
 <!DOCTYPE html>
 <html ng-app="agenda">
 <head>
@@ -17,6 +18,7 @@
     <title>Agenda</title>
 </head>
 <body>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,24 +38,25 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="/#/agenda"><span class="fa fa-calendar-o"></span> Agenda</a></li>
-                <li><a href="/#/compromissos"> <span class="fa fa-clock-o"></span> Compromissos</a></li>
-                <li><a href="/#/tipos"> <span class="fa fa-tags"></span> Tipos</a></li>
-                <li><a href="/#/categorias"> <span class="fa fa-bookmark"></span> Categorias</a></li>
-                <li><a href="/#/contatos"> <span class="fa fa-user"></span> Contatos</a></li>
-                <li><a href="/#/usuarios"> <span class="fa fa-users"></span> Usuários</a></li>
+                @if(username){
+                    <li><a href="/#/compromissos"> <span class="fa fa-clock-o"></span> Compromissos</a></li>
+                    <li><a href="/#/tipos"> <span class="fa fa-tags"></span> Tipos</a></li>
+                    <li><a href="/#/categorias"> <span class="fa fa-bookmark"></span> Categorias</a></li>
+                    <li><a href="/#/contatos"> <span class="fa fa-user"></span> Contatos</a></li>
+                    <li><a href="/#/usuarios"> <span class="fa fa-users"></span> Usuários</a></li>
+                }
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <span class="fa fa-cog"></span> <span class="caret"></span></a>
+                        @username <span class="fa fa-cog"></span><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-header">Sistema</li>
                         <li><a href="/versaoplay">
                             <span class="fa fa-chevron-right"></span> Sobre</a>
                         </li>
                         <!--<li><a href="/#/ajuda">-->
-                            <!--<span class="fa fa-question-circle"></span> Ajuda</a>-->
+                        <!--<span class="fa fa-question-circle"></span> Ajuda</a>-->
                         <!--</li>-->
                         <li class="divider"></li>
                         <li class="dropdown-header">Autenticação</li>
