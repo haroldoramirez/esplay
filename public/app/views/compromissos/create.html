@@ -17,7 +17,7 @@
                                 <label class="control-label">Data</label>
                                 <div ng-class="{'has-error': !compromisso.dataInicio}">
                                     <div class="input-group">
-                                        <input autofocus placeholder="Data de início" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                        <input disabled autofocus placeholder="Escolha a data inicial do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataInicio" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                             <span class="input-group-btn">
                                                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
@@ -31,10 +31,10 @@
                                 </div>
                             </div>
                             <div class="col-lg-8">
-                                <pre class="alert alert-info">Data: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
+                                <pre class="alert alert-success">Data: <b>{{compromisso.dataInicio | date:'fullDate' }}</b></pre>
                             </div>
                             <div class="col-lg-4">
-                                <pre class="alert alert-info">Hora: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
+                                <pre class="alert alert-success">Hora: <b>{{compromisso.horaInicio | date:'shortTime' }}</b></pre>
                             </div>
                         </div>
                         <div class="col-lg-6 well well-sm">
@@ -44,7 +44,7 @@
                                 <label class="control-label">Data</label>
                                 <div ng-class="{'has-error': !compromisso.dataFim}">
                                     <div class="input-group">
-                                        <input placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                        <input disabled placeholder="Escolha a data final do compromisso" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="compromisso.dataFim" is-open="opened" min-date="minDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
@@ -138,7 +138,7 @@
                         <label class="control-label" for="tipo">Tipo do Compromisso</label>
                         <div ng-class="{'has-error': !compromisso.tipo}">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-bookmark-o"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-tags"></i></span>
                                 <select ng-model="compromisso.tipo" class="form-control" ng-options="tipo.nome for tipo in tipos" id="tipo">
                                     <option value="">Selecione</option>
                                 </select>

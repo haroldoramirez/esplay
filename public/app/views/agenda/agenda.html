@@ -76,42 +76,43 @@
     <div class="row">
         <div id="legend">
             <legend>
-                <h2 align="center">
-                    <i class="fa fa-calendar-o"></i> Agenda<small> - {{ calendarControl.getTitle() }}</small><a class="btn btn-success pull-right" href="#/compromissos/novo">
+                <h2>
+                    <i class="fa fa-calendar-o"></i> Agenda<a class="btn btn-success pull-right" href="#/compromissos/novo">
                     Novo Compromisso</a>
                 </h2>
             </legend>
         </div>
-            <div class="col-md-6 text-center">
-                <div class="btn-group">
-                    <button class="btn btn-primary" ng-click="changeView('year')">
-                        Ano
-                    </button>
-                    <button class="btn btn-primary" ng-click="changeView('month')">
-                        Mes
-                    </button>
-                    <button class="btn btn-primary" ng-click="changeView('week')">
-                        Semana
-                    </button>
-                    <button class="btn btn-primary" ng-click="changeView('day')">
-                        Dia
-                    </button>
-                </div>
+        <h3 class="alert alert-info" align="center">{{calendarControl.getTitle()}}</h3>
+        <div class="col-md-6 text-center">
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-click="calendarControl.prev()">
+                    Anterior
+                </button>
+                <button class="btn btn-default" ng-click="setCalendarToToday()">
+                    Hoje
+                </button>
+                <button class="btn btn-primary" ng-click="calendarControl.next()">
+                    Próximo
+                </button>
             </div>
-            <br class="visible-xs visible-sm">
-            <div class="col-md-6 text-center">
-                <div class="btn-group">
-                    <button class="btn btn-primary" ng-click="calendarControl.prev()">
-                        Anterior
-                    </button>
-                    <button class="btn btn-default" ng-click="setCalendarToToday()">
-                        Hoje
-                    </button>
-                    <button class="btn btn-primary" ng-click="calendarControl.next()">
-                        Próximo
-                    </button>
-                </div>
+        </div>
+        <br class="visible-xs visible-sm">
+        <div class="col-md-6 text-center">
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-click="changeView('day')">
+                    Dia
+                </button>
+                <button class="btn btn-primary" ng-click="changeView('week')">
+                    Semana
+                </button>
+                <button class="btn btn-primary" ng-click="changeView('month')">
+                    Mês
+                </button>
+                <button class="btn btn-primary" ng-click="changeView('year')">
+                    Ano
+                </button>
             </div>
+        </div>
             <br>
             <br>
             <br>

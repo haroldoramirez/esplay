@@ -27,6 +27,54 @@ angular.module('agenda')
 
         $scope.events = [
             {
+                title: 'Estudar Para Administração financeira', // The title of the event
+                type: 'important', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+                starts_at: new Date(2015,3,14,19,55), // A javascript date object for when the event starts
+                ends_at: new Date(2015,3,15,22,30), // A javascript date object for when the event ends
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+            },
+            {
+                title: 'Prova Administração financeira', // The title of the event
+                type: 'warning', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+                starts_at: new Date(2015,3,15,19,00), // A javascript date object for when the event starts
+                ends_at: new Date(2015,3,16,22,30), // A javascript date object for when the event ends
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+            },
+            {
+                title: 'Aniversário da Baby', // The title of the event
+                type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+                starts_at: new Date(2015,3,18,19,55), // A javascript date object for when the event starts
+                ends_at: new Date(2015,3,19,22,30), // A javascript date object for when the event ends
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+            },
+            {
+                title: 'Estudar', // The title of the event
+                type: 'inverse', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+                starts_at: new Date(2015,3,1,08,00), // A javascript date object for when the event starts
+                ends_at: new Date(2015,3,30,23,30), // A javascript date object for when the event ends
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+            },
+            {
+                title: 'Jogar Futebol', // The title of the event
+                type: 'success', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+                starts_at: new Date(2015,3,22,22,00), // A javascript date object for when the event starts
+                ends_at: new Date(2015,3,27,23,30), // A javascript date object for when the event ends
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+            },
+            {
+                title: 'Jogar Voley', // The title of the event
+                type: 'special', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+                starts_at: new Date(2015,3,22,22,00), // A javascript date object for when the event starts
+                ends_at: new Date(2015,3,27,23,30), // A javascript date object for when the event ends
+                editable: true, // If calendar-edit-event-html is set and this field is explicitly set to false then dont make it editable
+                deletable: false // If calendar-delete-event-html is set and this field is explicitly set to false then dont make it deleteable
+            },
+            {
                 title: 'Aula de Engenharia de Software', // The title of the event
                 type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
                 starts_at: new Date(2015,4,3,31), // A javascript date object for when the event starts
@@ -74,13 +122,31 @@ angular.module('agenda')
                 title: 'This is a really long event title',
                 type: 'important',
                 starts_at: new Date(2015,7,25,6,30),
-                ends_at: new Date(2015,7,25,6,60)
+                ends_at: new Date(2015,7,25,6,50)
             },
             {
                 title: 'Evento 5',
                 type: 'warning',
                 starts_at: new Date(2015,7,25,6,11),
-                ends_at: new Date(2015,7,25,6,60)
+                ends_at: new Date(2015,7,25,6,50)
+            },
+            {
+                title: 'Aniversário do Haroldo',
+                type: 'special',
+                starts_at: new Date(2015,11,2,8,00),
+                ends_at: new Date(2015,11,2,23,00)
+            },
+            {
+                title: 'Natal',
+                type: 'special',
+                starts_at: new Date(2015,11,25,8,00),
+                ends_at: new Date(2015,11,25,23,00)
+            },
+{
+                title: 'Ano Novo',
+                type: 'special',
+                starts_at: new Date(2015,11,31,8,00),
+                ends_at: new Date(2015,11,31,23,00)
             }
         ];
 

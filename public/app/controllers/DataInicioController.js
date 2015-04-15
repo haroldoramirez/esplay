@@ -2,7 +2,7 @@ angular.module('agenda').controller('DataInicioController', function ($scope) {
   $scope.today = function() {
     $scope.datainicio = new Date();
   };
-  //$scope.today();
+  $scope.today();
 
   $scope.clear = function () {
     $scope.datainicio = null;
@@ -31,5 +31,5 @@ angular.module('agenda').controller('DataInicioController', function ($scope) {
   };
 
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd/MM/yyyy', 'shortDate'];
-  $scope.format = $scope.formats[2];
+  $scope.format = $scope.formats[0];
 });

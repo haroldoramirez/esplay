@@ -39,6 +39,7 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
   * Não Cadastrar Tipo de Compromisso sem nome ou nomes iguais- **OK**
   * Não Contato sem nome ou nomes iguais- **OK**
   * Não Usuario sem email e sem senha ou usuario com nomes iguais- **OK**
+  
 ## Links
 
 * [Play Framework](https://www.playframework.com/)
