@@ -14,6 +14,9 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 
 	* Bootstrap.
 	* AngularJS.
+	* Angular Bootstrap Calendar
+	* Moment.js
+	* ui-bootstrap
 
 
 ### Idiomas
@@ -23,7 +26,7 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 * **0.0.1** [2015-02-24]
   * Criado o Projeto do Play em Java.
 * **0.0.2** [2015-04-07]
-  * Entregue o Módulo 1.
+  * Entregue o Módulo 1. - Prévia da Agenda, CRUD de Categoria de compromisso, tipo de compromisso e compromisso e documentos.
 
 ## Funções
 * **Cadastros**
@@ -50,6 +53,23 @@ Faça o clone do projeto com o github e prepare seu ambiente de trabalho com o M
 * [MySQL](http://www.mysql.com/)
 * [Java8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
+## Documentation
+
+There is a single directive exposed to create the calendar, use it like so:
+```javascript
+<mwl-calendar
+    events="events"
+    view="calendarView"
+    view-title="calendarTitle"
+    current-day="calendarDay"
+    on-event-click="eventClicked(calendarEvent)"
+    edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+    delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+    on-edit-event-click="eventEdited(calendarEvent)"
+    on-delete-event-click="eventDeleted(calendarEvent)"
+    auto-open="true">
+</mwl-calendar>
+```
 
 ## Informações Adicionais
 * [Centro Universitário Dinâmica das Cataratas](http://www.udc.edu.br/v3/udc/) - Trabalho para a conclusão parcial do curso de Sistemas de Informação. Foz do Iguaçu - Paraná - Brasil.
