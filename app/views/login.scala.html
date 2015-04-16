@@ -17,23 +17,31 @@
 </head>
 <body>
 <div class="container">
-    <h3 align="center" class="text-muted">Gerenciador de Compromissos</h3>
-    <hr>
-    @if(usuarioForm.hasGlobalErrors) {
-    <p class="alert alert-danger">
-        @usuarioForm.globalError.message
-    </p>
-    }
-    <div align="center">
-        @form(routes.LoginController.autenticar()) {
-        @inputText(usuarioForm("email"))
-        @inputPassword(usuarioForm("senha"))
-        <input class="btn btn-success" type="submit" value="Autenticar">
-        <a href="/#/" class="btn btn-default"><span class="glyphicon glyphicon-home"></span>
-            Início </a>
-        }
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h3 align="center" class="text-muted">Gerenciador de Compromissos</h3>
+            <hr>
+            @if(usuarioForm.hasGlobalErrors) {
+            <p class="alert alert-danger">
+                @usuarioForm.globalError.message
+            </p>
+            }
+            <div class="form-wrap">
+                @form(routes.LoginController.autenticar()) {
+                <div class="form-group">
+                    @inputText(usuarioForm("email"), 'class -> "form-control", 'placeholder -> "Digite seu email")
+                </div>
+                <div class="form-group">
+                    @inputPassword(usuarioForm("senha"), 'class -> "form-control", 'placeholder -> "Digite sua senha")
+                </div>
+                <input id="btn-login" class="btn btn-success" type="submit" value="Autenticar">
+                <a href="/#/" class="btn btn-default"><span class="glyphicon glyphicon-home"></span>
+                    Início </a>
+                }
+            </div>
+            <hr>
+        </div>
     </div>
-    <hr>
 </div>
 <!--Rodapé-->
 <div align="center">

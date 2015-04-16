@@ -67,6 +67,10 @@ public class UsuarioController extends Controller {
             return notFound("Usuário não encontrado");
         }
 
+        if (usuario.isPadraoDoSistema()) {
+            return badRequest("Registro padrão do sistema");
+        }
+
         try {
             Ebean.delete(usuario);
         } catch (PersistenceException e) {

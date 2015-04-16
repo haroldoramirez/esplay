@@ -12,6 +12,7 @@ create table agenda (
 
 create table categoria (
   id                        bigint auto_increment not null,
+  padrao_do_sistema         tinyint(1) default 0,
   nome                      varchar(255) not null,
   dono_id                   bigint,
   constraint uq_categoria_nome unique (nome),
@@ -49,8 +50,13 @@ create table contato (
   constraint pk_contato primary key (id))
 ;
 
+create table entidade_pai (
+  padrao_do_sistema         tinyint(1) default 0)
+;
+
 create table tipo (
   id                        bigint auto_increment not null,
+  padrao_do_sistema         tinyint(1) default 0,
   nome                      varchar(255) not null,
   constraint uq_tipo_nome unique (nome),
   constraint pk_tipo primary key (id))
@@ -58,6 +64,7 @@ create table tipo (
 
 create table usuario (
   id                        bigint auto_increment not null,
+  padrao_do_sistema         tinyint(1) default 0,
   email                     varchar(255) not null,
   senha                     varchar(255) not null,
   agenda_id                 bigint,
@@ -97,6 +104,8 @@ drop table categoria;
 drop table compromisso;
 
 drop table contato;
+
+drop table entidade_pai;
 
 drop table tipo;
 

@@ -1,12 +1,12 @@
 package models;
 
-import play.db.ebean.Model;
+import models.base.EntidadePai;
 import play.libs.Json;
 
 import javax.persistence.*;
 
 @Entity
-public class Usuario extends Model {
+public class Usuario extends EntidadePai {
 
     private static final long serialVersionUID = 1L;
 

@@ -64,6 +64,10 @@ public class TipoController extends Controller {
             return notFound("Contato não encontrado");
         }
 
+        if (tipo.isPadraoDoSistema()) {
+            return badRequest("Registro padrão do sistema");
+        }
+
         try {
             Ebean.delete(tipo);
         } catch (PersistenceException e) {
