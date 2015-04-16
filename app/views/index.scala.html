@@ -63,9 +63,11 @@
                         <li><a href="/login">
                             <span class="fa fa-sign-in"></span> Entrar</a>
                         </li>
-                        <li><a href="/logout">
-                            <span class="fa fa-sign-out"></span> Sair</a>
-                        </li>
+                        @if(username){
+                            <li><a href="/logout">
+                                <span class="fa fa-sign-out"></span> Sair</a>
+                            </li>
+                        }
                     </ul>
                 </li>
             </ul>
