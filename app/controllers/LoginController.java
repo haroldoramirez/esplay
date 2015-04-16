@@ -18,7 +18,8 @@ public class LoginController extends Controller {
     }
 
     public static Result telaAutenticado() {
-        return ok(views.html.autenticado.render());
+        String username = session().get("email");
+        return ok(views.html.autenticado.render(username));
     }
 
     public static Result telaLogout() {
