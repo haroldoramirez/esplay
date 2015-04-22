@@ -17,6 +17,7 @@
     <!--Menu-->
     <link rel="stylesheet" href="assets/stylesheets/stylemenu.css"/>
     <link rel="stylesheet" href="assets/stylesheets/menu.css"/>
+    <link rel="stylesheet" href="assets/stylesheets/help.css"/>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Agenda</title>
@@ -59,6 +60,11 @@
                         <li><a href="/versaoplay">
                             <span class="fa fa-chevron-right"></span> Sobre</a>
                         </li>
+                        @if(username){
+                            <li><a href="/#/ajuda">
+                                <span class="glyphicon glyphicon-question-sign"></span> Ajuda</a>
+                            </li>
+                        }
                         <!--<li><a href="/#/ajuda">-->
                         <!--<span class="fa fa-question-circle"></span> Ajuda</a>-->
                         <!--</li>-->
@@ -101,6 +107,8 @@
 
 <!--Jquery-->
 <script src="assets/bower_components/jquery/dist/jquery.js"></script>
+
+<script src="assets/javascripts/tabs.js"></script>
 
 <!--Bootstrap-->
 <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -153,5 +161,6 @@
 <script src="assets/app/controllers/ContatoController.js"></script>
 <script src="assets/app/controllers/TipoController.js"></script>
 <script src="assets/app/controllers/UsuarioController.js"></script>
+<script src="assets/app/controllers/HelpController.js"></script>
 </body>
 </html>
