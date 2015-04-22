@@ -14,12 +14,16 @@
     <!--Awesome Icons-->
     <link rel="stylesheet" href="assets/stylesheets/awesome/css/font-awesome.css"/>
 
+    <!--Menu-->
+    <link rel="stylesheet" href="assets/stylesheets/stylemenu.css"/>
+    <link rel="stylesheet" href="assets/stylesheets/menu.css"/>
+
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Agenda</title>
 </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -60,9 +64,11 @@
                         <!--</li>-->
                         <li class="divider"></li>
                         <li class="dropdown-header">Autenticação</li>
-                        <li><a href="/login">
-                            <span class="fa fa-sign-in"></span> Entrar</a>
-                        </li>
+                        @if(!username){
+                            <li><a href="/login">
+                                <span class="fa fa-sign-in"></span> Entrar</a>
+                            </li>
+                        }
                         @if(username){
                             <li><a href="/logout">
                                 <span class="fa fa-sign-out"></span> Sair</a>
@@ -95,7 +101,6 @@
 
 <!--Jquery-->
 <script src="assets/bower_components/jquery/dist/jquery.js"></script>
-
 
 <!--Bootstrap-->
 <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
