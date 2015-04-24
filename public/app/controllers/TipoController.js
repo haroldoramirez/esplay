@@ -118,7 +118,8 @@ angular.module('agenda')
                 $modalInstance.close();
                 $location.path('/tipos');
             }, function(data){
-            console.log(data);
+                console.log(data);
+                $modalInstance.close();
                 toastr.error(data.data,'Não foi possível Remover o Tipo');
             });
         };

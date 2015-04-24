@@ -117,7 +117,8 @@ angular.module('agenda')
                 $modalInstance.close();
                 $location.path('/categorias');
             }, function(data){
-            console.log(data);
+                console.log(data);
+                $modalInstance.close();
                 toastr.error(data.data,'Não foi possível Remover a Categoria');
             });
         };

@@ -76,6 +76,7 @@ angular.module('agenda')
                toastr.success('Usuario Removido com Sucesso');
                $scope.init();
            }, function(data){
+               $modalInstance.close();
                toastr.error(data.data,'Não foi possível Remover o Usuario');
            });
         };
@@ -120,8 +121,9 @@ angular.module('agenda')
                 $modalInstance.close();
                 $location.path('/usuarios');
             }, function(data){
-            console.log(data);
-                toastr.error(data.data,'Não foi possível Remover o Usuario');
+                console.log(data);
+                $modalInstance.close();
+                toastr.error(data.data,'Não foi possível Remover o Usuário');
             });
         };
 
