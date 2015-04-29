@@ -3,6 +3,8 @@ package controllers;
 import akka.util.Crypt;
 import models.Usuario;
 import models.Usuarios;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.libs.F;
@@ -10,6 +12,8 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 public class LoginController extends Controller {
+
+    static Logger log = LoggerFactory.getLogger(LoginController.class);
 
     private static DynamicForm form = Form.form();
 
@@ -37,6 +41,7 @@ public class LoginController extends Controller {
 
         if (talvesUmUsuario.isDefined()) {
             session().put("email", talvesUmUsuario.get().getEmail());
+            log.info("Usuário autenticou no sistema");
             return redirect(routes.LoginController.telaAutenticado());
         }
 
@@ -47,6 +52,7 @@ public class LoginController extends Controller {
 
     public static Result logout() {
         session().clear();
+        log.info("Usuário saiu do sistema");
         return redirect(routes.LoginController.telaLogout());
     }
 }

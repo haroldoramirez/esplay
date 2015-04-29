@@ -14,11 +14,11 @@ public class Global extends GlobalSettings {
 
     @Override
     public void onStart(Application app) {
-        System.out.println("Play Application Start");
+        System.out.println("Esplay Start");
     }
 
     @Override
     public void onStop(Application application) {
-        System.out.println("Play Application Stop");
+        System.out.println("Esplay Stop");
     }
 }

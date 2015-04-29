@@ -2,6 +2,8 @@ package controllers;
 
 import com.avaje.ebean.Ebean;
 import models.Categoria;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -9,6 +11,8 @@ import play.mvc.Result;
 import javax.persistence.PersistenceException;
 
 public class CategoriaController extends Controller {
+
+    static Logger log = LoggerFactory.getLogger(CategoriaController.class);
 
     public static Result inserir() {
 
@@ -22,6 +26,7 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.save(categoria);
+            log.info("Criado uma nova categoria");
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -35,6 +40,7 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.update(categoria);
+            log.info("Atualizado categoria");
         } catch (PersistenceException e) {
             return badRequest("Categoria já Cadastrada");
         } catch (Exception e) {
@@ -71,6 +77,7 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.delete(categoria);
+            log.info("Removido categoria");
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem desta categoria de Compromisso, remova-os primeiro");
         } catch (Exception e) {
