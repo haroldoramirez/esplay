@@ -50,7 +50,7 @@ angular.module('agenda')
           $scope._pagina = function(val){
           $scope.pagina = val;
               Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
-                  $scope.tipos = data;
+                  $scope.compromissos = data;
               });
               updateActivedPage(this);
           };
