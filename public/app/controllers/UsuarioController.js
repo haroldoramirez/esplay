@@ -12,7 +12,7 @@ angular.module('agenda')
                 $location.path('/usuarios');
             }, function(data){
                 console.log(data);
-                toastr.error(data.data,'Não foi possível Salvar o Usuario');
+                toastr.error(data.data,'Não foi possível Salvar');
             });
         };
 
@@ -77,7 +77,7 @@ angular.module('agenda')
                $scope.init();
            }, function(data){
                $modalInstance.close();
-               toastr.error(data.data,'Não foi possível Remover o Usuario');
+               toastr.error(data.data,'Não foi possível Remover');
            });
         };
 
@@ -106,7 +106,7 @@ angular.module('agenda')
                 $location.path('/usuarios');
             },function(data){
                console.log(data);
-               toastr.error(data.data,'Não foi possível Atualizar o Usuario');
+               toastr.error(data.data,'Não foi possível Atualizar');
             });
 
         };
@@ -123,7 +123,7 @@ angular.module('agenda')
             }, function(data){
                 console.log(data);
                 $modalInstance.close();
-                toastr.error(data.data,'Não foi possível Remover o Usuário');
+                toastr.error(data.data,'Não foi possível Remover');
             });
         };
 

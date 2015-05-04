@@ -12,7 +12,7 @@ angular.module('agenda')
                 $location.path('/contatos');
             }, function(data){
                 console.log(data);
-                toastr.error(data.data,'Não foi possível Salvar o Contato');
+                toastr.error(data.data,'Não foi possível Salvar');
             });
         };
 
@@ -73,7 +73,7 @@ angular.module('agenda')
                toastr.warning('Contato Removido com Sucesso');
                $scope.init();
            }, function(data){
-               toastr.error(data.data,'Não foi possível Remover o Contato');
+               toastr.error(data.data,'Não foi possível Remover');
            });
         };
 
@@ -101,7 +101,7 @@ angular.module('agenda')
                 $location.path('/contatos');
             },function(data){
                console.log(data);
-               toastr.error(data.data,'Não foi possível Atualizar o Contato');
+               toastr.error(data.data,'Não foi possível Atualizar');
             });
 
         };
@@ -118,7 +118,7 @@ angular.module('agenda')
             }, function(data){
                 console.log(data);
                 $modalInstance.close();
-                toastr.error(data.data,'Não foi possível Remover o Contato');
+                toastr.error(data.data,'Não foi possível Remover');
             });
         };
 

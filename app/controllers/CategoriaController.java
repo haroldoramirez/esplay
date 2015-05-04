@@ -26,7 +26,7 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.save(categoria);
-            log.info("Criado uma nova categoria");
+            log.info("Nova categoria de compromisso criada: {}", categoria.getNome());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -40,7 +40,7 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.update(categoria);
-            log.info("Atualizado categoria");
+            log.info("Categoria de compromisso: '{}' atualizada", categoria.getNome());
         } catch (PersistenceException e) {
             return badRequest("Categoria já Cadastrada");
         } catch (Exception e) {
@@ -77,7 +77,7 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.delete(categoria);
-            log.info("Removido categoria");
+            log.info("Categoria de compromisso deletada");
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem desta categoria de Compromisso, remova-os primeiro");
         } catch (Exception e) {

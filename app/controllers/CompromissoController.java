@@ -5,6 +5,8 @@ import models.Categoria;
 import models.Compromisso;
 import models.Contato;
 import models.Tipo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -12,6 +14,8 @@ import play.mvc.Result;
 import javax.persistence.PersistenceException;
 
 public class CompromissoController extends Controller {
+
+    static Logger log = LoggerFactory.getLogger(CompromissoController.class);
 
     public static Result inserir() {
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
@@ -32,6 +36,7 @@ public class CompromissoController extends Controller {
 
         try {
             Ebean.save(compromisso);
+            log.info("Criado um novo compromisso: {}", compromisso.getTitulo());
         } catch (Exception e) {
             e.printStackTrace();
             return badRequest("Erro interno de sistema");
@@ -45,6 +50,7 @@ public class CompromissoController extends Controller {
 
         try {
             Ebean.update(compromisso);
+            log.info("Compromisso: '{}' atualizado", compromisso.getTitulo());
         } catch (Exception e) {
             e.printStackTrace();
             return badRequest("Erro interno de sistema");
@@ -72,6 +78,7 @@ public class CompromissoController extends Controller {
 
         try {
             Ebean.delete(compromisso);
+            log.info("Compromisso deletado");
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste Compromisso, remova-os primeiro");
         } catch (Exception e) {

@@ -112,7 +112,6 @@ public class Compromisso extends Model {
         this.horaFim = horaFim;
     }
 
-
     public String getTitulo() {
         return titulo;
     }

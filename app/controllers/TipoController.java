@@ -2,6 +2,8 @@ package controllers;
 
 import com.avaje.ebean.Ebean;
 import models.Tipo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -9,6 +11,8 @@ import play.mvc.Result;
 import javax.persistence.PersistenceException;
 
 public class TipoController extends Controller {
+
+    static Logger log = LoggerFactory.getLogger(TipoController.class);
 
     public static Result inserir() {
         Tipo tipo = Json.fromJson(request().body().asJson(), Tipo.class);
@@ -19,8 +23,11 @@ public class TipoController extends Controller {
             return badRequest("Tipo de Compromisso já Cadastrado");
         }
 
+        tipo.setPadraoDoSistema(false);
+
         try {
             Ebean.save(tipo);
+            log.info("Novo Tipo de compromisso criado: {}", tipo.getNome());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -33,6 +40,7 @@ public class TipoController extends Controller {
 
         try {
             Ebean.update(tipo);
+            log.info("Tipo de compromisso: '{}' atualizado", tipo.getNome());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -70,6 +78,7 @@ public class TipoController extends Controller {
 
         try {
             Ebean.delete(tipo);
+            log.info("Tipo de compromisso deletado");
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste tipo de Compromisso, remova-os primeiro");
         } catch (Exception e) {

@@ -1,7 +1,5 @@
-@(username: String)
-<!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.css"/>
@@ -15,32 +13,26 @@
     <script src="assets/bower_components/jquery/dist/jquery.js"></script>
 
     <script src="assets/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <title></title>
+
 </head>
 <body>
-<div>
-
-</div>
-<div align="center" class="container-fluid">
-    <h3 class="text-muted">Gerenciador de Comprommissos</h3>
+<div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <hr>
-            <div>
-                <h2>
-                    Seja bem vindo!
-                </h2>
-                <br>
-                <h4>Você esta logado como: <b>"@username"</b></h4>
-                <br>
-                <div class="error-actions">
-                    <a href="/#/" class="btn btn-primary"><span class="fa fa-home"></span>
-                        Início </a>
-                </div>
+        <fieldset>
+            <div id="legend">
+                <legend>
+                    <h2>
+                        <i class="fa fa-file"></i> Sistema <small>Logs</small>
+                    </h2>
+                </legend>
             </div>
-            <hr>
-        </div>
+            <div align="center" class="error-actions">
+                <a href="/#/" class="btn btn-primary"><span class="fa fa-home"></span>
+                    Início </a>
+            </div>
+        </fieldset>
     </div>
+    <hr>
 </div>
 <!--Rodapé-->
 <div align="center">

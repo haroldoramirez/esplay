@@ -41,7 +41,7 @@ public class LoginController extends Controller {
 
         if (talvesUmUsuario.isDefined()) {
             session().put("email", talvesUmUsuario.get().getEmail());
-            log.info("Usuário autenticou no sistema");
+            log.info("Usuário '{}' autenticou no sistema", talvesUmUsuario.get().getEmail());
             return redirect(routes.LoginController.telaAutenticado());
         }
 

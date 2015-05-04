@@ -12,7 +12,7 @@ angular.module('agenda')
                 $location.path('/categorias');
             }, function(data){
                 console.log(data);
-                toastr.error(data.data,'Não foi possível Salvar a Categoria');
+                toastr.error(data.data,'Não foi possível Salvar');
             });
         };
 
@@ -73,7 +73,7 @@ angular.module('agenda')
                toastr.warning('Categoria Removida com Sucesso');
                $scope.init();
            }, function(data){
-               toastr.error(data.data,'Não foi possível Remover a Categoria');
+               toastr.error(data.data,'Não foi possível Remover');
            });
         };
 
@@ -102,7 +102,7 @@ angular.module('agenda')
                 $location.path('/categorias');
             },function(data){
                console.log(data);
-               toastr.error(data.data,'Não foi possível Atualizar a Categoria');
+               toastr.error(data.data,'Não foi possível Atualizar');
             });
 
         };
@@ -119,7 +119,7 @@ angular.module('agenda')
             }, function(data){
                 console.log(data);
                 $modalInstance.close();
-                toastr.error(data.data,'Não foi possível Remover a Categoria');
+                toastr.error(data.data,'Não foi possível Remover');
             });
         };
   });
