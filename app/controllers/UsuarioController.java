@@ -31,7 +31,6 @@ public class UsuarioController extends Controller {
         String senha = Crypt.sha1(usuario.getSenha());
 
         usuario.setSenha(senha);
-        usuario.setPadraoDoSistema(false);
 
         try {
             Ebean.save(usuario);

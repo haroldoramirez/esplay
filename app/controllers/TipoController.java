@@ -23,8 +23,6 @@ public class TipoController extends Controller {
             return badRequest("Tipo de Compromisso já Cadastrado");
         }
 
-        tipo.setPadraoDoSistema(false);
-
         try {
             Ebean.save(tipo);
             log.info("Novo Tipo de compromisso criado: {}", tipo.getNome());
