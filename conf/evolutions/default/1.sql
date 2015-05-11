@@ -22,7 +22,6 @@ create table categoria (
 create table compromisso (
   id                        bigint auto_increment not null,
   titulo                    varchar(255) not null,
-  titulo2                   varchar(255),
   data_inicio               datetime,
   hora_inicio               datetime,
   data_fim                  datetime,
