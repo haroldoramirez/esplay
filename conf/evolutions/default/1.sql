@@ -56,7 +56,7 @@ create table entidade_pai (
 
 create table log (
   id                        bigint auto_increment not null,
-  descricao                 varchar(255),
+  mensagem                  varchar(255),
   constraint pk_log primary key (id))
 ;
 

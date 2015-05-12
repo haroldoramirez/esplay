@@ -86,7 +86,7 @@ angular
                   controller: 'UsuarioCreateController'
              })
                .when('/logs', {
-                  templateUrl: '/assets/app/views/logs/list.html',
+                  templateUrl: '/assets/app/views/logs.html',
                   controller: 'LogListController'
              });
    //Configuração das notificações

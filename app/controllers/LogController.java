@@ -8,13 +8,15 @@ import play.mvc.Result;
 
 public class LogController extends Controller {
 
-    public static Result logs() {
-        return ok(Json.toJson(Ebean.find(Log.class).findList()));
-    }
+    public static Result inserir(String mensagem) {
 
-    public Result salvar(Log log) {
+        Log log = new Log();
+        log.setMensagem(mensagem);
         Ebean.save(log);
         return ok();
     }
 
-}
+    public static Result listarTodos() {
+        return ok(Json.toJson(Ebean.find(Log.class).findList()));
+    }
+ }

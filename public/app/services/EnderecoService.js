@@ -37,9 +37,10 @@ angular.module('agenda')
            update: {method: 'PUT', url: BaseUrl + '/usuarios/:id', isArray: false}
          });
   }])
-  .service('Log',['$resource', 'BaseUrl',
-     function($resource, BaseUrl){
-         return $resource(BaseUrl + '/logs/:id', {}, {
-           getAll: {method: 'GET', url: BaseUrl + '/logs', isArray: true}
-         });
-  }]);
+    .service('Log',['$resource', 'BaseUrl',
+       function($resource, BaseUrl){
+           return $resource(BaseUrl + '/logs/:id', {}, {
+             getAll: {method: 'GET', url: BaseUrl + '/logs', isArray: true},
+             update: {method: 'PUT', url: BaseUrl + '/logs/:id', isArray: false}
+           });
+    }]);

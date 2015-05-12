@@ -17,7 +17,11 @@ public class UsuarioController extends Controller {
 
     static org.slf4j.Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
+    static LogController logController = new LogController();
+
     public static Result inserir() {
+
+        String mensagem;
 
         String username = session().get("email");
 
@@ -36,6 +40,8 @@ public class UsuarioController extends Controller {
         try {
             Ebean.save(usuario);
             logger.info("Conta: '{}' criou o usuário: {}", username, usuario.getEmail());
+            mensagem = "Usuário Criado";
+            logController.inserir(mensagem);
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }

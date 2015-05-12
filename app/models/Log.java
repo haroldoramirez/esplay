@@ -16,7 +16,7 @@ public class Log extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String descricao;
+    private String mensagem;
 
     public Long getId() {
         return id;
@@ -26,11 +26,11 @@ public class Log extends Model {
         this.id = id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getMensagem() {
+        return mensagem;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 }
