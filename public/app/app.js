@@ -84,6 +84,10 @@ angular
                .when('/usuarios/novo', {
                   templateUrl: '/assets/app/views/usuarios/create.html',
                   controller: 'UsuarioCreateController'
+             })
+               .when('/logs', {
+                  templateUrl: '/assets/app/views/logs/list.html',
+                  controller: 'LogListController'
              });
    //Configuração das notificações
    }).config(function(toastrConfig) {

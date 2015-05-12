@@ -82,16 +82,16 @@
                 </h2>
             </legend>
         </div>
-        <h3 class="alert alert-info" align="center">{{calendarControl.getTitle()}}</h3>
+        <h3 class="alert alert-info" align="center">{{ calendarTitle }}</h3>
         <div class="col-md-6 text-center">
             <div class="btn-group">
-                <button class="btn btn-primary" ng-click="calendarControl.prev()">
+                <button class="btn btn-primary" mwl-date-modifier date="calendarDay" decrement="calendarView">
                     Anterior
                 </button>
-                <button class="btn btn-default" ng-click="setCalendarToToday()">
+                <button class="btn btn-default" mwl-date-modifier date="calendarDay" set-to-today>
                     Hoje
                 </button>
-                <button class="btn btn-primary" ng-click="calendarControl.next()">
+                <button class="btn btn-primary" mwl-date-modifier date="calendarDay" increment="calendarView">
                     Próximo
                 </button>
             </div>
@@ -99,16 +99,16 @@
         <br class="visible-xs visible-sm">
         <div class="col-md-6 text-center">
             <div class="btn-group">
-                <button class="btn btn-primary" ng-click="changeView('day')">
+                <button class="btn btn-primary" ng-model="calendarView" btn-radio="'day'">
                     Dia
                 </button>
-                <button class="btn btn-primary" ng-click="changeView('week')">
+                <button class="btn btn-primary" ng-model="calendarView" btn-radio="'week'">
                     Semana
                 </button>
-                <button class="btn btn-primary" ng-click="changeView('month')">
+                <button class="btn btn-primary" ng-model="calendarView" btn-radio="'month'">
                     Mês
                 </button>
-                <button class="btn btn-primary" ng-click="changeView('year')">
+                <button class="btn btn-primary" ng-model="calendarView" btn-radio="'year'">
                     Ano
                 </button>
             </div>
@@ -116,21 +116,20 @@
             <br>
             <br>
             <br>
-            <mwl-calendar
-                    calendar-events="events"
-                    calendar-view="calendarView"
-                    calendar-current-day="calendarDay"
-                    calendar-control="calendarControl"
-                    calendar-event-click="eventClicked(calendarEvent)"
-                    calendar-edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
-                    calendar-delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
-                    calendar-edit-event-click="eventEdited(calendarEvent)"
-                    calendar-delete-event-click="eventDeleted(calendarEvent)"
-                    calendar-auto-open="true"
-                    calendar-day-view-start="06:00"
-                    calendar-day-view-end="22:00"
-                    calendar-timespan-click="dayClicked($date)"
-                    calendar-day-view-split="30"
-                    ></mwl-calendar>
+        <mwl-calendar
+                events="events"
+                view="calendarView"
+                view-title="calendarTitle"
+                current-day="calendarDay"
+                on-event-click="eventClicked(calendarEvent)"
+                edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+                delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+                on-edit-event-click="eventEdited(calendarEvent)"
+                on-delete-event-click="eventDeleted(calendarEvent)"
+                auto-open="true"
+                day-view-start="06:00"
+                day-view-end="22:00"
+                day-view-split="30">
+        </mwl-calendar>
     </div>
 </div>

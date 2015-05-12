@@ -3,6 +3,7 @@ package controllers;
 import actions.PlayAuthenticatedSecured;
 import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
+import models.Log;
 import models.Usuario;
 import org.slf4j.LoggerFactory;
 import play.libs.Json;
@@ -14,7 +15,7 @@ import javax.persistence.PersistenceException;
 
 public class UsuarioController extends Controller {
 
-    static org.slf4j.Logger log = LoggerFactory.getLogger(UsuarioController.class);
+    static org.slf4j.Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
     public static Result inserir() {
 
@@ -34,7 +35,7 @@ public class UsuarioController extends Controller {
 
         try {
             Ebean.save(usuario);
-            log.info("Conta: '{}' criou o usuário: {}", username, usuario.getEmail());
+            logger.info("Conta: '{}' criou o usuário: {}", username, usuario.getEmail());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -47,7 +48,7 @@ public class UsuarioController extends Controller {
 
         try {
             Ebean.update(usuario);
-            log.info("Usuario atualizado");
+            logger.info("Usuario atualizado");
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -81,7 +82,7 @@ public class UsuarioController extends Controller {
 
         try {
             Ebean.delete(usuario);
-            log.info("Usuario deletado");
+            logger.info("Usuario deletado");
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste usuário, remova-os primeiro");
         } catch (Exception e) {

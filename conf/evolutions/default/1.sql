@@ -22,7 +22,6 @@ create table categoria (
 create table compromisso (
   id                        bigint auto_increment not null,
   titulo                    varchar(255) not null,
-  titulo2                   varchar(255),
   data_inicio               datetime,
   hora_inicio               datetime,
   data_fim                  datetime,
@@ -53,6 +52,12 @@ create table contato (
 
 create table entidade_pai (
   padrao_do_sistema         tinyint(1) default 0 not null)
+;
+
+create table log (
+  id                        bigint auto_increment not null,
+  descricao                 varchar(255),
+  constraint pk_log primary key (id))
 ;
 
 create table tipo (
@@ -107,6 +112,8 @@ drop table compromisso;
 drop table contato;
 
 drop table entidade_pai;
+
+drop table log;
 
 drop table tipo;
 

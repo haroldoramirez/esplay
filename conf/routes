@@ -12,9 +12,11 @@ GET     /saiu                             controllers.LoginController.telaLogout
 POST    /autenticar                       controllers.LoginController.autenticar()
 GET     /logout                           controllers.LoginController.logout()
 
+# Log
+GET     /logs                             controllers.LogController.logs()
+
 # Applications
 GET		/versaoplay					      controllers.Application.versaoplay()
-GET     /logs                             controllers.Application.logs()
 
 # Index page
 GET     /                                 controllers.Application.index()
