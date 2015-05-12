@@ -12,6 +12,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
+import java.util.Formatter;
 
 public class UsuarioController extends Controller {
 
@@ -21,7 +22,9 @@ public class UsuarioController extends Controller {
 
     public static Result inserir() {
 
-        String mensagem;
+        StringBuilder sb = new StringBuilder();
+
+        Formatter formatter = new Formatter(sb);
 
         String username = session().get("email");
 
@@ -40,8 +43,8 @@ public class UsuarioController extends Controller {
         try {
             Ebean.save(usuario);
             logger.info("Conta: '{}' criou o usuário: {}", username, usuario.getEmail());
-            mensagem = "Usuário Criado";
-            logController.inserir(mensagem);
+            formatter.format("Conta: '%1s' criou o usuário: '%2s'", username, usuario.getEmail());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
