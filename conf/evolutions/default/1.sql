@@ -56,6 +56,7 @@ create table entidade_pai (
 
 create table log (
   id                        bigint auto_increment not null,
+  data_do_log               datetime,
   mensagem                  varchar(255),
   constraint pk_log primary key (id))
 ;

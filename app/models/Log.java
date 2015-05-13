@@ -2,10 +2,9 @@ package models;
 
 import play.db.ebean.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 public class Log extends Model {
@@ -16,10 +15,20 @@ public class Log extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Date dataDoLog;
+
     private String mensagem;
 
     public Long getId() {
         return id;
+    }
+
+    public Date getDataDoLog() {
+        return dataDoLog;
+    }
+
+    public void setDataDoLog(Date dataDoLog) {
+        this.dataDoLog = dataDoLog;
     }
 
     public void setId(Long id) {
