@@ -23,12 +23,12 @@ public class Contato extends Model {
     private String telefone;
 
     //um contato tem um usuario
-    @OneToOne
-    private Usuario dono;
+    //@OneToOne
+    //private Usuario dono;
 
     //varios contatos tem um usuario
-    @ManyToOne
-    private Usuario usuario;
+    //@ManyToOne
+    //private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -60,22 +60,6 @@ public class Contato extends Model {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public Usuario getDono() {
-        return dono;
-    }
-
-    public void setDono(Usuario dono) {
-        this.dono = dono;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     @Override

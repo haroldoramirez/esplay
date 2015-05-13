@@ -39,28 +39,10 @@ public class Compromisso extends Model {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    //muitos compromissos para uma agenda
-    @ManyToOne
-    private Agenda agenda;
-
-    //muitos compromissos para um usuario
-    @ManyToOne
-    private Usuario usuario;
-
     //muitos compromissos para um tipo
     @ManyToOne
     @Column(nullable = false)
     private Tipo tipo;
-
-    //implementar depois nao apagar
-    //muitos compromissos para muitas categorias
-    //@ManyToMany
-    //private List<Categoria> categorias;
-
-    //implementar depois nao apagar
-    //muitos compromissos para muitos contatos
-    //@ManyToMany
-    //private List<Contato> contatos;
 
     //muitos compromissos para um contato
     @ManyToOne
@@ -72,12 +54,39 @@ public class Compromisso extends Model {
     @Column(nullable = false)
     private Categoria categoria;
 
+    //muitos compromissos para uma agenda
+    //@ManyToOne
+    //private Agenda agenda;
+
+    //muitos compromissos para um usuario
+    //@ManyToOne
+    //private Usuario usuario;
+
+    //implementar depois nao apagar
+    //muitos compromissos para muitas categorias
+    //@ManyToMany
+    //private List<Categoria> categorias;
+
+    //implementar depois nao apagar
+    //muitos compromissos para muitos contatos
+    //@ManyToMany
+    //private List<Contato> contatos;
+
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public Calendar getDataInicio() {
@@ -112,14 +121,6 @@ public class Compromisso extends Model {
         this.horaFim = horaFim;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -144,20 +145,12 @@ public class Compromisso extends Model {
         this.local = local;
     }
 
-    public Agenda getAgenda() {
-        return agenda;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Tipo getTipo() {
@@ -168,28 +161,20 @@ public class Compromisso extends Model {
         this.tipo = tipo;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     public Contato getContato() {
         return contato;
     }
 
     public void setContato(Contato contato) {
         this.contato = contato;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override

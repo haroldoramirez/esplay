@@ -107,6 +107,7 @@ public class ContatoController extends Controller {
         return ok(Json.toJson(contato));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorPaginas(Long pagina) {
         return TODO;
     }

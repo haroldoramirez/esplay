@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
 import models.Tipo;
 import org.slf4j.Logger;
@@ -7,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
-import javax.persistence.PersistenceException;
 import java.util.Formatter;
 
 public class TipoController extends Controller {
@@ -17,6 +18,7 @@ public class TipoController extends Controller {
 
     static LogController logController = new LogController();
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result inserir() {
 
         StringBuilder sb = new StringBuilder();
@@ -32,6 +34,8 @@ public class TipoController extends Controller {
             return badRequest("Tipo de Compromisso já Cadastrado");
         }
 
+        tipo.setPadraoDoSistema(false);
+
         try {
             Ebean.save(tipo);
             logger.info("Novo Tipo de compromisso criado: {}", tipo.getNome());
@@ -44,6 +48,7 @@ public class TipoController extends Controller {
         return created(Json.toJson(tipo));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result atualizar(Long id) {
 
         StringBuilder sb = new StringBuilder();
@@ -64,6 +69,7 @@ public class TipoController extends Controller {
         return ok(Json.toJson(tipo));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorId(Long id) {
         Tipo tipo = Ebean.find(Tipo.class, id);
 
@@ -74,14 +80,17 @@ public class TipoController extends Controller {
         return ok(Json.toJson(tipo));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
         return ok(Json.toJson(Ebean.find(Tipo.class).findList()));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorPaginas(Long pagina) {
         return TODO;
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result remover(Long id) {
 
         StringBuilder sb = new StringBuilder();

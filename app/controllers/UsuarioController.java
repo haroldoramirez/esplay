@@ -3,7 +3,6 @@ package controllers;
 import actions.PlayAuthenticatedSecured;
 import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
-import models.Log;
 import models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,6 +121,7 @@ public class UsuarioController extends Controller {
         return ok(Json.toJson(Ebean.find(Usuario.class).findList()));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorPaginas(Long pagina) {
         return TODO;
     }

@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
 import models.Categoria;
 import org.slf4j.Logger;
@@ -7,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
-import javax.persistence.PersistenceException;
 import java.util.Formatter;
 
 public class CategoriaController extends Controller {
@@ -17,6 +18,7 @@ public class CategoriaController extends Controller {
 
     static LogController logController = new LogController();
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result inserir() {
 
         StringBuilder sb = new StringBuilder();
@@ -44,6 +46,7 @@ public class CategoriaController extends Controller {
         return created(Json.toJson(categoria));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result atualizar(Long id) {
 
         StringBuilder sb = new StringBuilder();
@@ -65,6 +68,7 @@ public class CategoriaController extends Controller {
         return ok(Json.toJson(categoria));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorId(Long id) {
 
         Categoria categoria = Ebean.find(Categoria.class, id);
@@ -75,15 +79,18 @@ public class CategoriaController extends Controller {
 
         return ok(Json.toJson(categoria));
     }
-    
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
         return ok(Json.toJson(Ebean.find(Categoria.class).findList()));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorPaginas(Long pagina) {
         return TODO;
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result remover(Long id) {
 
         StringBuilder sb = new StringBuilder();

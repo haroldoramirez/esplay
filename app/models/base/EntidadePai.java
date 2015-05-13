@@ -2,15 +2,17 @@ package models.base;
 
 import play.db.ebean.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class EntidadePai extends Model {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     protected boolean padraoDoSistema;
 
     public boolean isPadraoDoSistema() {
@@ -19,5 +21,13 @@ public class EntidadePai extends Model {
 
     public void setPadraoDoSistema(boolean padraoDoSistema) {
         this.padraoDoSistema = padraoDoSistema;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

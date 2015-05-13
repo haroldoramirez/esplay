@@ -23,16 +23,16 @@ public class Log extends Model {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Date getDataDoLog() {
         return dataDoLog;
     }
 
     public void setDataDoLog(Date dataDoLog) {
         this.dataDoLog = dataDoLog;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getMensagem() {

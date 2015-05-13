@@ -1,12 +1,13 @@
 package models;
 
 import models.base.EntidadePai;
+import play.db.ebean.Model;
 import play.libs.Json;
 
 import javax.persistence.*;
 
 @Entity
-public class Categoria extends EntidadePai {
+public class Categoria extends Model {
 
     private static final long serialVersionUID = 1L;
 
@@ -18,8 +19,8 @@ public class Categoria extends EntidadePai {
     private String nome;
 
     //muitas categorias para um usuario
-    @ManyToOne
-    public Usuario dono;
+    //@ManyToOne
+    //public Usuario dono;
 
     public Long getId() {
         return id;

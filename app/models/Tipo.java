@@ -17,6 +17,10 @@ public class Tipo extends EntidadePai {
     @Column(nullable = false, unique = true)
     private String nome;
 
+    //muitas categorias para um usuario
+    //@ManyToOne
+    //public Usuario dono;
+
     public Long getId() {
         return id;
     }

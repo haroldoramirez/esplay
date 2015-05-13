@@ -13,6 +13,6 @@ public class PlayAuthenticatedSecured extends Security.Authenticator {
 
     @Override
     public Result onUnauthorized(Http.Context ctx) {
-        return forbidden("Não autorizado");
+        return forbidden(views.html.naoAutorizado.render());
     }
 }

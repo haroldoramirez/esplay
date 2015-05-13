@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
 import models.Categoria;
 import models.Compromisso;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
 import java.util.Formatter;
@@ -20,6 +22,7 @@ public class CompromissoController extends Controller {
 
     static LogController logController = new LogController();
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result inserir() {
 
         StringBuilder sb = new StringBuilder();
@@ -56,6 +59,7 @@ public class CompromissoController extends Controller {
         return created(Json.toJson(compromisso));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result atualizar(Long id) {
 
         StringBuilder sb = new StringBuilder();
@@ -78,6 +82,7 @@ public class CompromissoController extends Controller {
         return ok(Json.toJson(compromisso));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorId(Long id) {
         Compromisso compromisso = Ebean.find(Compromisso.class, id);
 
@@ -88,6 +93,7 @@ public class CompromissoController extends Controller {
         return ok(Json.toJson(compromisso));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result remover(Long id) {
 
         StringBuilder sb = new StringBuilder();
@@ -115,6 +121,7 @@ public class CompromissoController extends Controller {
         return ok(Json.toJson(compromisso));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
         return ok(Json.toJson(Ebean.find(Compromisso.class).findList()));
     }

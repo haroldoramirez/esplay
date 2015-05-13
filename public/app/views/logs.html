@@ -18,7 +18,7 @@
                     <th>Mensagem</th>
                 </tr>
                 <tr ng-repeat="log in logs">
-                    <td>{{log.dataDoLog}}</td>
+                    <td>{{log.dataDoLog | date:'dd-MM-yyyy - HH:mm:ss'}}</td>
                     <td>{{log.mensagem}}</td>
                 </tr>
             </table>
