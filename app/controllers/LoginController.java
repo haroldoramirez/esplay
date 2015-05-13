@@ -11,9 +11,13 @@ import play.libs.F;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.Formatter;
+
 public class LoginController extends Controller {
 
     static Logger log = LoggerFactory.getLogger(LoginController.class);
+
+    static LogController logController = new LogController();
 
     private static DynamicForm form = Form.form();
 
@@ -32,6 +36,11 @@ public class LoginController extends Controller {
 
     public static Result autenticar() {
 
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Form<DynamicForm.Dynamic> requestForm = form.bindFromRequest();
 
         String email = requestForm.data().get("email");
@@ -42,6 +51,8 @@ public class LoginController extends Controller {
         if (talvesUmUsuario.isDefined()) {
             session().put("email", talvesUmUsuario.get().getEmail());
             log.info("Usuário '{}' autenticou no sistema", talvesUmUsuario.get().getEmail());
+            formatter.format("Usuário: '%1s' autenticou no sistema.", talvesUmUsuario.get().getEmail());
+            logController.inserir(sb.toString());
             return redirect(routes.LoginController.telaAutenticado());
         }
 
@@ -51,8 +62,12 @@ public class LoginController extends Controller {
     }
 
     public static Result logout() {
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
         session().clear();
         log.info("Usuário saiu do sistema");
+        formatter.format("Usuário saiu do sistema.");
+        logController.inserir(sb.toString());
         return redirect(routes.LoginController.telaLogout());
     }
 }

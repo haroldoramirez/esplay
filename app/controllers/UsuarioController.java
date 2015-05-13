@@ -5,6 +5,7 @@ import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
 import models.Log;
 import models.Usuario;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -16,14 +17,14 @@ import java.util.Formatter;
 
 public class UsuarioController extends Controller {
 
-    static org.slf4j.Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+    static Logger logger = LoggerFactory.getLogger(UsuarioController.class);
 
     static LogController logController = new LogController();
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result inserir() {
 
         StringBuilder sb = new StringBuilder();
-
         Formatter formatter = new Formatter(sb);
 
         String username = session().get("email");
@@ -52,18 +53,28 @@ public class UsuarioController extends Controller {
         return created(Json.toJson(usuario));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result atualizar(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Usuario usuario = Json.fromJson(request().body().asJson(), Usuario.class);
 
         try {
             Ebean.update(usuario);
             logger.info("Usuario atualizado");
+            formatter.format("Conta: '%1s' atualizou o usuário: '%2s'", username, usuario.getEmail());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
         return ok(Json.toJson(usuario));
     }
 
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorId(Long id) {
         Usuario usuario = Ebean.find(Usuario.class, id);
 
@@ -74,11 +85,14 @@ public class UsuarioController extends Controller {
         return ok(Json.toJson(usuario));
     }
 
-    public static Result buscaPorPaginas(Long pagina) {
-        return TODO;
-    }
-
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result remover(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Usuario usuario = Ebean.find(Usuario.class, id);
 
         if (usuario == null) {
@@ -92,6 +106,8 @@ public class UsuarioController extends Controller {
         try {
             Ebean.delete(usuario);
             logger.info("Usuario deletado");
+            formatter.format("Conta: '%1s' deletou um usuário", username);
+            logController.inserir(sb.toString());
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste usuário, remova-os primeiro");
         } catch (Exception e) {
@@ -104,5 +120,9 @@ public class UsuarioController extends Controller {
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
         return ok(Json.toJson(Ebean.find(Usuario.class).findList()));
+    }
+
+    public static Result buscaPorPaginas(Long pagina) {
+        return TODO;
     }
 }

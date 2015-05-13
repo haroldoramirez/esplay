@@ -9,7 +9,6 @@ import play.mvc.Result;
 public class LogController extends Controller {
 
     public static Result inserir(String mensagem) {
-
         Log log = new Log();
         log.setMensagem(mensagem);
         Ebean.save(log);

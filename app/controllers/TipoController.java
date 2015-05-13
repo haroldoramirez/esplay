@@ -9,12 +9,21 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.persistence.PersistenceException;
+import java.util.Formatter;
 
 public class TipoController extends Controller {
 
-    static Logger log = LoggerFactory.getLogger(TipoController.class);
+    static Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+
+    static LogController logController = new LogController();
 
     public static Result inserir() {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Tipo tipo = Json.fromJson(request().body().asJson(), Tipo.class);
 
         Tipo tipoBusca = Ebean.find(Tipo.class).where().eq("nome", tipo.getNome()).findUnique();
@@ -25,7 +34,9 @@ public class TipoController extends Controller {
 
         try {
             Ebean.save(tipo);
-            log.info("Novo Tipo de compromisso criado: {}", tipo.getNome());
+            logger.info("Novo Tipo de compromisso criado: {}", tipo.getNome());
+            formatter.format("Conta: '%1s' criou o usuário: '%2s'", username, tipo.getNome());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -34,11 +45,19 @@ public class TipoController extends Controller {
     }
 
     public static Result atualizar(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Tipo tipo = Json.fromJson(request().body().asJson(), Tipo.class);
 
         try {
             Ebean.update(tipo);
-            log.info("Tipo de compromisso: '{}' atualizado", tipo.getNome());
+            logger.info("Tipo de compromisso: '{}' atualizado", tipo.getNome());
+            formatter.format("Conta: '%1s' atualizou o usuário: '%2s'", username, tipo.getNome());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -64,6 +83,12 @@ public class TipoController extends Controller {
     }
 
     public static Result remover(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Tipo tipo = Ebean.find(Tipo.class, id);
 
         if (tipo == null) {
@@ -76,9 +101,9 @@ public class TipoController extends Controller {
 
         try {
             Ebean.delete(tipo);
-            log.info("Tipo de compromisso deletado");
-        } catch (PersistenceException e) {
-            return badRequest("Existem dados que dependem deste tipo de Compromisso, remova-os primeiro");
+            logger.info("Tipo de compromisso deletado");
+            formatter.format("Conta: '%1s' deletou um tipo de compromisso.", username);
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }

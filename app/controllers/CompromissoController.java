@@ -12,12 +12,21 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.persistence.PersistenceException;
+import java.util.Formatter;
 
 public class CompromissoController extends Controller {
 
-    static Logger log = LoggerFactory.getLogger(CompromissoController.class);
+    static Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+
+    static LogController logController = new LogController();
 
     public static Result inserir() {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
         Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("titulo", compromisso.getTitulo()).findUnique();
@@ -36,7 +45,9 @@ public class CompromissoController extends Controller {
 
         try {
             Ebean.save(compromisso);
-            log.info("Criado um novo compromisso: {}", compromisso.getTitulo());
+            logger.info("Criado um novo compromisso: {}", compromisso.getTitulo());
+            formatter.format("Conta: '%1s' criou o compromisso: '%2s'", username, compromisso.getTitulo());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return badRequest("Erro interno de sistema");
@@ -46,11 +57,19 @@ public class CompromissoController extends Controller {
     }
 
     public static Result atualizar(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
         try {
             Ebean.update(compromisso);
-            log.info("Compromisso: '{}' atualizado", compromisso.getTitulo());
+            logger.info("Compromisso: '{}' atualizado", compromisso.getTitulo());
+            formatter.format("Conta: '%1s' atualizou o compromisso: '%2s'", username, compromisso.getTitulo());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return badRequest("Erro interno de sistema");
@@ -70,6 +89,12 @@ public class CompromissoController extends Controller {
     }
 
     public static Result remover(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Compromisso compromisso = Ebean.find(Compromisso.class, id);
 
         if (compromisso == null) {
@@ -78,7 +103,9 @@ public class CompromissoController extends Controller {
 
         try {
             Ebean.delete(compromisso);
-            log.info("Compromisso deletado");
+            logger.info("Compromisso deletado");
+            formatter.format("Conta: '%1s' deletou um compromisso", username);
+            logController.inserir(sb.toString());
         } catch (PersistenceException e) {
             return badRequest("Existem dados que dependem deste Compromisso, remova-os primeiro");
         } catch (Exception e) {

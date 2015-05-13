@@ -9,12 +9,20 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.persistence.PersistenceException;
+import java.util.Formatter;
 
 public class CategoriaController extends Controller {
 
-    static Logger log = LoggerFactory.getLogger(CategoriaController.class);
+    static Logger logger = LoggerFactory.getLogger(UsuarioController.class);
+
+    static LogController logController = new LogController();
 
     public static Result inserir() {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
 
         Categoria categoria = Json.fromJson(request().body().asJson(), Categoria.class);
 
@@ -26,7 +34,9 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.save(categoria);
-            log.info("Nova categoria de compromisso criada: {}", categoria.getNome());
+            logger.info("Nova categoria de compromisso criada: {}", categoria.getNome());
+            formatter.format("Conta: '%1s' criou a categoria de compromisso: '%2s'", username, categoria.getNome());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
@@ -36,16 +46,22 @@ public class CategoriaController extends Controller {
 
     public static Result atualizar(Long id) {
 
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Categoria categoria = Json.fromJson(request().body().asJson(), Categoria.class);
 
         try {
             Ebean.update(categoria);
-            log.info("Categoria de compromisso: '{}' atualizada", categoria.getNome());
-        } catch (PersistenceException e) {
-            return badRequest("Categoria já Cadastrada");
+            logger.info("Categoria de compromisso: '{}' atualizada", categoria.getNome());
+            formatter.format("Conta: '%1s' atualizou a categoria de compromisso: '%2s'", username, categoria.getNome());
+            logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
+
         return ok(Json.toJson(categoria));
     }
 
@@ -69,6 +85,12 @@ public class CategoriaController extends Controller {
     }
 
     public static Result remover(Long id) {
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb);
+
+        String username = session().get("email");
+
         Categoria categoria = Ebean.find(Categoria.class, id);
 
         if (categoria == null) {
@@ -77,10 +99,10 @@ public class CategoriaController extends Controller {
 
         try {
             Ebean.delete(categoria);
-            log.info("Categoria de compromisso deletada");
-        } catch (PersistenceException e) {
-            return badRequest("Existem dados que dependem desta categoria de Compromisso, remova-os primeiro");
-        } catch (Exception e) {
+            logger.info("Categoria de compromisso deletada");
+            formatter.format("Conta: '%1s' deletou uma categoria de compromisso: ", username);
+            logController.inserir(sb.toString());
+        }catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
 
