@@ -18,6 +18,7 @@ GET     /logs                             controllers.LogController.listarTodos(
 
 # Applications
 GET		/versaoplay					      controllers.Application.versaoplay()
+GET     /manual                           controllers.Application.manual()
 
 # Index page
 GET     /                                 controllers.Application.index()

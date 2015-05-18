@@ -55,12 +55,17 @@
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="label label-success">@username</span>   <span class="fa fa-cog"></span><span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="/#/compromissos">
-                            <span class="fa fa-clock-o"></span> Meus Compromissos</a>
-                        </li>
+                        @if(username){
+                            <li><a href="/#/compromissos">
+                                <span class="fa fa-clock-o"></span> Meus Compromissos</a>
+                            </li>
                         <li class="divider"></li>
+                        }
                         <li class="dropdown-header">Sistema</li>
                         @if(username){
+                            <li><a href="/manual">
+                                <span class="fa fa-book"></span> Manual</a>
+                            </li>
                             <li><a href="/#/logs">
                                 <span class="fa fa-file"></span> Logs</a>
                             </li>
@@ -170,6 +175,7 @@
 <script src="assets/app/controllers/TipoController.js"></script>
 <script src="assets/app/controllers/UsuarioController.js"></script>
 <script src="assets/app/controllers/HelpController.js"></script>
+<script src="assets/app/controllers/ManualController.js"></script>
 <script src="assets/app/controllers/LogsController.js"></script>
 </body>
 </html>

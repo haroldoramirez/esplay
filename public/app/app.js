@@ -88,7 +88,11 @@ angular
                .when('/logs', {
                   templateUrl: '/assets/app/views/logs.html',
                   controller: 'LogListController'
-             });
+             })
+               .when('/manual', {
+                  templateUrl: '/assets/app/views/manual.html',
+                  controller: 'ManualController'
+               });
    //Configuração das notificações
    }).config(function(toastrConfig) {
         angular.extend(toastrConfig, {

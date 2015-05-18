@@ -1,0 +1,83 @@
+/********************************************************/
+/*              manual-rpmf - Manual RPMF               */
+/* ITAI - Instituto de Tecnologia Aplicada a Inovação   */
+/* style.css - Folha de Estilo para visualização no pc  */
+/*                                                      */
+/* @author  = Diego Neves                               */
+/* @email   = diego.neves@itai.org.br                   */
+/* @version = 0.1                                       */
+/********************************************************/
+
+@media screen {
+	.visible-screen { display: inherit !important; }
+	.hidden-screen  { display: none !important; }
+
+  body {
+    padding-top: 50px;
+  }
+
+  p {
+	 text-align: justify;
+   font-size: 14px;
+  }
+
+  img{
+    max-width: 100%
+  }
+
+  li.nolist {
+	 list-style: none;
+  }
+
+  .img-thumbnail p{
+    font-size: 10px;
+  }
+
+  .bs-sidebar.affix {
+    position: fixed;
+  }
+
+  .bs-sidenav {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #f7f5fa;
+    border-radius: 5px;
+  }
+
+  .bs-sidebar .nav > li > a {
+    display: block;
+    color: #008b39;
+    padding: 5px 20px;
+  }
+
+  .bs-sidebar .nav > li > a:hover,
+  .bs-sidebar .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #e5e3e9;
+    border-right: 1px solid #008b39;
+  }
+
+  .bs-sidebar .nav > .active > a,
+  .bs-sidebar .nav > .active:hover > a,
+  .bs-sidebar .nav > .active:focus > a {
+    font-weight: bold;
+    color: #008b39;
+    background-color: transparent;
+    border-right: 1px solid #008b39;
+  }
+
+  .bs-sidebar .nav .nav {
+    display: none;
+    margin-bottom: 8px;
+  }
+
+ .bs-sidebar .nav .nav > li > a {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    font-size: 90%;
+  }
+}

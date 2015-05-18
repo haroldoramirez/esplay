@@ -1,0 +1,94 @@
+/********************************************************/
+/*				manual-rpmf - Manual RPMF				*/
+/* ITAI - Instituto de Tecnologia Aplicada a Inovação	*/
+/* print.css - Folha de Estilo para Impressão           */
+/*														*/
+/* @author  = Diego Neves              					*/
+/* @email   = diego.neves@itai.org.br                   */
+/* @version = 0.1										*/
+/********************************************************/
+@media print {
+	.visible-print {
+		display: inherit !important;
+	}
+	.hidden-print {
+		display: none !important;
+	}
+	body {
+		font-family: arial;
+	}
+	article {
+		margin-top: 0cm;
+		margin-right: 1cm;
+		margin-bottom: 0cm;
+		margin-left: 1cm;
+		page-break-after: always;
+	}
+	header {
+		text-align: right;
+		font-size: 10px;
+	}
+	section {
+		/*height: 22cm*/
+		height: 26.7cm;
+	}
+	footer {
+		font-size: 10px;
+	}
+	table {
+		text-align: center;
+		width: 100%
+	}
+	p {
+		text-align: justify;
+		font-size: 14px;
+	}
+	img {
+		max-width: 100%;
+	}
+	.firstpage h1,.firstpage h2 {
+		text-align: center;
+		padding: 10px 0 5px 0;
+	}
+	.page h1 {
+		padding: -2px;
+	}
+	.topo_imgs {
+		margin-top: 40px;
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	.border {
+		border: solid 1px #000000;
+	}
+	.small {
+		width: 30px;
+	}
+	.indice {
+		width: 100%;
+	}
+	.indice tr {
+		border-bottom: solid 1px #000000;
+	}
+	.indice .ind1 {
+		width: 90px;
+		text-align: left;
+	}
+	.indice .ind2 {
+		text-align: left;
+	}
+	.indice .ind3 {
+		width: 50px;
+		text-align: right;
+	}
+	li.nolist {
+		list-style: none;
+	}
+	.img-thumbnail div {
+		border: 0px;
+		padding: 1px;
+	}
+	.img-thumbnail p {
+		font-size: 10px;
+	}
+}
