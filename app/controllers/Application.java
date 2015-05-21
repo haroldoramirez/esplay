@@ -15,6 +15,7 @@ public class Application extends Controller {
     }
 
     public static Result manual() {
-        return ok(views.html.manual.render());
+        String username = session().get("email");
+        return ok(views.html.manual.render(username));
     }
 }

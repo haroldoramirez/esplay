@@ -1,3 +1,4 @@
+@(username: String)
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
     <link href="assets/css/prints.css" rel="stylesheet"/>
     <!--Awesome Icons-->
     <link rel="stylesheet" href="assets/stylesheets/awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="assets/stylesheets/stylemenu.css"/>
 </head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -27,7 +29,7 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Manual - Esplay</a>
+            <a class="navbar-brand" href="/manual">Manual Esplay</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -54,7 +56,7 @@
                     </ul></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/#/"><span class="fa fa-home fa-lg"></span> Voltar</a></li>
+                <li><a href="/#/"><span class="label label-success">@username</span>  <span class="fa fa-home fa-lg"></span></a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
@@ -93,7 +95,7 @@
                  style="border: solid 2px; width: 20cm; height: 27.5cm; margin-top: -1mm">
 
             <section>
-                <h1>Engenharia de Software – Sistema Web</h1>
+                <h1>Engenharia de Software – Sistema Esplay</h1>
                 <h2>
                     Projeto de Desenvolvimento de Software<br>(P&amp;D)
                 </h2>
@@ -202,30 +204,6 @@
                 </p>
             </footer>
         </article>
-        <article class="page firstpage visible-print">
-            <header class="hidden-screen">Engenharia de Software– Sistema Esplay</header>
-            <section>
-                <h1>ÍNDICE</h1>
-                <table class="indice">
-                    <tr>
-                        <td class="ind1">3.12</td>
-                        <td class="ind2">Criar Usuário</td>
-                        <td class="ind3">26</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">3.13</td>
-                        <td class="ind2">Editar/Excluir Usuário</td>
-                        <td class="ind3">27</td>
-                    </tr>
-                </table>
-            </section>
-            <footer class="hidden-screen">
-                <p>
-                    <span class="pull-right">II</span>
-                </p>
-            </footer>
-        </article>
-
         <!--INDICE DE ILUSTRAÕES-->
         <article class="page firstpage visible-print">
             <header class="hidden-screen">Engenharia de Software– Sistema Esplay</header>
@@ -244,198 +222,108 @@
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 3</td>
-                        <td class="ind2">Tela de Monitoramento</td>
+                        <td class="ind2">Tela de Logs</td>
                         <td class="ind3">3</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 4</td>
-                        <td class="ind2">Tela de Status da UMR</td>
+                        <td class="ind2">Tela de Agendar Compromisso</td>
                         <td class="ind3">4</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 5</td>
-                        <td class="ind2">Tela de Registros</td>
+                        <td class="ind2">Tela de Meus Compromissos</td>
                         <td class="ind3">4</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 6</td>
-                        <td class="ind2">Tela de Trigger Manual</td>
+                        <td class="ind2">Tela de Detalhe dos Compromissos</td>
                         <td class="ind3">5</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 7</td>
-                        <td class="ind2">Tela com a Lista de UMRs</td>
+                        <td class="ind2">Tela de Confirmação</td>
                         <td class="ind3">6</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 8</td>
-                        <td class="ind2">Tela de Inserção de UMR</td>
+                        <td class="ind2">Tela de Cadastro de Categoria de Compromisso</td>
                         <td class="ind3">7</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 9</td>
-                        <td class="ind2">Tela de Informações da UMR</td>
+                        <td class="ind2">Tela de Lista de Categorias</td>
                         <td class="ind3">8</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 10</td>
-                        <td class="ind2">Tela de Seleção da UMR</td>
+                        <td class="ind2">Tela de Detalhe de Categoria de Compromisso</td>
                         <td class="ind3">8</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 11</td>
-                        <td class="ind2">Tela de Canais Analógicos</td>
+                        <td class="ind2">Tela de Confirmação</td>
                         <td class="ind3">9</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 12</td>
-                        <td class="ind2">Tela de Detalhes de um Canal Analógico</td>
+                        <td class="ind2">Tela de Tipo de Compromisso</td>
                         <td class="ind3">10</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 13</td>
-                        <td class="ind2">Tela de Configuração de um Canal Analógico</td>
+                        <td class="ind2">Tela de Lista de Tipo</td>
                         <td class="ind3">11</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 14</td>
-                        <td class="ind2">Tela de Edição de Múltiplos Canais
-                            Analógicos</td>
+                        <td class="ind2">Tela Detalhe de Compromisso</td>
                         <td class="ind3">12</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 15</td>
-                        <td class="ind2">Tela de Edição Simultânea de Canais
-                            Analógicos</td>
+                        <td class="ind2">Tela de Confirmação</td>
                         <td class="ind3">12</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 16</td>
-                        <td class="ind2">Tela de Canais Digitais</td>
+                        <td class="ind2">Tela de Criar Contatos</td>
                         <td class="ind3">13</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 17</td>
-                        <td class="ind2">Tela de Detalhes de um Canal Digital</td>
+                        <td class="ind2">Tela de Lista de Contatos</td>
                         <td class="ind3">14</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 18</td>
-                        <td class="ind2">Tela de Configuração de um Canal Digital</td>
+                        <td class="ind2">Tela de Detalhe do Contato</td>
                         <td class="ind3">15</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 19</td>
-                        <td class="ind2">Tela de Edição de Múltiplos Canais Digitais</td>
+                        <td class="ind2">Tela de Confirmação</td>
                         <td class="ind3">15</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 20</td>
-                        <td class="ind2">Tela de Edição Simultânea de Canais
-                            Digitais</td>
+                        <td class="ind2">Tela de Criar Usuário</td>
                         <td class="ind3">16</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 21</td>
-                        <td class="ind2">Tela com a Lista de Triggers Analógicos</td>
+                        <td class="ind2">Tela de Lista de Usuários</td>
                         <td class="ind3">17</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 22</td>
-                        <td class="ind2">Tela de Inserção de Trigger Analógico</td>
+                        <td class="ind2">Tela de Detalhe de do Usuário</td>
                         <td class="ind3">18</td>
                     </tr>
                     <tr>
                         <td class="ind1">Ilustração 23</td>
-                        <td class="ind2">Tela com Detalhes de um Trigger Analógico</td>
+                        <td class="ind2">Tela de Confirmação</td>
                         <td class="ind3">18</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 24</td>
-                        <td class="ind2">Tela com a Lista de Triggers Digitais</td>
-                        <td class="ind3">19</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 25</td>
-                        <td class="ind2">Tela de Inserção de Trigger Digital</td>
-                        <td class="ind3">20</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 26</td>
-                        <td class="ind2">Tela com Detalhes de um Trigger Digital</td>
-                        <td class="ind3">21</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 27</td>
-                        <td class="ind2">Tela com a Lista de Eventos</td>
-                        <td class="ind3">22</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 28</td>
-                        <td class="ind2">Tela de Inserção de Evento</td>
-                        <td class="ind3">23</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 29</td>
-                        <td class="ind2">Tela com Detalhes de um Evento</td>
-                        <td class="ind3">24</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 30</td>
-                        <td class="ind2">Tela com a Lista de Grupos de Eventos</td>
-                        <td class="ind3">24</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 31</td>
-                        <td class="ind2">Tela de Inserção de Grupos de Eventos</td>
-                        <td class="ind3">25</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 32</td>
-                        <td class="ind2">Tela de Visualização de Configuração
-                            Realizada</td>
-                        <td class="ind3">26</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 33</td>
-                        <td class="ind2">Tela com o Histórico de Envios de
-                            Configuração</td>
-                        <td class="ind3">27</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 34</td>
-                        <td class="ind2">Tela de Envio de Configurações</td>
-                        <td class="ind3">27</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 35</td>
-                        <td class="ind2">Tela com a Lista de Usuários</td>
-                        <td class="ind3">28</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 36</td>
-                        <td class="ind2">Tela de Inserção de Usuário</td>
-                        <td class="ind3">29</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 37</td>
-                        <td class="ind2">Tela de Edição de Usuário e Senha</td>
-                        <td class="ind3">30</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 38</td>
-                        <td class="ind2">Tela com a Lista de Perfis de Acesso</td>
-                        <td class="ind3">30</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 39</td>
-                        <td class="ind2">Tela com Detalhes de um Perfil de Acesso</td>
-                        <td class="ind3">31</td>
-                    </tr>
-                    <tr>
-                        <td class="ind1">Ilustração 40</td>
-                        <td class="ind2">Tela de Inserção de um Perfil de Acesso</td>
-                        <td class="ind3">31</td>
                     </tr>
                 </table>
             </section>
@@ -551,7 +439,7 @@
                     <p>Ilustração 5: Tela de Meus Compromissos</p>
                 </div>
 
-                <p>
+                <p><br>
                     Ao selecionar o compromisso, o sistema irá apresentar seus detalhes,
                     podendo o usuário fazer a edição dos campos de acordo com suas necessidades.
                 </p>
@@ -621,7 +509,7 @@
                     <p>Ilustração 9: Tela da Lista de Categorias</p>
                 </div>
 
-                <p>Ao selecionar a categoria de compromisso, o sistema irá apresentar seus detalhes,
+                <p><br>Ao selecionar a categoria de compromisso, o sistema irá apresentar seus detalhes,
                     podendo o usuário fazer a edição dos campos de acordo com suas necessidades.</p>
 
                 <div class="img-thumbnail">
@@ -629,8 +517,7 @@
                     <p>Ilustração 10: Tela de Detalhe da Categoria de Compromisso</p>
                 </div>
 
-                <p>Existe apenas o campo "Nome" sendo que ele deve ser preenchido obrigatóriamente;
-
+                <p><br>Existe apenas o campo "Nome" sendo que ele deve ser preenchido obrigatóriamente;
                     Para salvar uma categoria de compromisso, deve-se clicar no botão "Atualizar",
                     lembrando que os campos devem estar preenchidos de acordo com as instruções contidas neste guia.
                 </p>
@@ -689,7 +576,7 @@
                     <p>Ilustração 13: Tela Lista de Tipos de Compromissos</p>
                 </div>
 
-                <p>Ao selecionar o tipo de compromisso, o sistema irá apresentar seus detalhes,
+                <p><br>Ao selecionar o tipo de compromisso, o sistema irá apresentar seus detalhes,
                     podendo o usuário fazer a edição dos campos de acordo com suas necessidades.</p>
 
                 <div class="img-thumbnail">
@@ -697,9 +584,7 @@
                     <p>Ilustração 14: Tela de Detalhe do Tipo de Compromisso</p>
                 </div>
 
-                <p>
-                    Existe apenas o campo "Nome" sendo que ele deve ser preenchido obrigatóriamente;
-
+                <p><br>Existe apenas o campo "Nome" sendo que ele deve ser preenchido obrigatóriamente;
                     Para salvar um tipo de compromisso, deve-se clicar no botão "Atualizar", lembrando
                     que os campos devem estar preenchidos de acordo com as instruções contidas neste guia.
                 </p>
@@ -735,7 +620,7 @@
                     <p>Ilustração 16: Tela de Cadastro de Contato</p>
                 </div>
 
-                <p>Os campo "Telefone ou Celular" não precisa ser preenchido obrigatóriamente,
+                <p><br>Os campo "Telefone ou Celular" não precisa ser preenchido obrigatóriamente,
                     o campo nome deve ser preenchido e o campo "Email" deve ser um email válido;
                     Para salvar o contato, deve-se clicar no botão "Salvar", lembrando que os
                     campos devem estar preenchidos de acordo com as instruções contidas neste guia.</p>
@@ -761,7 +646,7 @@
                     <p>Ilustração 17: Tela Lista de Contatos</p>
                 </div>
 
-                <p>Ao selecionar o contato, o sistema irá apresentar seus detalhes,
+                <p><br>Ao selecionar o contato, o sistema irá apresentar seus detalhes,
                     podendo o usuário fazer a edição dos campos de acordo com suas necessidades.</p>
 
                 <div class="img-thumbnail">
@@ -769,7 +654,7 @@
                     <p>Ilustração 18: Tela de Detalhe do Contato</p>
                 </div>
 
-                <p>Os campo "Telefone ou Celular" não precisa ser preenchido obrigatóriamente,
+                <p><br>Os campo "Telefone ou Celular" não precisa ser preenchido obrigatóriamente,
                     o campo "Nome" deve ser preenchido e o campo "Email" deve ser um email válido;
                     Para salvar o contato, deve-se clicar no botão "Atualizar",
                     lembrando que os campos devem estar preenchidos de acordo com as instruções contidas neste guia.</p>
@@ -823,7 +708,7 @@
                     <img src="assets/images/telas/telaListaDeUsuarios.png"/>
                     <p>Ilustração 21: Tela de Lista de Usuário</p>
                 </div>
-                <p>Ao selecionar o contato, o sistema irá apresentar seus detalhes,
+                <p><br>Ao selecionar o contato, o sistema irá apresentar seus detalhes,
                     podendo o usuário fazer a edição dos campos de acordo com suas necessidades.</p>
 
                 <div class="img-thumbnail">
@@ -831,7 +716,7 @@
                     <p>Ilustração 22: Tela de Detalhe do Usuário</p>
                 </div>
 
-                <p>Os campo "Telefone ou Celular" não precisa ser preenchido obrigatóriamente,
+                <p><br>Os campo "Telefone ou Celular" não precisa ser preenchido obrigatóriamente,
                     o campo "Nome" deve ser preenchido e o campo "Email" deve ser um email
                     Os campo "Email" deve ser um email válido e o campo senha pode ser diferentes caractéries e no máximo 20;
                     Para salvar o usuário, deve-se clicar no botão "Atualizar",
