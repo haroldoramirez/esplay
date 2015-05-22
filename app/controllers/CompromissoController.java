@@ -2,10 +2,7 @@ package controllers;
 
 import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
-import models.Categoria;
-import models.Compromisso;
-import models.Contato;
-import models.Tipo;
+import models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.Json;
@@ -29,6 +26,8 @@ public class CompromissoController extends Controller {
         Formatter formatter = new Formatter(sb);
 
         String username = session().get("email");
+
+        session().get("id");
 
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 

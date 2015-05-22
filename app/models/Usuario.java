@@ -21,8 +21,8 @@ public class Usuario extends EntidadePai {
     private String senha;
 
     //muitos usuarios para uma agenda
-    //@ManyToOne
-    //private Agenda agenda;
+    @ManyToOne
+    private Agenda agenda;
 
     @Deprecated
     public Usuario() {
@@ -55,6 +55,14 @@ public class Usuario extends EntidadePai {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Agenda getAgenda() {
+        return agenda;
+    }
+
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     @Override

@@ -19,8 +19,8 @@ public class Categoria extends Model {
     private String nome;
 
     //muitas categorias para um usuario
-    //@ManyToOne
-    //public Usuario dono;
+    @ManyToOne
+    public Usuario dono;
 
     public Long getId() {
         return id;
@@ -36,6 +36,14 @@ public class Categoria extends Model {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Usuario getDono() {
+        return dono;
+    }
+
+    public void setDono(Usuario dono) {
+        this.dono = dono;
     }
 
     @Override

@@ -58,7 +58,7 @@ public class ContatoController extends Controller {
         try {
             Ebean.update(contato);
             log.info("Contato: '{}' atualizado", contato.getNome());
-            formatter.format("Conta: '%1s' criou o usuário: '%2s'", username, contato.getNome());
+            formatter.format("Conta: '%1s' atualizou o usuário: '%2s'", username, contato.getNome());
             logController.inserir(sb.toString());
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");

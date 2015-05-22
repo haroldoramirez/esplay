@@ -44,23 +44,20 @@ public class Compromisso extends Model {
     @Column(nullable = false)
     private Tipo tipo;
 
-    //muitos compromissos para um contato
-    @ManyToOne
-    @Column(nullable = false)
-    private Contato contato;
-
     //muitos compromissos para uma categoria
     @ManyToOne
     @Column(nullable = false)
     private Categoria categoria;
 
-    //muitos compromissos para uma agenda
-    //@ManyToOne
-    //private Agenda agenda;
+    //muitos compromissos para um contato
+    @ManyToOne
+    @Column(nullable = false)
+    private Contato responsavel;
 
     //muitos compromissos para um usuario
-    //@ManyToOne
-    //private Usuario usuario;
+    @ManyToOne
+    @Column(nullable = false)
+    private Usuario dono;
 
     //implementar depois nao apagar
     //muitos compromissos para muitas categorias
@@ -161,20 +158,28 @@ public class Compromisso extends Model {
         this.tipo = tipo;
     }
 
-    public Contato getContato() {
-        return contato;
-    }
-
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
-
     public Categoria getCategoria() {
         return categoria;
     }
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Contato getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(Contato responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public Usuario getDono() {
+        return dono;
+    }
+
+    public void setDono(Usuario dono) {
+        this.dono = dono;
     }
 
     @Override

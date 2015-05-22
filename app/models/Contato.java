@@ -23,8 +23,8 @@ public class Contato extends Model {
     private String telefone;
 
     //um contato tem um usuario
-    //@OneToOne
-    //private Usuario dono;
+    @OneToOne
+    private Usuario dono;
 
     //varios contatos tem um usuario
     //@ManyToOne

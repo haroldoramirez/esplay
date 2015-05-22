@@ -17,7 +17,7 @@ POST    /logs                             controllers.LogController.inserir(mens
 GET     /logs                             controllers.LogController.listarTodos()
 
 # Applications
-GET		/versaoplay					      controllers.Application.versaoplay()
+GET		/sobre					          controllers.Application.sobre()
 GET     /manual                           controllers.Application.manual()
 
 # Index page
