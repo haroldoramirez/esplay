@@ -5,6 +5,7 @@ import play.libs.Json;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 public class Compromisso extends Model {
@@ -51,7 +52,6 @@ public class Compromisso extends Model {
 
     //muitos compromissos para um contato
     @ManyToOne
-    @Column(nullable = false)
     private Contato responsavel;
 
     //muitos compromissos para um usuario
@@ -66,9 +66,8 @@ public class Compromisso extends Model {
 
     //implementar depois nao apagar
     //muitos compromissos para muitos contatos
-    //@ManyToMany
-    //private List<Contato> contatos;
-
+    @ManyToMany
+    private List<Contato> contatos;
 
     public Long getId() {
         return id;
@@ -180,6 +179,14 @@ public class Compromisso extends Model {
 
     public void setDono(Usuario dono) {
         this.dono = dono;
+    }
+
+    public List<Contato> getContatos() {
+        return contatos;
+    }
+
+    public void setContatos(List<Contato> contatos) {
+        this.contatos = contatos;
     }
 
     @Override

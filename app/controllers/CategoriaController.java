@@ -2,7 +2,9 @@ package controllers;
 
 import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Query;
 import models.Categoria;
+import models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.Json;
@@ -11,6 +13,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 
 import java.util.Formatter;
+import java.util.List;
 
 public class CategoriaController extends Controller {
 
@@ -33,6 +36,10 @@ public class CategoriaController extends Controller {
         if (categoriaBusca != null) {
             return badRequest("Categoria de Compromisso já Cadastrado");
         }
+
+        Usuario dono = Ebean.find(Usuario.class).where().eq("email", username).findUnique();
+
+        categoria.setDono(dono);
 
         try {
             Ebean.save(categoria);
@@ -82,7 +89,11 @@ public class CategoriaController extends Controller {
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
-        return ok(Json.toJson(Ebean.find(Categoria.class).findList()));
+        String username = session().get("email");
+        Query<Categoria> query = Ebean.createQuery(Categoria.class, "find categoria where dono.email = :email");
+        query.setParameter("email", username);
+        List<Categoria> listaDeCategorias = query.findList();
+        return ok(Json.toJson(listaDeCategorias));
     }
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)

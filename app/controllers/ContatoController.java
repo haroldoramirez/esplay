@@ -2,7 +2,9 @@ package controllers;
 
 import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Query;
 import models.Contato;
+import models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.Json;
@@ -11,6 +13,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 
 import java.util.Formatter;
+import java.util.List;
 
 public class ContatoController extends Controller {
 
@@ -33,6 +36,11 @@ public class ContatoController extends Controller {
         if (contatoBusca != null) {
             return badRequest("Contato já Cadastrado");
         }
+
+        Usuario dono = Ebean.find(Usuario.class).where().eq("email", username).findUnique();
+
+        contato.setDono(dono);
+
 
         try {
             Ebean.save(contato);
@@ -79,7 +87,11 @@ public class ContatoController extends Controller {
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
-        return ok(Json.toJson(Ebean.find(Contato.class).findList()));
+        String username = session().get("email");
+        Query<Contato> query = Ebean.createQuery(Contato.class, "find contato where dono.email = :email");
+        query.setParameter("email", username);
+        List<Contato> listaDeConstatos = query.findList();
+        return ok(Json.toJson(listaDeConstatos));
     }
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)

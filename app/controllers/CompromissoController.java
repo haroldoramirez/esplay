@@ -2,6 +2,7 @@ package controllers;
 
 import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Query;
 import models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
 import java.util.Formatter;
+import java.util.List;
 
 public class CompromissoController extends Controller {
 
@@ -27,8 +29,6 @@ public class CompromissoController extends Controller {
 
         String username = session().get("email");
 
-        session().get("id");
-
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
         Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("titulo", compromisso.getTitulo()).findUnique();
@@ -39,11 +39,15 @@ public class CompromissoController extends Controller {
 
         Tipo tipo = Ebean.find(Tipo.class, compromisso.getTipo().getId());
         Categoria categoria = Ebean.find(Categoria.class, compromisso.getCategoria().getId());
-        Contato contato = Ebean.find(Contato.class, compromisso.getContato().getId());
+        Contato responsavel = Ebean.find(Contato.class, compromisso.getResponsavel().getId());
+        Usuario dono = Ebean.find(Usuario.class).where().eq("email", username).findUnique();
+
+        //List<Contato> contatos;
 
         compromisso.setTipo(tipo);
         compromisso.setCategoria(categoria);
-        compromisso.setContato(contato);
+        compromisso.setResponsavel(responsavel);
+        compromisso.setDono(dono);
 
         try {
             Ebean.save(compromisso);
@@ -122,6 +126,13 @@ public class CompromissoController extends Controller {
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
-        return ok(Json.toJson(Ebean.find(Compromisso.class).findList()));
+
+        //faz listagem se for responsável do compromisso e se ele estiver compartilhado
+        String username = session().get("email");
+
+        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso where dono.email = :email or responsavel.email = :email");
+        query.setParameter("email", username);
+        List<Compromisso> listaDeCompromissos = query.findList();
+        return ok(Json.toJson(listaDeCompromissos));
     }
 }

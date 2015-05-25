@@ -24,6 +24,9 @@ public class Usuario extends EntidadePai {
     @ManyToOne
     private Agenda agenda;
 
+    @OneToOne
+    private Contato contato;
+
     @Deprecated
     public Usuario() {
     }
@@ -63,6 +66,14 @@ public class Usuario extends EntidadePai {
 
     public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
+    }
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
     }
 
     @Override

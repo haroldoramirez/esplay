@@ -62,6 +62,14 @@ public class Contato extends Model {
         this.telefone = telefone;
     }
 
+    public Usuario getDono() {
+        return dono;
+    }
+
+    public void setDono(Usuario dono) {
+        this.dono = dono;
+    }
+
     @Override
     public String toString() {
         return Json.toJson(this).toString();

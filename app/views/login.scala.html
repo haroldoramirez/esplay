@@ -28,6 +28,7 @@
                 @usuarioForm.globalError.message
             </p>
             }
+            <br>
             <div class="form-wrap">
                 @form(routes.LoginController.autenticar()) {
                 <div class="form-group">
@@ -39,6 +40,8 @@
                 <input id="btn-login" class="btn btn-success" type="submit" value="Autenticar">
                 <a href="/#/" class="btn btn-default"><span class="glyphicon glyphicon-home"></span>
                     Início </a>
+                <!--<a class="btn btn-primary pull-right" href="/#/usuarios/novo">-->
+                    <!--Novo Usuário</a>-->
                 }
             </div>
             <hr>
