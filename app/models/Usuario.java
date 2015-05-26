@@ -1,12 +1,12 @@
 package models;
 
-import models.base.EntidadePai;
+import play.db.ebean.Model;
 import play.libs.Json;
 
 import javax.persistence.*;
 
 @Entity
-public class Usuario extends EntidadePai {
+public class Usuario extends Model {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,6 +19,8 @@ public class Usuario extends EntidadePai {
 
     @Column(nullable = false)
     private String senha;
+
+    protected Boolean padraoDoSistema;
 
     //muitos usuarios para uma agenda
     @ManyToOne
@@ -74,6 +76,14 @@ public class Usuario extends EntidadePai {
 
     public void setContato(Contato contato) {
         this.contato = contato;
+    }
+
+    public Boolean isPadraoDoSistema() {
+        return padraoDoSistema;
+    }
+
+    public void setPadraoDoSistema(Boolean padraoDoSistema) {
+        this.padraoDoSistema = padraoDoSistema;
     }
 
     @Override

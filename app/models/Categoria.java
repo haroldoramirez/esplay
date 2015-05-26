@@ -1,6 +1,5 @@
 package models;
 
-import models.base.EntidadePai;
 import play.db.ebean.Model;
 import play.libs.Json;
 

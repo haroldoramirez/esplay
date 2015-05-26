@@ -37,7 +37,6 @@ public class UsuarioController extends Controller {
             return badRequest("Usuário já Cadastrado");
         }
 
-
         String senha = Crypt.sha1(usuario.getSenha());
 
         usuario.setSenha(senha);
@@ -45,6 +44,7 @@ public class UsuarioController extends Controller {
         //usuario.getContato().setId(null);
 
         try {
+            Ebean.save(usuario.getContato());
             Ebean.save(usuario);
             logger.info("Conta: '{}' criou o usuário: {}", username, usuario.getEmail());
             formatter.format("Conta: '%1s' criou o usuário: '%2s'", username, usuario.getEmail());
@@ -67,6 +67,9 @@ public class UsuarioController extends Controller {
         Usuario usuario = Json.fromJson(request().body().asJson(), Usuario.class);
 
         try {
+            //atualiza as informações do contato do usuário
+            Ebean.update(usuario.getContato());
+            //atualiza as informações do usuário
             Ebean.update(usuario);
             logger.info("Usuario atualizado");
             formatter.format("Conta: '%1s' atualizou o usuário: '%2s'", username, usuario.getEmail());
@@ -108,6 +111,7 @@ public class UsuarioController extends Controller {
 
         try {
             Ebean.delete(usuario);
+            Ebean.delete(usuario.getContato());
             logger.info("Usuario deletado");
             formatter.format("Conta: '%1s' deletou um usuário", username);
             logController.inserir(sb.toString());

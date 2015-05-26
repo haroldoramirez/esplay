@@ -63,6 +63,14 @@ public class ContatoController extends Controller {
 
         Contato contato = Json.fromJson(request().body().asJson(), Contato.class);
 
+        if (contato.getDono() != null && !contato.getDono().getEmail().equals(username)) {
+            return badRequest("Você não é o dono deste usuário");
+        }
+
+        if (contato.getDono() == null) {
+            return badRequest("Este contato só pode ser alterado através da lista de usuários");
+        }
+
         try {
             Ebean.update(contato);
             log.info("Contato: '{}' atualizado", contato.getNome());
@@ -88,7 +96,7 @@ public class ContatoController extends Controller {
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
         String username = session().get("email");
-        Query<Contato> query = Ebean.createQuery(Contato.class, "find contato where dono.email = :email");
+        Query<Contato> query = Ebean.createQuery(Contato.class, "find contato where dono.email = :email or isnull(dono)");
         query.setParameter("email", username);
         List<Contato> listaDeConstatos = query.findList();
         return ok(Json.toJson(listaDeConstatos));
@@ -105,6 +113,14 @@ public class ContatoController extends Controller {
 
         if (contato == null) {
             return notFound("Contato não encontrado");
+        }
+
+        if (contato.getDono() != null && !contato.getDono().getEmail().equals(username)) {
+            return badRequest("Você não é o dono deste usuário");
+        }
+
+        if (contato.getDono() == null) {
+            return badRequest("Este contato é excluido juntamente com o usuário");
         }
 
         try {

@@ -47,12 +47,6 @@ create table contato (
   constraint pk_contato primary key (id))
 ;
 
-create table entidade_pai (
-  id                        bigint auto_increment not null,
-  padrao_do_sistema         tinyint(1) default 0,
-  constraint pk_entidade_pai primary key (id))
-;
-
 create table log (
   id                        bigint auto_increment not null,
   data_do_log               datetime,
@@ -62,18 +56,18 @@ create table log (
 
 create table tipo (
   id                        bigint auto_increment not null,
-  padrao_do_sistema         tinyint(1) default 0,
   nome                      varchar(255) not null,
   dono_id                   bigint,
+  padrao_do_sistema         tinyint(1) default 0,
   constraint uq_tipo_nome unique (nome),
   constraint pk_tipo primary key (id))
 ;
 
 create table usuario (
   id                        bigint auto_increment not null,
-  padrao_do_sistema         tinyint(1) default 0,
   email                     varchar(255) not null,
   senha                     varchar(255) not null,
+  padrao_do_sistema         tinyint(1) default 0,
   agenda_id                 bigint,
   contato_id                bigint,
   constraint uq_usuario_email unique (email),
@@ -124,8 +118,6 @@ drop table compromisso;
 drop table compromisso_contato;
 
 drop table contato;
-
-drop table entidade_pai;
 
 drop table log;
 

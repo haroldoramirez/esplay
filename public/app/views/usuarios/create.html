@@ -11,8 +11,8 @@
             <form class="form-horizontal" ng-submit="save()">
                 <div class="form-group">
                     <!--Input do Email-->
-                    <div class="col-lg-5">
-                        <label class="control-label" for="email">Email</label>
+                    <div class="col-lg-4">
+                        <label class="control-label" for="email">Email para Login</label>
                         <div ng-class="{'has-error': !usuario.email}">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -21,8 +21,28 @@
                         </div>
                     </div>
 
+                    <!--Input do Email Opcional-->
+                    <div class="col-lg-4">
+                        <label class="control-label" for="email">Email Opcional</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input autofocus placeholder="Insira um email válido" maxlength="100" class="form-control" type="email" ng-model="usuario.contato.email"/>
+                            </div>
+                    </div>
+
+                    <!--Input do Nome-->
+                    <div class="col-lg-4">
+                        <label class="control-label" for="email">Nome</label>
+                        <div ng-class="{'has-error': !usuario.contato.nome}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input autofocus placeholder="Insira um nome" maxlength="100" class="form-control" type="text" ng-model="usuario.contato.nome" required/>
+                            </div>
+                        </div>
+                    </div>
+
                     <!--Input do Senha-->
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <label class="control-label" for="senha">Senha</label>
                         <div ng-class="{'has-error': !usuario.senha}">
                             <div class="input-group">
@@ -33,10 +53,10 @@
                     </div>
 
                     <!--Botões-->
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="control-group">
                             <br>
-                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!usuario.email || !usuario.senha">
+                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!usuario.email || !usuario.senha || !usuario.contato.nome">
                                 Salvar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">

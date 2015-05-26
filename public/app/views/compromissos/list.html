@@ -28,18 +28,18 @@
                 <tr>
                     <th>Título</th>
                     <th>Descrição</th>
-                    <th>Observações</th>
                     <th>Tipo</th>
                     <th>Categoria</th>
+                    <th>Responsável</th>
                     <th>Status</th>
                     <!--<th></th>-->
                 </tr>
                 <tr ng-repeat="compromisso in compromissos">
                     <td><b><a href="#/compromissos/detalhe/{{compromisso.id}}">{{compromisso.titulo}}</a></b></td>
                     <td>{{compromisso.descricao}}</td>
-                    <td>{{compromisso.observacoes}}</td>
                     <td>{{compromisso.tipo.nome}}</td>
                     <td>{{compromisso.categoria.nome}}</td>
+                    <td>{{compromisso.responsavel.nome}}</td>
                     <td>{{compromisso.status}}</td>
                     <!--<td>-->
                     <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->

@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    < class="row">
         <fieldset>
             <h2>
                 <i class="fa fa-clock-o"></i> Detalhe do Compromisso <a class="btn btn-link pull-right">
@@ -128,7 +128,7 @@
                 </div>
 
                 <!--Input do Categoria-->
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <label class="control-label" for="compromisso.categoria">Categoria</label>
                     <div ng-class="{'has-error': !compromisso.categoria}">
                         <div class="input-group">
@@ -143,18 +143,16 @@
                 <!--Input do Contato Responsável-->
                 <div class="col-lg-3">
                     <label class="control-label">Responsável</label>
-                    <div ng-class="{'has-error': !compromisso.responsavel}">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users"></i></span>
                             <select ng-model="compromisso.responsavel" class="form-control" ng-options="contato.nome for contato in contatos" id="compromisso.responsavel">
                                 <option disabled ng-show="!compromisso.responsavel.id" value="">{{compromisso.responsavel.nome}}</option>
                             </select>
                         </div>
-                    </div>
                 </div>
 
                     <!--Input do Observações-->
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <label class="control-label" for="observacoes">Observações</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>

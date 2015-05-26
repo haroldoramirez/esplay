@@ -1,12 +1,12 @@
 package models;
 
-import models.base.EntidadePai;
+import play.db.ebean.Model;
 import play.libs.Json;
 
 import javax.persistence.*;
 
 @Entity
-public class Tipo extends EntidadePai {
+public class Tipo extends Model {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,7 +19,9 @@ public class Tipo extends EntidadePai {
 
     //muitas categorias para um usuario
     @ManyToOne
-    public Usuario dono;
+    private Usuario dono;
+
+    private Boolean padraoDoSistema;
 
     public Long getId() {
         return id;
@@ -45,9 +47,19 @@ public class Tipo extends EntidadePai {
         this.dono = dono;
     }
 
+    public Boolean isPadraoDoSistema() {
+        return padraoDoSistema;
+    }
+
+    public void setPadraoDoSistema(Boolean padraoDoSistema) {
+        this.padraoDoSistema = padraoDoSistema;
+    }
+
     @Override
     public String toString() {
         return Json.toJson(this).toString();
     }
+
+
 
 }
