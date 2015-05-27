@@ -128,12 +128,23 @@
                     </div>
                 </div>
 
-                <!--Input do Contato Responsável-->
+                <!--Input do Usuário Compartilhar-->
                 <div class="col-lg-3">
-                    <label class="control-label">Responsável</label>
+                    <label class="control-label">Compartilhar</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                        <select ng-model="compromisso.responsavel" class="form-control" ng-options="contato.nome for contato in contatos">
+                        <select ng-model="compromisso.responsavel" class="form-control" ng-options="usuario.email for usuario in usuarios">
+                            <option value="">Selecione</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--Input do Contato-->
+                <div class="col-lg-3">
+                    <label class="control-label">Contato</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                        <select ng-model="compromisso.contato" class="form-control" ng-options="contato.nome for contato in contatos">
                             <option value="">Selecione</option>
                         </select>
                     </div>

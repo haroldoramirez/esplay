@@ -32,6 +32,7 @@
                     <th>Categoria</th>
                     <th>Responsável</th>
                     <th>Status</th>
+                    <th>Compartilhardo por</th>
                     <!--<th></th>-->
                 </tr>
                 <tr ng-repeat="compromisso in compromissos">
@@ -41,6 +42,7 @@
                     <td>{{compromisso.categoria.nome}}</td>
                     <td>{{compromisso.responsavel.nome}}</td>
                     <td>{{compromisso.status}}</td>
+                    <td>{{compromisso.dono.contato.nome}}</td>
                     <!--<td>-->
                     <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
                     <!--</td>-->

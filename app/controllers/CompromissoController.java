@@ -74,6 +74,10 @@ public class CompromissoController extends Controller {
 
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
+        if (compromisso.getDono() != null && !compromisso.getDono().getEmail().equals(username)) {
+            return badRequest("Só o usuário criador do compromisso pode alterá-lo");
+        }
+
         try {
             Ebean.update(compromisso);
             logger.info("Compromisso: '{}' atualizado", compromisso.getTitulo());
@@ -110,6 +114,10 @@ public class CompromissoController extends Controller {
 
         if (compromisso == null) {
             return notFound("Compromisso não encontrado");
+        }
+
+        if (compromisso.getDono() != null && !compromisso.getDono().getEmail().equals(username)) {
+            return badRequest("Apenas o criador do compromisso pode remover");
         }
 
         try {

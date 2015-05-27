@@ -3,7 +3,6 @@ package controllers;
 import actions.PlayAuthenticatedSecured;
 import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
-import models.Contato;
 import models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +39,7 @@ public class UsuarioController extends Controller {
         String senha = Crypt.sha1(usuario.getSenha());
 
         usuario.setSenha(senha);
+        usuario.setPadraoDoSistema(false);
 
         //usuario.getContato().setId(null);
 

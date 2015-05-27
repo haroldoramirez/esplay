@@ -27,11 +27,13 @@
             <table ng-init="init()" class="table-striped table table-hover table-bordered">
                 <br>
                 <tr>
-                    <th>Email</th>
+                    <th>Nome</th>
+                    <th>Email para Login</th>
                     <!--<th></th>-->
                 </tr>
                 <tr ng-repeat="usuario in usuarios">
-                    <td><b><a href="#/usuarios/detalhe/{{usuario.id}}">{{usuario.email}}</a></b></td>
+                    <td><b><a href="#/usuarios/detalhe/{{usuario.id}}">{{usuario.contato.nome}}</a></b></td>
+                    <td>{{usuario.contato.email}}</td>
                     <!--<td>-->
                     <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
                     <!--</td>-->

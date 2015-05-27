@@ -58,6 +58,10 @@ public class TipoController extends Controller {
 
         Tipo tipo = Json.fromJson(request().body().asJson(), Tipo.class);
 
+        if (tipo.isPadraoDoSistema()) {
+            return badRequest("Registro padrão do sistema não pode ser alterado");
+        }
+
         try {
             Ebean.update(tipo);
             logger.info("Tipo de compromisso: '{}' atualizado", tipo.getNome());

@@ -41,7 +41,6 @@ public class ContatoController extends Controller {
 
         contato.setDono(dono);
 
-
         try {
             Ebean.save(contato);
             log.info("Novo contato criado: {}", contato.getNome());

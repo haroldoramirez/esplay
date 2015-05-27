@@ -16,7 +16,7 @@ public class Tipo extends Model {
 
     @Column(nullable = false, unique = true)
     private String nome;
-
+    
     //muitas categorias para um usuario
     @ManyToOne
     private Usuario dono;

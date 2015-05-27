@@ -28,17 +28,8 @@
                         <div ng-class="{'has-error': !usuario.email}">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input autofocus placeholder="Insira um email válido" maxlength="100" class="form-control" type="email" ng-model="usuario.email" id="email" required/>
+                                <input autofocus placeholder="Insira um email para login válido" maxlength="100" class="form-control" type="email" ng-model="usuario.email" id="email" required/>
                             </div>
-                        </div>
-                    </div>
-
-                    <!--Input do Email Opcional-->
-                    <div class="col-lg-4">
-                        <label class="control-label" for="email">Email Opcional</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input autofocus placeholder="Insira um email válido" maxlength="100" class="form-control" type="email" ng-model="usuario.contato.email"/>
                         </div>
                     </div>
 
@@ -61,6 +52,24 @@
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
                                 <input placeholder="Insira a senha" maxlength="20" class="form-control" type="password" ng-model="usuario.senha" id="senha" required/>
                             </div>
+                        </div>
+                    </div>
+
+                    <!--Input do Email Opcional-->
+                    <div class="col-lg-4">
+                        <label class="control-label" for="email">Email Opcional</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input autofocus placeholder="Insira um email opcional válido" maxlength="100" class="form-control" type="email" ng-model="usuario.contato.email"/>
+                        </div>
+                    </div>
+
+                    <!--Input do Telefone-->
+                    <div class="col-lg-2">
+                        <label class="control-label" for="telefone">Telefone ou Celular</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                            <input ui-br-phone-number placeholder="(__) ____-____" maxlength="15" class="form-control telefone" type="text" ng-model="usuario.contato.telefone" id="telefone"/>
                         </div>
                     </div>
 
