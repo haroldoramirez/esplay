@@ -20,7 +20,9 @@ public class Usuario extends Model {
     @Column(nullable = false)
     private String senha;
 
-    protected Boolean padraoDoSistema;
+    private Boolean padraoDoSistema;
+
+    private Integer privilegio;
 
     //muitos usuarios para uma agenda
     @ManyToOne
@@ -78,12 +80,20 @@ public class Usuario extends Model {
         this.contato = contato;
     }
 
-    public Boolean isPadraoDoSistema() {
+    public Boolean getPadraoDoSistema() {
         return padraoDoSistema;
     }
 
     public void setPadraoDoSistema(Boolean padraoDoSistema) {
         this.padraoDoSistema = padraoDoSistema;
+    }
+
+    public Integer getPrivilegio() {
+        return privilegio;
+    }
+
+    public void setPrivilegio(Integer privilegio) {
+        this.privilegio = privilegio;
     }
 
     @Override

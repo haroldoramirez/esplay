@@ -30,10 +30,22 @@ public class UsuarioController extends Controller {
 
         Usuario usuario = Json.fromJson(request().body().asJson(), Usuario.class);
 
-        Usuario usuarioBusca = Ebean.find(Usuario.class).where().eq("email", usuario.getEmail()).findUnique();
+        //faz uma busca no banco de dados para ver se esse já esteja cadastrado na base de dados
+        Usuario usuarioUnico = Ebean.find(Usuario.class).where().eq("email", usuario.getEmail()).findUnique();
 
-        if (usuarioBusca != null) {
+        //verifica se o usuario foi encontrado
+        if (usuarioUnico != null) {
             return badRequest("Usuário já Cadastrado");
+        }
+
+        //busca o usuário atual que esteja logado no sistema
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
+                .setParameter("email", username)
+                .findUnique();
+
+        //verificar se o usuario atual encontrado é administrador
+        if (usuarioAtual.getPrivilegio() == 1) {
+            return badRequest("Você não tem privilégios de Administrador");
         }
 
         String senha = Crypt.sha1(usuario.getSenha());
@@ -65,6 +77,20 @@ public class UsuarioController extends Controller {
         String username = session().get("email");
 
         Usuario usuario = Json.fromJson(request().body().asJson(), Usuario.class);
+
+        if (usuario.getPadraoDoSistema() == true) {
+            return badRequest("Registro padrão do sistema");
+        }
+
+        //busca o usuário atual que esteja logado no sistema
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
+                .setParameter("email", username)
+                .findUnique();
+
+        //verificar se o usuario atual encontrado é administrador
+        if (usuarioAtual.getPrivilegio() == 1) {
+            return badRequest("Você não tem privilégios de Administrador");
+        }
 
         try {
             //atualiza as informações do contato do usuário
@@ -105,8 +131,22 @@ public class UsuarioController extends Controller {
             return notFound("Usuário não encontrado");
         }
 
-        if (usuario.isPadraoDoSistema()) {
+        if (usuario.getPadraoDoSistema() == true) {
             return badRequest("Registro padrão do sistema");
+        }
+
+        //busca o usuário atual que esteja logado no sistema
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
+                .setParameter("email", username)
+                .findUnique();
+
+        //verificar se o usuario atual encontrado é administrador
+        if (usuarioAtual.getPrivilegio() == 1) {
+            return badRequest("Você não tem privilégios de Administrador");
+        }
+
+        if (usuarioAtual.getEmail().equals(username)) {
+            return badRequest("Não excluir sua própria conta");
         }
 
         try {

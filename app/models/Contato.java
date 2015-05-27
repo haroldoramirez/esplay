@@ -17,7 +17,6 @@ public class Contato extends Model {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
     private String email;
 
     private String telefone;

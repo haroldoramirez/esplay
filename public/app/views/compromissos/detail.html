@@ -105,59 +105,48 @@
                         </div>
                     </div>
 
-                <!--Input do Descrição-->
-                <div class="col-lg-4">
-                    <label class="control-label" for="descricao">Descrição</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
-                        <input placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao"/>
-                    </div>
-                </div>
-
-                <!--Input do Tipo-->
-                <div class="col-lg-2">
-                    <label class="control-label" for="compromisso.tipo">Tipo</label>
-                    <div ng-class="{'has-error': !compromisso.tipo}">
+                    <!--Input do Descrição-->
+                    <div class="col-lg-4">
+                        <label class="control-label" for="descricao">Descrição</label>
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-tags"></i></span>
-                            <select ng-model="compromisso.tipo" class="form-control" ng-options="tipo.nome for tipo in tipos" id="compromisso.tipo">
-                                <option disabled ng-show="!compromisso.tipo.id" value="">{{compromisso.tipo.nome}}</option>
-                            </select>
+                            <span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
+                            <input placeholder="Insira a descrição" maxlength="100" class="form-control" type="text" ng-model="compromisso.descricao" id="descricao"/>
                         </div>
                     </div>
-                </div>
 
-                <!--Input do Categoria-->
-                <div class="col-lg-3">
-                    <label class="control-label" for="compromisso.categoria">Categoria</label>
-                    <div ng-class="{'has-error': !compromisso.categoria}">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                            <select ng-model="compromisso.categoria" class="form-control" ng-options="categoria.nome for categoria in categorias" id="compromisso.categoria">
-                                <option disabled ng-show="!compromisso.categoria.id" value="">{{compromisso.categoria.nome}}</option>
-                            </select>
+                    <!--Input do Tipo-->
+                    <div class="col-lg-2">
+                        <label class="control-label" for="compromisso.tipo">Tipo</label>
+                        <div ng-class="{'has-error': !compromisso.tipo}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-tags"></i></span>
+                                <select ng-model="compromisso.tipo" class="form-control" ng-options="tipo.nome for tipo in tipos" id="compromisso.tipo">
+                                    <option disabled ng-show="!compromisso.tipo.id" value="">{{compromisso.tipo.nome}}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!--Input do Contato Responsável-->
-                <div class="col-lg-3">
-                    <label class="control-label">Responsável</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                            <select ng-model="compromisso.responsavel" class="form-control" ng-options="contato.nome for contato in contatos" id="compromisso.responsavel">
-                                <option disabled ng-show="!compromisso.responsavel.id" value="">{{compromisso.responsavel.nome}}</option>
-                            </select>
+                    <!--Input do Categoria-->
+                    <div class="col-lg-3">
+                        <label class="control-label" for="compromisso.categoria">Categoria</label>
+                        <div ng-class="{'has-error': !compromisso.categoria}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                                <select ng-model="compromisso.categoria" class="form-control" ng-options="categoria.nome for categoria in categorias" id="compromisso.categoria">
+                                    <option disabled ng-show="!compromisso.categoria.id" value="">{{compromisso.categoria.nome}}</option>
+                                </select>
+                            </div>
                         </div>
-                </div>
+                    </div>
 
                     <!--Input do Observações-->
                     <div class="col-lg-4">
                         <label class="control-label" for="observacoes">Observações</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
-                            <input placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes"/>
-                        </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                <input placeholder="Insira as observações" maxlength="100" class="form-control" type="text" ng-model="compromisso.observacoes" id="observacoes"/>
+                            </div>
                     </div>
 
                     <!--Input do Local-->
@@ -169,11 +158,20 @@
                         </div>
                     </div>
 
+                    <!--Input de Compartilhar-->
+                    <div class="col-lg-4">
+                        <label class="control-label" for="compartilhar">Compartilhar</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                            <input placeholder="Insira o email do usuário" maxlength="100" class="form-control" type="email" ng-model="compromisso.compartilhar" id="compartilhar"/>
+                        </div>
+                    </div>
+
                     <!--Botões-->
                     <div class="col-lg-12">
                         <div class="control-group">
                             <br>
-                            <button class="btn btn-primary" type="submit" ng-disabled="!compromisso.titulo || !compromisso.tipo || !compromisso.categoria || !compromisso.dataInicio || !compromisso.dataFim || !compromisso.horaInicio || !compromisso.horaFim || !compromisso.status">
+                            <button class="btn btn-primary" type="submit" ng-disabled="!compromisso.titulo || !compromisso.tipo || !compromisso.categoria || !compromisso.dataInicio || !compromisso.dataFim || !compromisso.horaInicio || !compromisso.horaFim || !compromisso.status || !compromisso.contato">
                                 Atualizar
                             </button>
                             <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
@@ -181,7 +179,6 @@
                             </button>
                         </div>
                     </div>
-                </div>
             </form>
         </fieldset>
     </div>

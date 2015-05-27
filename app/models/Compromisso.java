@@ -52,12 +52,17 @@ public class Compromisso extends Model {
 
     //muitos compromissos para um contato
     @ManyToOne
-    private Contato responsavel;
+    @Column(nullable = false)
+    private Contato contato;
 
     //muitos compromissos para um usuario
     @ManyToOne
     @Column(nullable = false)
     private Usuario dono;
+
+    @ManyToOne
+    @Column(nullable = false)
+    private Usuario compartilhar;
 
     //implementar depois nao apagar
     //muitos compromissos para muitas categorias
@@ -66,8 +71,8 @@ public class Compromisso extends Model {
 
     //implementar depois nao apagar
     //muitos compromissos para muitos contatos
-    @ManyToMany
-    private List<Contato> contatos;
+    //@ManyToMany
+    //private List<Contato> contatos;
 
     public Long getId() {
         return id;
@@ -165,14 +170,6 @@ public class Compromisso extends Model {
         this.categoria = categoria;
     }
 
-    public Contato getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Contato responsavel) {
-        this.responsavel = responsavel;
-    }
-
     public Usuario getDono() {
         return dono;
     }
@@ -181,12 +178,20 @@ public class Compromisso extends Model {
         this.dono = dono;
     }
 
-    public List<Contato> getContatos() {
-        return contatos;
+    public Contato getContato() {
+        return contato;
     }
 
-    public void setContatos(List<Contato> contatos) {
-        this.contatos = contatos;
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
+    public Usuario getCompartilhar() {
+        return compartilhar;
+    }
+
+    public void setCompartilhar(Usuario compartilhar) {
+        this.compartilhar = compartilhar;
     }
 
     @Override

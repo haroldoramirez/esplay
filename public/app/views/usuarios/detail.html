@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <!--Input do Email-->
                     <div class="col-lg-4">
-                        <label class="control-label" for="email">Email</label>
+                        <label class="control-label" for="email">Email para Login</label>
                         <div ng-class="{'has-error': !usuario.email}">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -70,6 +70,20 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
                             <input ui-br-phone-number placeholder="(__) ____-____" maxlength="15" class="form-control telefone" type="text" ng-model="usuario.contato.telefone" id="telefone"/>
+                        </div>
+                    </div>
+
+                    <!--Input Privilégio-->
+                    <div class="col-lg-3">
+                        <label class="control-label">Privilégio</label>
+                        <div ng-class="{'has-error': !usuario.privilegio}">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-bolt"></i></span>
+                                <select ng-model="usuario.privilegio" class="form-control">
+                                    <option value=1>Usuário</option>
+                                    <option value=2>Administrador</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
