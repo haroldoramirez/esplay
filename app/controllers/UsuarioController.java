@@ -56,7 +56,6 @@ public class UsuarioController extends Controller {
         //usuario.getContato().setId(null);
 
         try {
-            Ebean.save(usuario.getContato());
             Ebean.save(usuario);
             logger.info("Conta: '{}' criou o usuário: {}", username, usuario.getEmail());
             formatter.format("Conta: '%1s' criou o usuário: '%2s'", username, usuario.getEmail());
@@ -93,8 +92,6 @@ public class UsuarioController extends Controller {
         }
 
         try {
-            //atualiza as informações do contato do usuário
-            Ebean.update(usuario.getContato());
             //atualiza as informações do usuário
             Ebean.update(usuario);
             logger.info("Usuario atualizado");
@@ -146,12 +143,11 @@ public class UsuarioController extends Controller {
         }
 
         if (usuarioAtual.getEmail().equals(username)) {
-            return badRequest("Não excluir sua própria conta");
+            return badRequest("Não excluir usuário que esteja autenticado no sistema");
         }
 
         try {
             Ebean.delete(usuario);
-            Ebean.delete(usuario.getContato());
             logger.info("Usuario deletado");
             formatter.format("Conta: '%1s' deletou um usuário", username);
             logController.inserir(sb.toString());

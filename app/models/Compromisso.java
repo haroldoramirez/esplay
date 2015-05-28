@@ -60,9 +60,8 @@ public class Compromisso extends Model {
     @Column(nullable = false)
     private Usuario dono;
 
-    @ManyToOne
-    @Column(nullable = false)
-    private Usuario compartilhar;
+    @ManyToMany
+    private List<Usuario> usuarios;
 
     //implementar depois nao apagar
     //muitos compromissos para muitas categorias
@@ -186,12 +185,12 @@ public class Compromisso extends Model {
         this.contato = contato;
     }
 
-    public Usuario getCompartilhar() {
-        return compartilhar;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public void setCompartilhar(Usuario compartilhar) {
-        this.compartilhar = compartilhar;
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     @Override

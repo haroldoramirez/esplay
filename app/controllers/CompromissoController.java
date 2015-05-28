@@ -12,6 +12,7 @@ import play.mvc.Result;
 import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
+import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.List;
 
@@ -40,9 +41,16 @@ public class CompromissoController extends Controller {
         Tipo tipo = Ebean.find(Tipo.class, compromisso.getTipo().getId());
         Categoria categoria = Ebean.find(Categoria.class, compromisso.getCategoria().getId());
         Contato contato = Ebean.find(Contato.class, compromisso.getContato().getId());
-        Usuario compartilhar = null;
-        if(compromisso.getCompartilhar() != null)
-            compartilhar = Ebean.find(Usuario.class, compromisso.getCompartilhar().getId());
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+        if(compromisso.getUsuarios() != null) {
+            for (Usuario u:compromisso.getUsuarios()) {
+                Usuario a = Ebean.find(Usuario.class, u.getEmail());
+                if (a != null) {
+                    usuarios.add(a);
+                }
+            }
+        }
+
         Usuario dono = Ebean.find(Usuario.class).where().eq("email", username).findUnique();
 
         //List<Contato> contatos;
@@ -50,7 +58,7 @@ public class CompromissoController extends Controller {
         compromisso.setTipo(tipo);
         compromisso.setCategoria(categoria);
         compromisso.setContato(contato);
-        compromisso.setCompartilhar(compartilhar);
+        compromisso.setUsuarios(usuarios);
         compromisso.setDono(dono);
 
         try {
@@ -142,16 +150,16 @@ public class CompromissoController extends Controller {
         //faz listagem se for responsável do compromisso e se ele estiver compartilhado
         String username = session().get("email");
 
-        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario fetch contato where email = :email")
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
                 .setParameter("email", username)
                 .findUnique();
 
-        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso fetch compartilhar fetch contatos " +
+        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso fetch usuarios " +
                 "where dono.id = :idUsuario " +
-                "or compartilhar.id = :idContato ");
+                "or usuarios.email = :email ");
                 //"or contatos.id in select contato.id from contato join usuario as u where u.email = :email ");
         query.setParameter("idUsuario", usuarioAtual.getId());
-        query.setParameter("idContato", usuarioAtual.getContato().getId());
+        query.setParameter("email", usuarioAtual.getEmail());
         //query.setParameter("email", username);
         List<Compromisso> listaDeCompromissos = query.findList();
         return ok(Json.toJson(listaDeCompromissos));

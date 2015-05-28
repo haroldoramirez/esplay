@@ -3,7 +3,7 @@ function updateActivedPage(scope) {
 }
 
 angular.module('agenda')
-  .controller('CompromissoCreateController', function ($scope, $modal, $location, Compromisso, Tipo, Categoria, Contato, toastr) {
+  .controller('CompromissoCreateController', function ($scope, $modal, $location, Compromisso, Tipo, Categoria, Contato, Usuario, toastr) {
         $scope.compromisso = {};
         $scope.save = function(){
             console.log($scope.compromisso);
@@ -31,6 +31,10 @@ angular.module('agenda')
 
              Contato.getAll(function(data){
                 $scope.contatos = data;
+             });
+
+             Usuario.getAll(function(data){
+                $scope.usuarios = data;
              })
         };
 
@@ -87,7 +91,7 @@ angular.module('agenda')
              });
           };
 
-    }).controller('CompromissoDetailController', function ($scope, $modal, $routeParams, $location, Compromisso, Tipo, Categoria, Contato, toastr){
+    }).controller('CompromissoDetailController', function ($scope, $modal, $routeParams, $location, Compromisso, Tipo, Categoria, Contato, Usuario, toastr){
 
         $scope.open = function (size) {
 
@@ -112,6 +116,7 @@ angular.module('agenda')
             $scope.tipos = Tipo.getAll();
             $scope.categorias = Categoria.getAll();
             $scope.contatos = Contato.getAll();
+            $scope.usuarios = Usuario.getAll();
         };
 
         $scope.update = function(){
