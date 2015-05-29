@@ -30,7 +30,7 @@ public class UsuarioController extends Controller {
 
         Usuario usuario = Json.fromJson(request().body().asJson(), Usuario.class);
 
-        //faz uma busca no banco de dados para ver se esse já esteja cadastrado na base de dados
+        //faz uma busca no banco de dados para ver se esse usuário já esteja cadastrado na base de dados
         Usuario usuarioUnico = Ebean.find(Usuario.class).where().eq("email", usuario.getEmail()).findUnique();
 
         //verifica se o usuario foi encontrado
@@ -142,8 +142,8 @@ public class UsuarioController extends Controller {
             return badRequest("Você não tem privilégios de Administrador");
         }
 
-        if (usuarioAtual.getEmail().equals(username)) {
-            return badRequest("Não excluir usuário que esteja autenticado no sistema");
+        if (usuarioAtual.getEmail().equals(usuario.getEmail())) {
+            return badRequest("Não remover sua própria conta de usuário");
         }
 
         try {

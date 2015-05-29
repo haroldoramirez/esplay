@@ -24,10 +24,6 @@ public class Usuario extends Model {
 
     private Integer privilegio;
 
-    //muitos usuarios para uma agenda
-    @ManyToOne
-    private Agenda agenda;
-
     @OneToOne
     private Contato contato;
 
@@ -62,14 +58,6 @@ public class Usuario extends Model {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public Agenda getAgenda() {
-        return agenda;
-    }
-
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
     }
 
     public Contato getContato() {

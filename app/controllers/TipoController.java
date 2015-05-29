@@ -2,7 +2,9 @@ package controllers;
 
 import actions.PlayAuthenticatedSecured;
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Query;
 import models.Tipo;
+import models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.Json;
@@ -10,6 +12,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
+import javax.persistence.PersistenceException;
 import java.util.Formatter;
 
 public class TipoController extends Controller {
@@ -28,7 +31,9 @@ public class TipoController extends Controller {
 
         Tipo tipo = Json.fromJson(request().body().asJson(), Tipo.class);
 
-        Tipo tipoBusca = Ebean.find(Tipo.class).where().eq("nome", tipo.getNome()).findUnique();
+        Query<Tipo> query = Ebean.createQuery(Tipo.class, "find tipo where nome = :nome");
+        query.setParameter("nome", tipo.getNome());
+        Tipo tipoBusca = query.findUnique();
 
         if (tipoBusca != null) {
             return badRequest("Tipo de Compromisso já Cadastrado");
@@ -117,6 +122,8 @@ public class TipoController extends Controller {
             logger.info("Tipo de compromisso deletado");
             formatter.format("Conta: '%1s' deletou um tipo de compromisso.", username);
             logController.inserir(sb.toString());
+        }  catch (PersistenceException e) {
+            return badRequest("Existem dados que dependem deste Tipo, remova-os primeiro");
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }

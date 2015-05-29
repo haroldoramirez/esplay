@@ -4,7 +4,9 @@ function updateActivedPage(scope) {
 
 angular.module('agenda')
   .controller('CompromissoCreateController', function ($scope, $modal, $location, Compromisso, Tipo, Categoria, Contato, Usuario, toastr) {
-        $scope.compromisso = {};
+        $scope.compromisso = {
+            usuarios: []
+        };
         $scope.save = function(){
             console.log($scope.compromisso);
             Compromisso.save($scope.compromisso, function(data){
@@ -38,6 +40,13 @@ angular.module('agenda')
              })
         };
 
+        $scope.adicionarUsuario = function(usuarioSelecionado) {
+            $scope.compromisso.usuarios.push(usuarioSelecionado);
+        };
+
+        $scope.removeUsuario = function(usuario) {
+            console.log(usuario);
+        };
 
   }).controller('CompromissoListController', function ($scope, Compromisso, toastr){
           $scope.compromissos = [];

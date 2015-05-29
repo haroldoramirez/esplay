@@ -29,14 +29,10 @@
                 <tr>
                     <th>Email para Login</th>
                     <th>Privilégio</th>
-                    <!--<th></th>-->
                 </tr>
                 <tr ng-repeat="usuario in usuarios">
                     <td><b><a href="#/usuarios/detalhe/{{usuario.id}}">{{usuario.email}}</a></b></td>
                     <td>{{usuario.privilegio}}</td>
-                    <!--<td>-->
-                    <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
-                    <!--</td>-->
                 </tr>
             </table>
         </fieldset>

@@ -12,6 +12,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
+import javax.persistence.PersistenceException;
 import java.util.Formatter;
 import java.util.List;
 
@@ -128,6 +129,8 @@ public class ContatoController extends Controller {
             log.info("Contato deletado");
             formatter.format("Conta: '%1s' excluiu um contato.", username);
             logController.inserir(sb.toString());
+        }  catch (PersistenceException e) {
+            return badRequest("Existem dados que dependem deste contato, remova-os primeiro");
         } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }

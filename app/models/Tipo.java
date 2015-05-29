@@ -14,12 +14,8 @@ public class Tipo extends Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nome;
-    
-    //muitas categorias para um usuario
-    @ManyToOne
-    private Usuario dono;
 
     private Boolean padraoDoSistema;
 
@@ -37,14 +33,6 @@ public class Tipo extends Model {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Usuario getDono() {
-        return dono;
-    }
-
-    public void setDono(Usuario dono) {
-        this.dono = dono;
     }
 
     public Boolean isPadraoDoSistema() {

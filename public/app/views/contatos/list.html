@@ -30,15 +30,11 @@
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Telefone</th>
-                    <!--<th></th>-->
                 </tr>
                 <tr ng-repeat="contato in contatos">
                     <td><b><a href="#/contatos/detalhe/{{contato.id}}">{{contato.nome}}</a></b></td>
                     <td>{{contato.email}}</td>
                     <td>{{contato.telefone}}</td>
-                    <!--<td>-->
-                    <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
-                    <!--</td>-->
                 </tr>
             </table>
         </fieldset>

@@ -12,6 +12,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Security;
 
+import javax.persistence.PersistenceException;
 import java.util.Formatter;
 import java.util.List;
 
@@ -31,7 +32,10 @@ public class CategoriaController extends Controller {
 
         Categoria categoria = Json.fromJson(request().body().asJson(), Categoria.class);
 
-        Categoria categoriaBusca = Ebean.find(Categoria.class).where().eq("nome", categoria.getNome()).findUnique();
+        Query<Categoria> query = Ebean.createQuery(Categoria.class, "find categoria where nome = :nome and dono.email = :email");
+        query.setParameter("email", username);
+        query.setParameter("nome", categoria.getNome());
+        Categoria categoriaBusca = query.findUnique();
 
         if (categoriaBusca != null) {
             return badRequest("Categoria de Compromisso já Cadastrado");
@@ -120,7 +124,9 @@ public class CategoriaController extends Controller {
             logger.info("Categoria de compromisso deletada");
             formatter.format("Conta: '%1s' deletou uma categoria de compromisso: ", username);
             logController.inserir(sb.toString());
-        }catch (Exception e) {
+        }  catch (PersistenceException e) {
+            return badRequest("Existem dados que dependem desta categoria, remova-os primeiro");
+        } catch (Exception e) {
             return badRequest("Erro interno de sistema");
         }
 

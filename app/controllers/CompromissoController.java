@@ -32,7 +32,10 @@ public class CompromissoController extends Controller {
 
         Compromisso compromisso = Json.fromJson(request().body().asJson(), Compromisso.class);
 
-        Compromisso compromissoBusca = Ebean.find(Compromisso.class).where().eq("titulo", compromisso.getTitulo()).findUnique();
+        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso where titulo = :titulo and dono.email = :email");
+        query.setParameter("email", username);
+        query.setParameter("titulo", compromisso.getTitulo());
+        Compromisso compromissoBusca = query.findUnique();
 
         if (compromissoBusca != null) {
             return badRequest("Compromisso já Cadastrado");

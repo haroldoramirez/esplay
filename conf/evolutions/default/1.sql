@@ -3,18 +3,10 @@
 
 # --- !Ups
 
-create table agenda (
-  id                        bigint auto_increment not null,
-  data_inicio               datetime,
-  data_fim                  datetime,
-  constraint pk_agenda primary key (id))
-;
-
 create table categoria (
   id                        bigint auto_increment not null,
   nome                      varchar(255) not null,
   dono_id                   bigint,
-  constraint uq_categoria_nome unique (nome),
   constraint pk_categoria primary key (id))
 ;
 
@@ -34,7 +26,6 @@ create table compromisso (
   contato_id                bigint,
   dono_id                   bigint,
   constraint ck_compromisso_status check (status in ('OCUPADO','LIVRE')),
-  constraint uq_compromisso_titulo unique (titulo),
   constraint pk_compromisso primary key (id))
 ;
 
@@ -57,9 +48,7 @@ create table log (
 create table tipo (
   id                        bigint auto_increment not null,
   nome                      varchar(255) not null,
-  dono_id                   bigint,
   padrao_do_sistema         tinyint(1) default 0,
-  constraint uq_tipo_nome unique (nome),
   constraint pk_tipo primary key (id))
 ;
 
@@ -69,7 +58,6 @@ create table usuario (
   senha                     varchar(255) not null,
   padrao_do_sistema         tinyint(1) default 0,
   privilegio                integer,
-  agenda_id                 bigint,
   contato_id                bigint,
   constraint uq_usuario_email unique (email),
   constraint pk_usuario primary key (id))
@@ -93,12 +81,8 @@ alter table compromisso add constraint fk_compromisso_dono_5 foreign key (dono_i
 create index ix_compromisso_dono_5 on compromisso (dono_id);
 alter table contato add constraint fk_contato_dono_6 foreign key (dono_id) references usuario (id) on delete restrict on update restrict;
 create index ix_contato_dono_6 on contato (dono_id);
-alter table tipo add constraint fk_tipo_dono_7 foreign key (dono_id) references usuario (id) on delete restrict on update restrict;
-create index ix_tipo_dono_7 on tipo (dono_id);
-alter table usuario add constraint fk_usuario_agenda_8 foreign key (agenda_id) references agenda (id) on delete restrict on update restrict;
-create index ix_usuario_agenda_8 on usuario (agenda_id);
-alter table usuario add constraint fk_usuario_contato_9 foreign key (contato_id) references contato (id) on delete restrict on update restrict;
-create index ix_usuario_contato_9 on usuario (contato_id);
+alter table usuario add constraint fk_usuario_contato_7 foreign key (contato_id) references contato (id) on delete restrict on update restrict;
+create index ix_usuario_contato_7 on usuario (contato_id);
 
 
 
@@ -109,8 +93,6 @@ alter table compromisso_usuario add constraint fk_compromisso_usuario_usuario_02
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
-
-drop table agenda;
 
 drop table categoria;
 
