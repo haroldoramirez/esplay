@@ -56,6 +56,7 @@ create table usuario (
   id                        bigint auto_increment not null,
   email                     varchar(255) not null,
   senha                     varchar(255) not null,
+  senha2                    varchar(255),
   padrao_do_sistema         tinyint(1) default 0,
   privilegio                integer,
   contato_id                bigint,

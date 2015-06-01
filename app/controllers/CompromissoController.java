@@ -44,10 +44,11 @@ public class CompromissoController extends Controller {
         Tipo tipo = Ebean.find(Tipo.class, compromisso.getTipo().getId());
         Categoria categoria = Ebean.find(Categoria.class, compromisso.getCategoria().getId());
         Contato contato = Ebean.find(Contato.class, compromisso.getContato().getId());
+
         List<Usuario> usuarios = new ArrayList<Usuario>();
         if(compromisso.getUsuarios() != null) {
             for (Usuario u:compromisso.getUsuarios()) {
-                Usuario a = Ebean.find(Usuario.class, u.getEmail());
+                Usuario a = Ebean.find(Usuario.class, u.getId());
                 if (a != null) {
                     usuarios.add(a);
                 }

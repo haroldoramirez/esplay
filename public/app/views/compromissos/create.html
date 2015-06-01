@@ -164,11 +164,11 @@
                         <label class="control-label">Compartilhar</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                            <select ng-model="usuarioSelecionado" class="form-control" ng-options="usuario.email for usuario in usuarios">
+                            <select ng-model="usuarioSelecionado" class="form-control" ng-options="usuario.email for usuario in usuarios track by usuario.email">
                                 <option value="">Selecione o usuário</option>
                             </select>
                             <span class="input-group-btn">
-                                <button ng-click="adicionarUsuario(usuarioSelecionado)" type="button" class="btn btn-primary">
+                                <button ng-click="adicionarUsuario(usuarioSelecionado)" type="button" class="btn btn-primary" ng-disabled="!usuarioSelecionado">
                                   Adicionar
                                 </button>
                             </span>

@@ -57,6 +57,7 @@ PUT     /usuarios/:id                     controllers.UsuarioController.atualiza
 GET     /usuarios/:id                     controllers.UsuarioController.buscaPorId(id:Long)
 DELETE  /usuarios/:id                     controllers.UsuarioController.remover(id:Long)
 GET     /usuarios                         controllers.UsuarioController.buscaTodos()
+GET     /filtroUsuarios                   controllers.UsuarioController.filtroUsuarios()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

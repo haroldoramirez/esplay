@@ -60,7 +60,9 @@ public class Compromisso extends Model {
     @Column(nullable = false)
     private Usuario dono;
 
-    @ManyToMany
+
+    //muitos compromissos para muitos usuarios
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Usuario> usuarios;
 
     //implementar depois nao apagar

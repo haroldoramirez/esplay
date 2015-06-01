@@ -13,6 +13,8 @@ import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
 import java.util.Formatter;
+import java.util.LinkedList;
+import java.util.List;
 
 public class UsuarioController extends Controller {
 
@@ -163,6 +165,29 @@ public class UsuarioController extends Controller {
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaTodos() {
         return ok(Json.toJson(Ebean.find(Usuario.class).findList()));
+    }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result filtroUsuarios() {
+
+        String username = session().get("email");
+
+        List<Usuario> list;
+
+        //busca o usuário atual que esteja logado no sistema
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
+                .setParameter("email", username)
+                .findUnique();
+
+        list = Ebean.find(Usuario.class).findList();
+
+        for (int i=0; i <= list.size(); i++) {
+            if (list.contains(usuarioAtual));
+                list.remove(usuarioAtual);
+        }
+
+        return ok(Json.toJson(list));
+
     }
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)

@@ -34,6 +34,7 @@ angular.module('agenda')
      function($resource, BaseUrl){
          return $resource(BaseUrl + '/usuarios/:id', {}, {
            getAll: {method: 'GET', url: BaseUrl + '/usuarios', isArray: true},
+           getFiltro: {method: 'GET', url: BaseUrl + '/filtroUsuarios', isArray: true},
            update: {method: 'PUT', url: BaseUrl + '/usuarios/:id', isArray: false}
          });
   }])

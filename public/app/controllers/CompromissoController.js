@@ -35,17 +35,23 @@ angular.module('agenda')
                 $scope.contatos = data;
              });
 
-             Usuario.getAll(function(data){
+             Usuario.getFiltro(function(data){
                 $scope.usuarios = data;
-             })
+             });
         };
 
         $scope.adicionarUsuario = function(usuarioSelecionado) {
             $scope.compromisso.usuarios.push(usuarioSelecionado);
+            var index2=$scope.usuarios.indexOf(usuarioSelecionado)
+            $scope.usuarios.splice(index2,1)
+            $scope.usuarioSelecionado = null
         };
 
         $scope.removeUsuario = function(usuario) {
-            console.log(usuario);
+            //console.log(usuario);
+            var index=$scope.compromisso.usuarios.indexOf(usuario)
+            $scope.compromisso.usuarios.splice(index,1)
+            $scope.usuarios.push(usuario)
         };
 
   }).controller('CompromissoListController', function ($scope, Compromisso, toastr){
@@ -102,6 +108,10 @@ angular.module('agenda')
 
     }).controller('CompromissoDetailController', function ($scope, $modal, $routeParams, $location, Compromisso, Tipo, Categoria, Contato, Usuario, toastr){
 
+        $scope.compromisso = {
+            usuarios: []
+        };
+
         $scope.open = function (size) {
 
             $modalInstance = $modal.open({
@@ -117,15 +127,33 @@ angular.module('agenda')
 
         $scope.init = function(){
             $scope.compromisso = Compromisso.get({id:$routeParams.id});
-        };
-
-
-        $scope.init = function(){
-            $scope.compromisso = Compromisso.get({id:$routeParams.id});
             $scope.tipos = Tipo.getAll();
             $scope.categorias = Categoria.getAll();
             $scope.contatos = Contato.getAll();
-            $scope.usuarios = Usuario.getAll();
+
+            Usuario.getAll(function(result) {
+                var usuariosNaoSelecionados = [];
+                angular.forEach(result, function(usuario) {
+                    var adiciona = true;
+                    if (usuario.email == $scope.compromisso.dono.email) {
+                        adiciona = false;
+                    } else {
+                        angular.forEach($scope.compromisso.usuarios, function(cUsuario) {
+                            if (usuario.email == cUsuario.email) {
+                                adiciona = false;
+                            }
+                        });
+                    }
+                    if (adiciona) {
+                         usuariosNaoSelecionados.push(usuario);
+                    }
+                });
+                $scope.usuarios = usuariosNaoSelecionados;
+            });
+//            var list = new List();
+//            for(var i=1; i<=usuarios.length) {
+//
+           // }
         };
 
         $scope.update = function(){
@@ -153,6 +181,20 @@ angular.module('agenda')
                 $modalInstance.close();
                 toastr.error(data.data,'Não foi possível Remover');
             });
+        };
+
+        $scope.adicionarUsuario = function(usuarioSelecionado) {
+            $scope.compromisso.usuarios.push(usuarioSelecionado);
+            var index2=$scope.usuarios.indexOf(usuarioSelecionado);
+            $scope.usuarios.splice(index2,1);
+            $scope.usuarioSelecionado = null;
+        };
+
+        $scope.removeUsuario = function(usuario) {
+            //console.log(usuario);
+            var index=$scope.compromisso.usuarios.indexOf(usuario);
+            $scope.compromisso.usuarios.splice(index,1);
+            $scope.usuarios.push(usuario);
         };
 
   });
