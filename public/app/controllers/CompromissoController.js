@@ -7,20 +7,6 @@ angular.module('agenda')
         $scope.compromisso = {
             usuarios: []
         };
-        $scope.save = function(){
-            console.log($scope.compromisso);
-            Compromisso.save($scope.compromisso, function(data){
-                toastr.success('Compromisso Salvo com Sucesso');
-                $location.path('/agenda');
-            }, function(data){
-                console.log(data);
-                toastr.error(data.data,'Não foi possível Salvar');
-            });
-        };
-
-        $scope.cancel = function(){
-            $location.path('/agenda');
-        };
 
         $scope.init = function(){
              Tipo.getAll(function(data){
@@ -38,6 +24,21 @@ angular.module('agenda')
              Usuario.getFiltro(function(data){
                 $scope.usuarios = data;
              });
+        };
+
+        $scope.save = function(){
+            console.log($scope.compromisso);
+            Compromisso.save($scope.compromisso, function(data){
+                toastr.success('Compromisso Salvo com Sucesso');
+                $location.path('/agenda');
+            }, function(data){
+                console.log(data);
+                toastr.error(data.data,'Não foi possível Salvar');
+            });
+        };
+
+        $scope.cancel = function(){
+            $location.path('/agenda');
         };
 
         $scope.adicionarUsuario = function(usuarioSelecionado) {
@@ -112,8 +113,30 @@ angular.module('agenda')
             usuarios: []
         };
 
-        $scope.open = function (size) {
+        $scope.init = function(){
+            $scope.compromisso = Compromisso.get({id:$routeParams.id});
+            $scope.tipos = Tipo.getAll();
+            $scope.categorias = Categoria.getAll();
+            $scope.contatos = Contato.getAll();
+            Usuario.getFiltro(function(result) {
+            var usuariosNaoSelecionados = [];
+                angular.forEach(result, function(usuario) {
+                var adiciona = true;
+                    angular.forEach($scope.compromisso.usuarios, function(cUsuario) {
+                        if (usuario.email == cUsuario.email) {
+                            adiciona = false;
+                        }
+                    });
+                    if (adiciona) {
+                        usuariosNaoSelecionados.push(usuario);
+                    }
+                });
+                $scope.usuarios = usuariosNaoSelecionados;
+            });
 
+        };
+
+        $scope.open = function (size) {
             $modalInstance = $modal.open({
                   templateUrl: 'modalConfirmacao.html',
                   controller: 'CompromissoDetailController',
@@ -123,37 +146,6 @@ angular.module('agenda')
 
         $scope.cancelModal = function () {
             $modalInstance.dismiss('cancelModal');
-        };
-
-        $scope.init = function(){
-            $scope.compromisso = Compromisso.get({id:$routeParams.id});
-            $scope.tipos = Tipo.getAll();
-            $scope.categorias = Categoria.getAll();
-            $scope.contatos = Contato.getAll();
-
-            Usuario.getAll(function(result) {
-                var usuariosNaoSelecionados = [];
-                angular.forEach(result, function(usuario) {
-                    var adiciona = true;
-                    if (usuario.email == $scope.compromisso.dono.email) {
-                        adiciona = false;
-                    } else {
-                        angular.forEach($scope.compromisso.usuarios, function(cUsuario) {
-                            if (usuario.email == cUsuario.email) {
-                                adiciona = false;
-                            }
-                        });
-                    }
-                    if (adiciona) {
-                         usuariosNaoSelecionados.push(usuario);
-                    }
-                });
-                $scope.usuarios = usuariosNaoSelecionados;
-            });
-//            var list = new List();
-//            for(var i=1; i<=usuarios.length) {
-//
-           // }
         };
 
         $scope.update = function(){
@@ -196,5 +188,4 @@ angular.module('agenda')
             $scope.compromisso.usuarios.splice(index,1);
             $scope.usuarios.push(usuario);
         };
-
   });

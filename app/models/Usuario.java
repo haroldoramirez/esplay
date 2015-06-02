@@ -20,8 +20,6 @@ public class Usuario extends Model {
     @Column(nullable = false)
     private String senha;
 
-    private String senha2;
-
     private Boolean padraoDoSistema;
 
     private Integer privilegio;
@@ -33,9 +31,11 @@ public class Usuario extends Model {
     public Usuario() {
     }
 
-    public Usuario(String email, String senha) {
+    public Usuario(String email, String senha, Boolean padraoDoSistema, Integer privilegio) {
         this.email = email;
         this.senha = senha;
+        this.padraoDoSistema = padraoDoSistema;
+        this.privilegio = privilegio;
     }
 
     public Long getId() {
@@ -54,12 +54,21 @@ public class Usuario extends Model {
         this.email = email;
     }
 
+    //@JsonIgnore
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
     }
 
     public Boolean getPadraoDoSistema() {
@@ -76,14 +85,6 @@ public class Usuario extends Model {
 
     public void setPrivilegio(Integer privilegio) {
         this.privilegio = privilegio;
-    }
-
-    public Contato getContato() {
-        return contato;
-    }
-
-    public void setContato(Contato contato) {
-        this.contato = contato;
     }
 
     @Override

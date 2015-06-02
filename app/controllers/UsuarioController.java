@@ -171,7 +171,6 @@ public class UsuarioController extends Controller {
     public static Result filtroUsuarios() {
 
         String username = session().get("email");
-
         List<Usuario> list;
 
         //busca o usuário atual que esteja logado no sistema
