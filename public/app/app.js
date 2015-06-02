@@ -8,7 +8,9 @@ angular
              'toastr',
              'mwl.calendar',
              'ui.bootstrap',
-             'ui.utils.masks'
+             'ui.utils.masks',
+             'ui.select',
+             'ngSanitize'
             ]
         )
     .config(function ($routeProvider) {

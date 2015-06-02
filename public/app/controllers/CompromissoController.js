@@ -113,15 +113,30 @@ angular.module('agenda')
             usuarios: []
         };
 
+        $scope.adicionarUsuario = function(usuarioSelecionado) {
+            $scope.compromisso.usuarios.push(usuarioSelecionado);
+            var index2=$scope.usuarios.indexOf(usuarioSelecionado);
+            $scope.usuarios.splice(index2,1);
+            $scope.usuarioSelecionado = null;
+        };
+
+        $scope.removeUsuario = function(usuario) {
+            //console.log(usuario);
+            var index=$scope.compromisso.usuarios.indexOf(usuario);
+            $scope.compromisso.usuarios.splice(index,1);
+            $scope.usuarios.push(usuario);
+        };
+
         $scope.init = function(){
             $scope.compromisso = Compromisso.get({id:$routeParams.id});
             $scope.tipos = Tipo.getAll();
             $scope.categorias = Categoria.getAll();
             $scope.contatos = Contato.getAll();
+
             Usuario.getFiltro(function(result) {
             var usuariosNaoSelecionados = [];
                 angular.forEach(result, function(usuario) {
-                var adiciona = true;
+                    var adiciona = true;
                     angular.forEach($scope.compromisso.usuarios, function(cUsuario) {
                         if (usuario.email == cUsuario.email) {
                             adiciona = false;
@@ -175,17 +190,4 @@ angular.module('agenda')
             });
         };
 
-        $scope.adicionarUsuario = function(usuarioSelecionado) {
-            $scope.compromisso.usuarios.push(usuarioSelecionado);
-            var index2=$scope.usuarios.indexOf(usuarioSelecionado);
-            $scope.usuarios.splice(index2,1);
-            $scope.usuarioSelecionado = null;
-        };
-
-        $scope.removeUsuario = function(usuario) {
-            //console.log(usuario);
-            var index=$scope.compromisso.usuarios.indexOf(usuario);
-            $scope.compromisso.usuarios.splice(index,1);
-            $scope.usuarios.push(usuario);
-        };
   });

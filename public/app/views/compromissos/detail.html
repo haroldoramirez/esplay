@@ -1,4 +1,4 @@
-<div class="container">
+<div ng-init="init()" class="container">
     <div class="row">
         <fieldset>
             <h2>
@@ -20,7 +20,7 @@
                     <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
                 </div>
             </script>
-            <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+            <form class="form-horizontal" ng-submit="update()">
                 <div class="form-group">
                     <div class="col-lg-6 well well-sm">
                         <h3 align="center">Início</h3>

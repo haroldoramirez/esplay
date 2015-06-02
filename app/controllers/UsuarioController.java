@@ -171,8 +171,10 @@ public class UsuarioController extends Controller {
 
         String username = session().get("email");
 
-        List<Usuario> list =
-                Ebean.createQuery(Usuario.class, "find usuario where email != :email").setParameter("email", username).findList();
+        //busca todos o usuário menos o usuário que esta logado no sistema
+        List<Usuario> list = Ebean.createQuery(Usuario.class, "find usuario where email != :email")
+                .setParameter("email", username)
+                .findList();
 
         return ok(Json.toJson(list));
     }
