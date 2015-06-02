@@ -78,19 +78,29 @@ public class UsuarioController extends Controller {
 
         Usuario usuario = Json.fromJson(request().body().asJson(), Usuario.class);
 
-        if (usuario.getPadraoDoSistema() == true) {
-            return badRequest("Registro padrão do sistema");
-        }
-
         //busca o usuário atual que esteja logado no sistema
         Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
                 .setParameter("email", username)
                 .findUnique();
 
-        //verificar se o usuario atual encontrado é administrador
-        if (usuarioAtual.getPrivilegio() == 1) {
-            return badRequest("Você não tem privilégios de Administrador");
+        //faz uma busca no banco de dados para ver se esse usuário já esteja cadastrado na base de dados
+        Usuario usuarioUnico = Ebean.find(Usuario.class).where().eq("email", usuario.getEmail()).findUnique();
+
+        if (usuario.getPadraoDoSistema() == true) {
+            return badRequest("Registro padrão do sistema");
         }
+
+        if ((usuarioAtual.getPrivilegio() != 2) && !usuarioAtual.getEmail().equals(usuarioUnico.getEmail())) {
+            return badRequest("Você não pode alterar dados de outro usuário");
+        }
+
+        if (usuarioAtual.getPrivilegio() == 1 && usuario.getPrivilegio() == 2) {
+            return badRequest("Você não pode alterar seus privilégios");
+        }
+
+
+        String senha = Crypt.sha1(usuario.getSenha());
+        usuario.setSenha(senha);
 
         try {
             //atualiza as informações do usuário

@@ -8,7 +8,7 @@ angular.module('agenda')
         $scope.save = function(){
             console.log($scope.usuario);
             Usuario.save($scope.usuario, function(data){
-                toastr.success('Usuario Salvo com Sucesso');
+                toastr.success('Novo usuário criado');
                 $location.path('/usuarios');
             }, function(data){
                 console.log(data);
