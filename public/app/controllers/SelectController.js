@@ -1,5 +1,5 @@
 angular.module('agenda')
-  .controller('TipoCreateController', function ($scope, $modal, $location, Tipo, toastr, $http, $timeout) {
+  .controller('SelectController', function ($scope, $modal, $location, toastr, $http, $timeout) {
 
    $scope.disabled = undefined;
     $scope.searchEnabled = undefined;

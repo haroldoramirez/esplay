@@ -12,7 +12,7 @@ angular.module('agenda')
                 $location.path('/tipos');
             }, function(data){
                 console.log(data);
-                toastr.error(data.data,'N√£o foi poss√≠vel Salvar');
+                toastr.error(data.data,'N„o foi possÌvel Salvar');
             });
         };
 
@@ -22,7 +22,6 @@ angular.module('agenda')
 
         $scope.init = function(){
             Tipo.getAll(function(data){
-
                 $scope.tipos = data;
             });
         };
@@ -37,7 +36,7 @@ angular.module('agenda')
           updateActivedPage(this);
         };
 
-        //bot√£o de p√°ginas
+        //bot„o de p·ginas
         $scope._pagina = function(val){
         $scope.pagina = val;
             Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
@@ -46,7 +45,7 @@ angular.module('agenda')
             updateActivedPage(this);
         };
 
-        //bot√£o pr√≥ximo
+        //bot„o prÛximo
         $scope.proximo = function(val){
         $scope.pagina = val + 1;
             Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
@@ -59,7 +58,7 @@ angular.module('agenda')
             updateActivedPage(this);
          }
 
-        //bot√£o anterior
+        //bot„o anterior
         $scope.anterior = function(val){
         $scope.pagina = val - 1;
             Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
@@ -74,7 +73,7 @@ angular.module('agenda')
                toastr.success('Tipo Removido com Sucesso');
                $scope.init();
            }, function(data){
-               toastr.error(data.data,'N√£o foi poss√≠vel Remover');
+               toastr.error(data.data,'N„o foi possÌvel Remover');
            });
         };
 
@@ -85,7 +84,7 @@ angular.module('agenda')
             $modalInstance = $modal.open({
                   templateUrl: 'modalConfirmacao.html',
                   controller: 'TipoDetailController',
-                   size: size,
+                  size: size,
             });
         };
 
@@ -103,7 +102,7 @@ angular.module('agenda')
                 $location.path('/tipos');
             },function(data){
                console.log(data);
-               toastr.error(data.data,'N√£o foi poss√≠vel Atualizar');
+               toastr.error(data.data,'N„o foi possÌvel Atualizar');
             });
 
         };
@@ -120,7 +119,7 @@ angular.module('agenda')
             }, function(data){
                 console.log(data);
                 $modalInstance.close();
-                toastr.error(data.data,'N√£o foi poss√≠vel Remover');
+                toastr.error(data.data,'N„o foi possÌvel Remover');
             });
         };
 
