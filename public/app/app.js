@@ -94,10 +94,6 @@ angular
                .when('/manual', {
                   templateUrl: '/assets/app/views/manual.html',
                   controller: 'ManualController'
-             })
-               .when('/convite', {
-                   templateUrl: '/assets/app/views/convite.html',
-                   controller: 'ConviteController'
              });
    //Configuração das notificações
    }).config(function(toastrConfig) {

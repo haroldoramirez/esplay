@@ -20,6 +20,10 @@ GET     /logs                             controllers.LogController.listarTodos(
 GET		/sobre					          controllers.Application.sobre()
 GET     /manual                           controllers.Application.manual()
 
+# Email
+GET     /convite                          controllers.EmailController.novoConvite()
+POST    /enviar                           controllers.EmailController.enviarEmail()
+
 # Index page
 GET     /                                 controllers.Application.index()
 
