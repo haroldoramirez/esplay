@@ -19,7 +19,8 @@
     "angular-input-masks": "~1.2.5",
     "moment": "~2.10.3",
     "angular-ui-select": "~0.12.0",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "angular-virtual-keyboard": "~0.4.1"
   },
   "appPath": "app"
 }
