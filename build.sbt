@@ -15,6 +15,5 @@ libraryDependencies ++= Seq(
   "ch.qos.logback" % "logback-classic" % "1.1.3",
   "javax.mail" % "mail" % "1.4.7",
   "com.typesafe.play" %% "play-mailer" % "2.4.1",
-  "com.feth" % "play-easymail" % "0.6.7"
-
+  "com.feth" % "play-easymail_2.11" % "0.6.7"
 )
