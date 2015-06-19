@@ -20,7 +20,8 @@
     "moment": "~2.10.3",
     "angular-ui-select": "~0.12.0",
     "underscore": "~1.8.3",
-    "angular-virtual-keyboard": "~0.4.1"
+    "angular-virtual-keyboard": "~0.4.1",
+    "angular-loading-bar": "~0.7.1"
   },
   "appPath": "app"
 }

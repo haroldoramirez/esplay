@@ -4,6 +4,7 @@ angular
             [
              'ngRoute',
              'ngResource',
+             'angular-loading-bar',
              'ngAnimate',
              'toastr',
              'mwl.calendar',
@@ -120,7 +121,7 @@ angular
           toastClass: 'toast'
         })
    }).config(['VKI_CONFIG', function(VKI_CONFIG) {
-     			VKI_CONFIG.layout['Portugu\u00eas Brasileiro'] = {
+     			VKI_CONFIG.layout['PT-BR'] = {
      				'name': "Portuguese (Brazil)", 'keys': [
      				[["'", '"'], ["1", "!", "\u00b9"], ["2", "@", "\u00b2"], ["3", "#", "\u00b3"], ["4", "$", "\u00a3"], ["5", "%", "\u00a2"], ["6", "\u00a8", "\u00ac"], ["7", "&"], ["8", "*"], ["9", "("], ["0", ")"], ["-", "_"], ["=", "+", "\u00a7"], ["Bksp", "Bksp"]],
      				[["Tab", "Tab"], ["q", "Q", "/"], ["w", "W", "?"], ["e", "E", "\u20ac"], ["r", "R"], ["t", "T"], ["y", "Y"], ["u", "U"], ["i", "I"], ["o", "O"], ["p", "P"], ["\u00b4", "`"], ["[", "{", "\u00aa"], ["Enter", "Enter"]],
@@ -150,5 +151,5 @@ angular
      			 	'10': "Diminuir tamanho do teclado",
      			 	'11': "Aumentar tamanho do teclado"
      			 };
-     			 VKI_CONFIG.relative = true;
+     			 VKI_CONFIG.relative = false;
     }]);

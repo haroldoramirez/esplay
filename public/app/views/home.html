@@ -9,9 +9,7 @@
     <hr>
     <h4>Virtual Keyboard</h4>
     <div>
-        <input placeholder="click here" type='text' ng-model="t02" ng-virtual-keyboard/><br>
-        <!--<em>(Model value: {{t02}})</em>-->
-
+        <input placeholder="click here" type='text' ng-model="t02" ng-virtual-keyboard="{kt: 'PT-BR'}"/><br>
     <script type="text/ng-template" id="modalHome.html">
         <div class="modal-header">
             <h3 class="modal-title">Informações:</h3>
@@ -30,4 +28,5 @@
             <button class="btn btn-primary" ng-click="ok()">OK</button>
         </div>
     </script>
+    </div>
 </div>
