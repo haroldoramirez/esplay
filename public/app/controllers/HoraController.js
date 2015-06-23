@@ -2,7 +2,7 @@ angular.module('agenda').controller('HoraController', function ($scope, $log) {
   $scope.now = function() {
      $scope.mytime = new Date();
   };
-  //$scope.mytime = new Date();
+  $scope.mytime = new Date();
 
   $scope.hstep = 1;
   $scope.mstep = 1;

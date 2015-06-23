@@ -4,6 +4,7 @@ import play.db.ebean.Model;
 import play.libs.Json;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,11 +23,19 @@ public class Compromisso extends Model {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar dataInicio;
 
+    private Calendar dataIniciod;
+
+//    @Temporal(TemporalType.TIME)
+//    private Time horaInicio;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar horaInicio;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar dataFim;
+
+//    @Temporal(TemporalType.TIME)
+//    private Time horaFim;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar horaFim;
@@ -74,6 +83,7 @@ public class Compromisso extends Model {
     //muitos compromissos para muitos contatos
     //@ManyToMany
     //private List<Contato> contatos;
+
 
     public Long getId() {
         return id;
@@ -171,14 +181,6 @@ public class Compromisso extends Model {
         this.categoria = categoria;
     }
 
-    public Usuario getDono() {
-        return dono;
-    }
-
-    public void setDono(Usuario dono) {
-        this.dono = dono;
-    }
-
     public Contato getContato() {
         return contato;
     }
@@ -187,16 +189,19 @@ public class Compromisso extends Model {
         this.contato = contato;
     }
 
+    public Usuario getDono() {
+        return dono;
+    }
+
+    public void setDono(Usuario dono) {
+        this.dono = dono;
+    }
+
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
-    }
-
-    @Override
-    public String toString() {
-        return Json.toJson(this).toString();
     }
 }

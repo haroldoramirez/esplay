@@ -2,7 +2,7 @@ angular.module('agenda').controller('DataController', function ($scope) {
   $scope.today = function() {
     $scope.dt = new Date();
   };
-  //$scope.today();
+  $scope.today();
 
   $scope.clear = function () {
     $scope.dt = null;

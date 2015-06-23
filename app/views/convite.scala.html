@@ -28,6 +28,16 @@
                 @f.globalError.message
             </p>
             }
+            @if(flash.containsKey("sucesso")){
+            <div class="alert alert-success">
+                @flash.get("sucesso")
+            </div>
+            }
+            @if(flash.containsKey("erro")){
+            <div class="alert alert-danger">
+                @flash.get("erro")
+            </div>
+            }
             <br>
             <h4 align="center">Enviar Convite</h4>
             <div class="form-wrap">
