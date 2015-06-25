@@ -147,4 +147,15 @@ public class ContatoController extends Controller {
     public static Result buscaPorPaginas(Long pagina) {
         return TODO;
     }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result buscaPorNome(String nome) {
+        //busca categoria atraves do nome que recebe por parametro e onde o dono é o usuario logado no sistema
+        String username = session().get("email");
+        Query<Contato> query = Ebean.createQuery(Contato.class, "find contato where nome = :nome and dono.email = :email");
+        query.setParameter("email", username);
+        query.setParameter("nome", nome);
+        List<Contato> filtroDeContatos = query.findList();
+        return ok(Json.toJson(filtroDeContatos));
+    }
 }

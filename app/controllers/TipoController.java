@@ -13,6 +13,7 @@ import play.mvc.Security;
 
 import javax.persistence.PersistenceException;
 import java.util.Formatter;
+import java.util.List;
 
 public class TipoController extends Controller {
 
@@ -129,4 +130,14 @@ public class TipoController extends Controller {
 
         return ok(Json.toJson(tipo));
     }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result buscaPorNome(String nome) {
+        Query<Tipo> query = Ebean.createQuery(Tipo.class, "find tipo where nome = :nome");
+        query.setParameter("nome", nome);
+        List<Tipo> filtroDeTipos = query.findList();
+        return ok(Json.toJson(filtroDeTipos));
+    }
+
+
 }

@@ -135,6 +135,12 @@ public class CategoriaController extends Controller {
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorNome(String nome) {
-        return TODO;
+        //busca categoria atraves do nome que recebe por parametro e onde o dono é o usuario logado no sistema
+        String username = session().get("email");
+        Query<Categoria> query = Ebean.createQuery(Categoria.class, "find categoria where nome = :nome and dono.email = :email");
+        query.setParameter("email", username);
+        query.setParameter("nome", nome);
+        List<Categoria> filtroDeCategorias = query.findList();
+        return ok(Json.toJson(filtroDeCategorias));
     }
 }

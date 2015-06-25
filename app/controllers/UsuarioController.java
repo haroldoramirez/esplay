@@ -3,6 +3,7 @@ package controllers;
 import actions.PlayAuthenticatedSecured;
 import akka.util.Crypt;
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Query;
 import models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -199,5 +200,14 @@ public class UsuarioController extends Controller {
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorPaginas(Long pagina) {
         return TODO;
+    }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result buscaPorEmail(String email) {
+        Query<Usuario> query = Ebean.createQuery(Usuario.class, "find usuario where email like :email");
+        query.setParameter("email", email);
+        List<Usuario> filtroDeUsuarios = query.findList();
+        //List<Usuario> filtroDeUsuarios = Ebean.find(Usuario.class).where().eq("email", email).like("usuario.email", email).findList();
+        return ok(Json.toJson(filtroDeUsuarios));
     }
 }

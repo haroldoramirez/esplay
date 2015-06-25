@@ -84,6 +84,7 @@ public class CompromissoController extends Controller {
         //faz listagem se for responsável do compromisso e se ele estiver compartilhado
         String username = session().get("email");
 
+        //realiza a busca do usuario atual
         Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
                 .setParameter("email", username)
                 .findUnique();
@@ -167,6 +168,27 @@ public class CompromissoController extends Controller {
         }
 
         return ok(Json.toJson(compromisso));
+    }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result buscaPorTitulo(String titulo) {
+        //busca categoria atraves do nome que recebe por parametro e onde o dono é o usuario logado no sistema
+        String username = session().get("email");
+
+        //realiza a busca do usuario atual
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
+                .setParameter("email", username)
+                .findUnique();
+
+        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso fetch usuarios " +
+                "where dono.id = :idUsuario " +
+                "and titulo = :titulo " +
+                "or usuarios.email = :email ");
+        query.setParameter("idUsuario", usuarioAtual.getId());
+        query.setParameter("email", usuarioAtual.getEmail());
+        query.setParameter("titulo", titulo);
+        List<Compromisso> filtroDeCategorias = query.findList();
+        return ok(Json.toJson(filtroDeCategorias));
     }
 
 }

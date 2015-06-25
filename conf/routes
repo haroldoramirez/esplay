@@ -41,6 +41,7 @@ PUT     /tipos/:id                        controllers.TipoController.atualizar(i
 GET     /tipos                            controllers.TipoController.buscaTodos()
 GET     /tipos/:id                        controllers.TipoController.buscaPorId(id:Long)
 DELETE  /tipos/:id                        controllers.TipoController.remover(id:Long)
+GET     /tipos/nome/:nome                 controllers.TipoController.buscaPorNome(nome:String)
 
 # Rotas Contatos
 POST    /contatos                         controllers.ContatoController.inserir()
@@ -48,6 +49,7 @@ PUT     /contatos/:id                     controllers.ContatoController.atualiza
 GET     /contatos                         controllers.ContatoController.buscaTodos()
 GET     /contatos/:id                     controllers.ContatoController.buscaPorId(id:Long)
 DELETE  /contatos/:id                     controllers.ContatoController.remover(id:Long)
+GET     /contatos/nome/:nome              controllers.ContatoController.buscaPorNome(nome:String)
 
 # Rotas Compromissos
 POST    /compromissos                         controllers.CompromissoController.inserir()
@@ -55,6 +57,7 @@ PUT     /compromissos/:id                     controllers.CompromissoController.
 GET     /compromissos                         controllers.CompromissoController.buscaTodos()
 GET     /compromissos/:id                     controllers.CompromissoController.buscaPorId(id:Long)
 DELETE  /compromissos/:id                     controllers.CompromissoController.remover(id:Long)
+GET     /compromissos/titulo/:titulo          controllers.CompromissoController.buscaPorTitulo(titulo:String)
 
 #Usuarios
 POST    /usuarios                         controllers.UsuarioController.inserir()
@@ -62,7 +65,7 @@ PUT     /usuarios/:id                     controllers.UsuarioController.atualiza
 GET     /usuarios/:id                     controllers.UsuarioController.buscaPorId(id:Long)
 DELETE  /usuarios/:id                     controllers.UsuarioController.remover(id:Long)
 GET     /usuarios                         controllers.UsuarioController.buscaTodos()
-GET     /filtroUsuarios                   controllers.UsuarioController.filtroUsuarios()
+GET     /usuarios/email/:email            controllers.UsuarioController.buscaPorEmail(email:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
