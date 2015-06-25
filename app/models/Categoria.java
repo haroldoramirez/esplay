@@ -45,6 +45,8 @@ public class Categoria extends Model {
         this.dono = dono;
     }
 
+    public static Finder<Long, Categoria> find = new Model.Finder<>(Long.class, Categoria.class);
+
     @Override
     public String toString() {
         return Json.toJson(this).toString();

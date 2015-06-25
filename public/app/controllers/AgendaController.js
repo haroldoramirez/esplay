@@ -51,17 +51,6 @@ angular.module('agenda')
         });
       };
 
-//      function showModal(action, event) {
-//        $modal.open({
-//            templateUrl: 'modalCompromisso.html',
-//                controller: function($scope, $modalInstance) {
-//                  $scope.$modalInstance = $modalInstance;
-//                  $scope.action = action;
-//                  $scope.event = event;
-//                }
-//        });
-//      }
-
             function showModal(action, event) {
               $modal.open({
                   templateUrl: 'modalCompromisso.html',

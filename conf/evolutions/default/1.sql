@@ -14,6 +14,7 @@ create table compromisso (
   id                        bigint auto_increment not null,
   titulo                    varchar(255) not null,
   data_inicio               datetime,
+  data_iniciod              datetime,
   hora_inicio               datetime,
   data_fim                  datetime,
   hora_fim                  datetime,

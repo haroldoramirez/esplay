@@ -79,6 +79,27 @@ public class CompromissoController extends Controller {
     }
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result buscaTodos() {
+
+        //faz listagem se for responsável do compromisso e se ele estiver compartilhado
+        String username = session().get("email");
+
+        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
+                .setParameter("email", username)
+                .findUnique();
+
+        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso fetch usuarios " +
+                "where dono.id = :idUsuario " +
+                "or usuarios.email = :email ");
+                //"or contatos.id in select contato.id from contato join usuario as u where u.email = :email ");
+        query.setParameter("idUsuario", usuarioAtual.getId());
+        query.setParameter("email", usuarioAtual.getEmail());
+        //query.setParameter("email", username);
+        List<Compromisso> listaDeCompromissos = query.findList();
+        return ok(Json.toJson(listaDeCompromissos));
+    }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result atualizar(Long id) {
 
         StringBuilder sb = new StringBuilder();
@@ -148,24 +169,4 @@ public class CompromissoController extends Controller {
         return ok(Json.toJson(compromisso));
     }
 
-    @Security.Authenticated(PlayAuthenticatedSecured.class)
-    public static Result buscaTodos() {
-
-        //faz listagem se for responsável do compromisso e se ele estiver compartilhado
-        String username = session().get("email");
-
-        Usuario usuarioAtual = Ebean.createQuery(Usuario.class, "find usuario where email = :email")
-                .setParameter("email", username)
-                .findUnique();
-
-        Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso fetch usuarios " +
-                "where dono.id = :idUsuario " +
-                "or usuarios.email = :email ");
-                //"or contatos.id in select contato.id from contato join usuario as u where u.email = :email ");
-        query.setParameter("idUsuario", usuarioAtual.getId());
-        query.setParameter("email", usuarioAtual.getEmail());
-        //query.setParameter("email", username);
-        List<Compromisso> listaDeCompromissos = query.findList();
-        return ok(Json.toJson(listaDeCompromissos));
-    }
 }

@@ -46,7 +46,6 @@ public class EmailController extends Controller {
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
 
-
         String username = session().get("email");
 
         final Form<MailMe> filledForm = emailForm.bindFromRequest();

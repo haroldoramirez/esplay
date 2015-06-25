@@ -32,7 +32,12 @@ public class ContatoController extends Controller {
 
         Contato contato = Json.fromJson(request().body().asJson(), Contato.class);
 
-        Contato contatoBusca = Ebean.find(Contato.class).where().eq("nome", contato.getNome()).findUnique();
+        //Contato contatoBusca = Ebean.find(Contato.class).where().eq("nome", contato.getNome()).findUnique();
+
+        Query<Contato> query = Ebean.createQuery(Contato.class, "find contato where nome = :nome and dono.email = :email");
+        query.setParameter("email", username);
+        query.setParameter("nome", contato.getNome());
+        Contato contatoBusca = query.findUnique();
 
         if (contatoBusca != null) {
             return badRequest("Contato já Cadastrado");
