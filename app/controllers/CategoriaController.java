@@ -132,4 +132,9 @@ public class CategoriaController extends Controller {
 
         return ok(Json.toJson(categoria));
     }
+
+    @Security.Authenticated(PlayAuthenticatedSecured.class)
+    public static Result buscaPorNome(String nome) {
+        return TODO;
+    }
 }

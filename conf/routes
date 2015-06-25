@@ -33,6 +33,7 @@ PUT     /categorias/:id                   controllers.CategoriaController.atuali
 GET     /categorias                       controllers.CategoriaController.buscaTodos()
 GET     /categorias/:id                   controllers.CategoriaController.buscaPorId(id:Long)
 DELETE  /categorias/:id                   controllers.CategoriaController.remover(id:Long)
+GET     /categorias/nome/:nome            controllers.CategoriaController.buscaPorNome(nome:String)
 
 # Rotas Tipos
 POST    /tipos                            controllers.TipoController.inserir()

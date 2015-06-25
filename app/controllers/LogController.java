@@ -23,6 +23,6 @@ public class LogController extends Controller {
 
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result listarTodos() {
-        return ok(Json.toJson(Ebean.find(Log.class).findList()));
+        return ok(Json.toJson(Ebean.find(Log.class).order().desc("dataDoLog").findList()));
     }
  }
