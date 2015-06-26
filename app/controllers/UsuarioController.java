@@ -205,9 +205,8 @@ public class UsuarioController extends Controller {
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorEmail(String email) {
         Query<Usuario> query = Ebean.createQuery(Usuario.class, "find usuario where email like :email");
-        query.setParameter("email", email);
+        query.setParameter("email", "%" + email + "%");
         List<Usuario> filtroDeUsuarios = query.findList();
-        //List<Usuario> filtroDeUsuarios = Ebean.find(Usuario.class).where().eq("email", email).like("usuario.email", email).findList();
         return ok(Json.toJson(filtroDeUsuarios));
     }
 }

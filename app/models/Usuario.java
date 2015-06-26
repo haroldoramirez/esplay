@@ -24,8 +24,8 @@ public class Usuario extends Model {
 
     private Integer privilegio;
 
-    @OneToOne
-    private Contato contato;
+//    @OneToOne
+//    private Contato contato;
 
     @Deprecated
     public Usuario() {
@@ -63,13 +63,13 @@ public class Usuario extends Model {
         this.senha = senha;
     }
 
-    public Contato getContato() {
-        return contato;
-    }
-
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
+//    public Contato getContato() {
+//        return contato;
+//    }
+//
+//    public void setContato(Contato contato) {
+//        this.contato = contato;
+//    }
 
     public Boolean getPadraoDoSistema() {
         return padraoDoSistema;

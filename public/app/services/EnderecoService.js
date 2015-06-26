@@ -14,7 +14,8 @@ angular.module('agenda')
      function($resource, BaseUrl){
        return $resource(BaseUrl + '/contatos/:id', {}, {
           getAll: {method: 'GET', url: BaseUrl + '/contatos', isArray: true},
-          update: {method: 'PUT', url: BaseUrl + '/contatos/:id', isArray: false}
+          update: {method: 'PUT', url: BaseUrl + '/contatos/:id', isArray: false},
+          getFiltroContato: {method: 'GET', url: BaseUrl + '/contatos/nome/:nome', isArray: true}
        });
   }]).service('Tipo',['$resource', 'BaseUrl',
      function($resource, BaseUrl){

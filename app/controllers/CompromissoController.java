@@ -180,13 +180,14 @@ public class CompromissoController extends Controller {
                 .setParameter("email", username)
                 .findUnique();
 
+
         Query<Compromisso> query = Ebean.createQuery(Compromisso.class, "find compromisso fetch usuarios " +
-                "where dono.id = :idUsuario " +
-                "and titulo = :titulo " +
-                "or usuarios.email = :email ");
+                "where (dono.id = :idUsuario " +
+                "or usuarios.email = :email)" +
+                "and titulo like :titulo ");
         query.setParameter("idUsuario", usuarioAtual.getId());
         query.setParameter("email", usuarioAtual.getEmail());
-        query.setParameter("titulo", titulo);
+        query.setParameter("titulo", "%" + titulo + "%");
         List<Compromisso> filtroDeCategorias = query.findList();
         return ok(Json.toJson(filtroDeCategorias));
     }

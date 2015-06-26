@@ -12,7 +12,7 @@ angular.module('agenda')
                 $location.path('/tipos');
             }, function(data){
                 console.log(data);
-                toastr.error(data.data,'Não foi possível Salvar');
+                toastr.error(data.data,'NÃ£o foi possÃ­vel Salvar');
             });
         };
 
@@ -36,7 +36,7 @@ angular.module('agenda')
           updateActivedPage(this);
         };
 
-        //botão de páginas
+        //botï¿½o de pï¿½ginas
         $scope._pagina = function(val){
         $scope.pagina = val;
             Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
@@ -45,7 +45,7 @@ angular.module('agenda')
             updateActivedPage(this);
         };
 
-        //botão próximo
+        //botï¿½o prï¿½ximo
         $scope.proximo = function(val){
         $scope.pagina = val + 1;
             Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
@@ -58,7 +58,7 @@ angular.module('agenda')
             updateActivedPage(this);
          }
 
-        //botão anterior
+        //botï¿½o anterior
         $scope.anterior = function(val){
         $scope.pagina = val - 1;
             Tipo.getPagina({pagina: $scope.pagina}, $scope.tipo, function(data){
@@ -73,7 +73,7 @@ angular.module('agenda')
                toastr.success('Tipo Removido com Sucesso');
                $scope.init();
            }, function(data){
-               toastr.error(data.data,'Não foi possível Remover');
+               toastr.error(data.data,'NÃ£o foi possÃ­vel Remover');
            });
         };
 
@@ -88,7 +88,7 @@ angular.module('agenda')
             });
         };
 
-        $scope.cancelModal = function () {
+        $scope.cancelModal = function (){
             $modalInstance.dismiss('cancelModal');
         };
 
@@ -102,14 +102,14 @@ angular.module('agenda')
                 $location.path('/tipos');
             },function(data){
                console.log(data);
-               toastr.error(data.data,'Não foi possível Atualizar');
+               toastr.error(data.data,'NÃ£o foi possÃ­vel Atualizar');
             });
 
         };
 
-         $scope.cancel = function(){
-            $location.path('/tipos');
-         };
+        $scope.cancel = function(){
+           $location.path('/tipos');
+        };
 
         $scope.delete = function(){
             Tipo.delete({id:$routeParams.id}, function(){
@@ -119,7 +119,7 @@ angular.module('agenda')
             }, function(data){
                 console.log(data);
                 $modalInstance.close();
-                toastr.error(data.data,'Não foi possível Remover');
+                toastr.error(data.data,'NÃ£o foi possÃ­vel Remover');
             });
         };
 

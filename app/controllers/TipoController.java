@@ -134,10 +134,9 @@ public class TipoController extends Controller {
     @Security.Authenticated(PlayAuthenticatedSecured.class)
     public static Result buscaPorNome(String nome) {
         Query<Tipo> query = Ebean.createQuery(Tipo.class, "find tipo where nome = :nome");
-        query.setParameter("nome", nome);
+        query.setParameter("nome", "%" + nome + "%");
         List<Tipo> filtroDeTipos = query.findList();
         return ok(Json.toJson(filtroDeTipos));
     }
-
 
 }

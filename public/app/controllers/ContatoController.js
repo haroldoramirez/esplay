@@ -3,8 +3,16 @@ function updateActivedPage(scope) {
 }
 
 angular.module('agenda')
-  .controller('ContatoCreateController', function ($scope, $modal, $location, Contato, toastr) {
+  .controller('ContatoCreateController', function ($scope, $modal, $location, Contato, toastr){
+
         $scope.contato = {};
+
+        $scope.init = function(){
+            Contato.getAll(function(data){
+                $scope.contatos = data;
+            });
+        };
+
         $scope.save = function(){
             console.log($scope.contato);
             Contato.save($scope.contato, function(data){
@@ -20,18 +28,16 @@ angular.module('agenda')
             $location.path('/contatos');
         };
 
-        $scope.init = function(){
-            Contato.getAll(function(data){
-                $scope.contatos = data;
-            });
-        };
-
   }).controller('ContatoListController', function ($scope, Contato, toastr){
+
         $scope.contatos = [];
+
         $scope.init = function(){
+
           Contato.getAll(function(data){
             $scope.contatos = data;
           });
+
           $scope.pagina = 0;
           updateActivedPage(this);
         };
@@ -56,7 +62,7 @@ angular.module('agenda')
                 };
             });
             updateActivedPage(this);
-         }
+         };
 
         //botão anterior
         $scope.anterior = function(val){
@@ -65,7 +71,7 @@ angular.module('agenda')
                 $scope.contatos = data;
             });
             updateActivedPage(this);
-         }
+         };
 
         //deletar opcional
         $scope.delete = function(id){
@@ -79,18 +85,6 @@ angular.module('agenda')
 
   }).controller('ContatoDetailController', function ($scope, $modal, $routeParams, $location, Contato, toastr){
 
-        $scope.open = function (size) {
-
-            $modalInstance = $modal.open({
-                  templateUrl: 'modalConfirmacao.html',
-                  controller: 'ContatoDetailController',
-                  size: size,
-            });
-        };
-
-        $scope.cancelModal = function () {
-            $modalInstance.dismiss('cancelModal');
-        };
         $scope.init = function(){
             $scope.contato = Contato.get({id:$routeParams.id});
         };
@@ -103,12 +97,7 @@ angular.module('agenda')
                console.log(data);
                toastr.error(data.data,'Não foi possível Atualizar');
             });
-
         };
-
-         $scope.cancel = function(){
-            $location.path('/contatos');
-         };
 
         $scope.delete = function(){
             Contato.delete({id:$routeParams.id}, function(){
@@ -120,6 +109,23 @@ angular.module('agenda')
                 $modalInstance.close();
                 toastr.error(data.data,'Não foi possível Remover');
             });
+        };
+
+        $scope.cancel = function(){
+           $location.path('/contatos');
+        };
+
+        $scope.open = function (size) {
+
+            $modalInstance = $modal.open({
+                  templateUrl: 'modalConfirmacao.html',
+                  controller: 'ContatoDetailController',
+                  size: size,
+            });
+        };
+
+        $scope.cancelModal = function (){
+            $modalInstance.dismiss('cancelModal');
         };
 
   });

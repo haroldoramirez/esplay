@@ -23,8 +23,6 @@ public class Compromisso extends Model {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar dataInicio;
 
-    private Calendar dataIniciod;
-
 //    @Temporal(TemporalType.TIME)
 //    private Time horaInicio;
 

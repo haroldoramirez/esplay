@@ -14,7 +14,6 @@ create table compromisso (
   id                        bigint auto_increment not null,
   titulo                    varchar(255) not null,
   data_inicio               datetime,
-  data_iniciod              datetime,
   hora_inicio               datetime,
   data_fim                  datetime,
   hora_fim                  datetime,
@@ -59,7 +58,6 @@ create table usuario (
   senha                     varchar(255) not null,
   padrao_do_sistema         tinyint(1) default 0,
   privilegio                integer,
-  contato_id                bigint,
   constraint uq_usuario_email unique (email),
   constraint pk_usuario primary key (id))
 ;
@@ -82,8 +80,6 @@ alter table compromisso add constraint fk_compromisso_dono_5 foreign key (dono_i
 create index ix_compromisso_dono_5 on compromisso (dono_id);
 alter table contato add constraint fk_contato_dono_6 foreign key (dono_id) references usuario (id) on delete restrict on update restrict;
 create index ix_contato_dono_6 on contato (dono_id);
-alter table usuario add constraint fk_usuario_contato_7 foreign key (contato_id) references contato (id) on delete restrict on update restrict;
-create index ix_usuario_contato_7 on usuario (contato_id);
 
 
 
