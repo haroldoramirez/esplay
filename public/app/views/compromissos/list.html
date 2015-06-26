@@ -1,53 +1,44 @@
-<div class="container">
-    <div class="row">
-        <fieldset>
-            <div id="legend">
-                <legend>
-                    <h2>
-                        <i class="fa fa-clock-o"></i> Meus Compromissos
-                    </h2>
-                </legend>
-            </div>
+ <div class="row">
+     <legend>
+        <h2>
+            <i class="fa fa-clock-o"></i> Meus Compromissos
+        </h2>
+     </legend>
 
-            <!--Input de Busca-->
-            <div class="col-lg-5">
-                <div class="input-group">
-                    <input autofocus type="search" class="form-control" placeholder="digite o nome do compromisso">
-                         <span class="input-group-btn">
-                              <button class="btn btn-primary">
-                                  Buscar
-                              </button>
-                        </span>
-                </div>
-                <br>
-            </div>
+     <!--Input de Busca-->
+     <div class="col-lg-5 input-group">
+        <input autofocus type="search" class="form-control" placeholder="digite o nome do compromisso">
+             <span class="input-group-btn">
+                  <button class="btn btn-primary">
+                      Buscar
+                  </button>
+            </span>
+     </div>
+     <br>
 
-            <!--Tabela-->
-            <table ng-init="init()" class="table-striped table table-hover table-bordered">
-                <br>
-                <tr>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th>Tipo</th>
-                    <th>Categoria</th>
-                    <th>Contato</th>
-                    <th>Status</th>
-                    <th>Dono do Compromisso</th>
-                    <!--<th></th>-->
-                </tr>
-                <tr ng-repeat="compromisso in compromissos">
-                    <td><b><a href="#/compromissos/detalhe/{{compromisso.id}}">{{compromisso.titulo}}</a></b></td>
-                    <td>{{compromisso.descricao}}</td>
-                    <td>{{compromisso.tipo.nome}}</td>
-                    <td>{{compromisso.categoria.nome}}</td>
-                    <td>{{compromisso.contato.nome}}</td>
-                    <td>{{compromisso.status}}</td>
-                    <td>{{compromisso.dono.email}}</td>
-                    <!--<td>-->
-                    <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
-                    <!--</td>-->
-                </tr>
-            </table>
-        </fieldset>
-    </div>
-</div>
+    <!--Tabela-->
+    <table ng-init="init()" class="table-striped table table-hover table-bordered">
+        <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Categoria</th>
+            <th>Contato</th>
+            <th>Status</th>
+            <th>Dono do Compromisso</th>
+            <!--<th></th>-->
+        </tr>
+        <tr ng-repeat="compromisso in compromissos">
+            <td><b><a href="#/compromissos/detalhe/{{compromisso.id}}">{{compromisso.titulo}}</a></b></td>
+            <td>{{compromisso.descricao}}</td>
+            <td>{{compromisso.tipo.nome}}</td>
+            <td>{{compromisso.categoria.nome}}</td>
+            <td>{{compromisso.contato.nome}}</td>
+            <td>{{compromisso.status}}</td>
+            <td>{{compromisso.dono.email}}</td>
+            <!--<td>-->
+            <!--<a href="" confirmation-needed="Confirmar a exclusão?" class="glyphicon glyphicon-trash" ng-click="delete(pais.id)"></a>-->
+            <!--</td>-->
+        </tr>
+    </table>
+ </div>

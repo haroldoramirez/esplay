@@ -1,52 +1,49 @@
-<div class="container">
-    <div class="row">
-        <fieldset>
-            <h2>
-                <i class="fa fa-bookmark"></i> Detalhe da Categoria <small>de Compromisso</small>
-                <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
-                    Remover
-                </button>
-            </h2>
-            <hr>
-            <script type="text/ng-template" id="modalConfirmacao.html">
-                <div class="modal-header">
-                    <h3 align="center" class="modal-title">Confirmação:</h3>
-                </div>
-                <div align="center" class="modal-body">
-                    Deseja Remover a Categoria de Compromisso?
-                </div>
-                <div class="modal-footer">
-                    <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
-                    <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
-                </div>
-            </script>
-            <form ng-init="init()" class="form-horizontal" ng-submit="update()">
-                <div class="form-group">
-                    <!--Input do Nome-->
-                    <div class="col-lg-5">
-                        <label class="control-label" for="nome">Nome</label>
-                        <div ng-class="{'has-error': !categoria.nome}">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                                <input autofocus placeholder="Insira o nome da Categoria" maxlength="100" class="form-control" type="text" ng-model="categoria.nome" id="nome" required/>
-                            </div>
-                        </div>
+<div class="row">
+    <legend>
+        <h2>
+            <i class="fa fa-bookmark"></i> Detalhe da Categoria <small>de Compromisso</small>
+            <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
+                Remover
+            </button>
+        </h2>
+    </legend>
+    <script type="text/ng-template" id="modalConfirmacao.html">
+        <div class="modal-header">
+            <h3 align="center" class="modal-title">Confirmação:</h3>
+        </div>
+        <div align="center" class="modal-body">
+            Deseja Remover a Categoria de Compromisso?
+        </div>
+        <div class="modal-footer">
+            <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
+            <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
+        </div>
+    </script>
+    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+        <div class="form-group">
+            <!--Input do Nome-->
+            <div class="col-lg-5">
+                <label class="control-label" for="nome">Nome</label>
+                <div ng-class="{'has-error': !categoria.nome}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+                        <input autofocus placeholder="Insira o nome da Categoria" maxlength="100" class="form-control" type="text" ng-model="categoria.nome" id="nome" required/>
                     </div>
+                </div>
+            </div>
 
-                    <!--Botões-->
-                    <div class="col-lg-8">
-                        <div class="control-group">
-                            <br>
-                            <button type="submit" id="save" class="btn btn-primary" ng-disabled="!categoria.nome">
-                                Atualizar
-                            </button>
-                            <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
-                                Voltar
-                            </button>
-                        </div>
-                    </div>
+            <!--Botões-->
+            <div class="col-lg-8">
+                <div class="control-group">
+                    <br>
+                    <button type="submit" id="save" class="btn btn-primary" ng-disabled="!categoria.nome">
+                        Atualizar
+                    </button>
+                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                        Voltar
+                    </button>
                 </div>
-            </form>
-        </fieldset>
-    </div>
+            </div>
+        </div>
+    </form>
 </div>

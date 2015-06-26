@@ -1,27 +1,20 @@
-<div class="container">
-    <div class="row">
-        <fieldset>
-            <div id="legend">
-                <legend>
-                    <h2>
-                        <i class="fa fa-file"></i> Log <small>do Sistema</small><a class="btn btn-success pull-right" href="#/">
-                        Voltar</a>
-                    </h2>
-                </legend>
-            </div>
+<div class="row">
+    <legend>
+        <h2>
+            <i class="fa fa-file"></i> Log <small>do Sistema</small><a class="btn btn-success pull-right" href="#/">
+            Voltar</a>
+        </h2>
+    </legend>
 
-            <!--Tabela-->
-            <table ng-init="init()" class="table-striped table table-hover table-bordered">
-                <br>
-                <tr>
-                    <th>Data</th>
-                    <th>Mensagem</th>
-                </tr>
-                <tr ng-repeat="log in logs">
-                    <td>{{log.dataDoLog | date:'dd-MM-yyyy - HH:mm:ss'}}</td>
-                    <td>{{log.mensagem}}</td>
-                </tr>
-            </table>
-        </fieldset>
-    </div>
+    <!--Tabela-->
+    <table ng-init="init()" class="table-striped table table-hover table-bordered">
+        <tr>
+            <th>Data</th>
+            <th>Mensagem</th>
+        </tr>
+        <tr ng-repeat="log in logs">
+            <td>{{log.dataDoLog | date:'dd-MM-yyyy - HH:mm:ss'}}</td>
+            <td>{{log.mensagem}}</td>
+        </tr>
+    </table>
 </div>

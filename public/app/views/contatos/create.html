@@ -1,59 +1,55 @@
-<div class="container">
-    <div class="row">
-        <fieldset>
-            <div id="legend">
-                <legend>
-                    <h2>
-                        <i class="fa fa-user"></i> Novo Contato
-                    </h2>
-                </legend>
-            </div>
-            <form class="form-horizontal" ng-submit="save()">
-                <div class="form-group">
-                    <!--Input do Nome-->
-                    <div class="col-lg-5">
-                        <label class="control-label" for="nome">Nome</label>
-                        <div ng-class="{'has-error': !contato.nome}">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input autofocus placeholder="Insira o nome do contato" maxlength="100" class="form-control" type="text" ng-model="contato.nome" id="nome" required/>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Input do email-->
-                    <div class="col-lg-5">
-                        <label class="control-label" for="email">Email</label>
-                        <div ng-class="{'has-error': !contato.email}">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input placeholder="email@exemplo.com" ng-minlength="3" maxlength="100" class="form-control" type="email" ng-model="contato.email" id="email"/>
-                            </div>
-                        </div>
-                    </div>
+<div class="row">
+    <legend>
+        <h2>
+            <i class="fa fa-user"></i> Novo Contato
+        </h2>
+    </legend>
+    <form class="form-horizontal" ng-submit="save()">
+        <div class="form-group">
 
-                    <!--Input do Telefone-->
-                    <div class="col-lg-2">
-                        <label class="control-label" for="telefone">Telefone ou Celular</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                                <input ui-br-phone-number placeholder="(__) ____-____" maxlength="15" class="form-control telefone" type="text" ng-model="contato.telefone" id="telefone"/>
-                            </div>
-                    </div>
-
-                    <!--Botões-->
-                    <div class="col-lg-8">
-                        <div class="control-group">
-                            <br>
-                            <button id="save" class="btn btn-success" type="submit" ng-disabled="!contato.nome || !contato.email">
-                                Salvar
-                            </button>
-                            <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
-                                Voltar
-                            </button>
-                        </div>
+            <!--Input do Nome-->
+            <div class="col-lg-5">
+                <label class="control-label" for="nome">Nome</label>
+                <div ng-class="{'has-error': !contato.nome}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input autofocus placeholder="Insira o nome do contato" maxlength="100" class="form-control" type="text" ng-model="contato.nome" id="nome" required/>
                     </div>
                 </div>
-            </form>
-        </fieldset>
-    </div>
+            </div>
+
+            <!--Input do email-->
+            <div class="col-lg-5">
+                <label class="control-label" for="email">Email</label>
+                <div ng-class="{'has-error': !contato.email}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input placeholder="email@exemplo.com" ng-minlength="3" maxlength="100" class="form-control" type="email" ng-model="contato.email" id="email"/>
+                    </div>
+                </div>
+            </div>
+
+            <!--Input do Telefone-->
+            <div class="col-lg-2">
+                <label class="control-label" for="telefone">Telefone ou Celular</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                        <input ui-br-phone-number placeholder="(__) ____-____" maxlength="15" class="form-control telefone" type="text" ng-model="contato.telefone" id="telefone"/>
+                    </div>
+            </div>
+
+            <!--Botões-->
+            <div class="col-lg-8">
+                <div class="control-group">
+                    <br>
+                    <button id="save" class="btn btn-success" type="submit" ng-disabled="!contato.nome || !contato.email">
+                        Salvar
+                    </button>
+                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                        Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

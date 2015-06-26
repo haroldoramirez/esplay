@@ -1,13 +1,11 @@
-<div ng-init="init()" ng-controller="AgendaController" class="container">
+<div ng-init="init()" ng-controller="AgendaController">
     <div class="row">
-        <div id="legend">
-            <legend>
-                <h2>
-                    <i class="fa fa-calendar-o"></i> Agenda<a class="btn btn-success pull-right" href="#/compromissos/novo">
-                    Novo Compromisso (F1)</a>
-                </h2>
-            </legend>
-        </div>
+        <legend>
+            <h2>
+                <i class="fa fa-calendar-o"></i> Agenda<a class="btn btn-success pull-right" href="#/compromissos/novo">
+                Novo Compromisso (F1)</a>
+            </h2>
+        </legend>
         <script type="text/ng-template" id="modalCompromisso.html">
             <!--Input do Título-->
             <div class="col-lg-6">

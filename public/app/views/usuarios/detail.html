@@ -1,77 +1,74 @@
-<div class="container">
-    <div class="row">
-        <fieldset>
-            <h2>
-                <i class="fa fa-users"></i> Detalhe do Usuário
-                <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
-                    Remover
-                </button></a>
-            </h2>
-            <hr>
-            <script type="text/ng-template" id="modalConfirmacao.html">
-                <div class="modal-header">
-                    <h3 align="center" class="modal-title">Confirmação:</h3>
-                </div>
-                <div align="center" class="modal-body">
-                    Deseja Remover o Usuário?
-                </div>
-                <div class="modal-footer">
-                    <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
-                    <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
-                </div>
-            </script>
-            <form ng-init="init()" class="form-horizontal" ng-submit="update()">
-                <div class="form-group">
-                    <!--Input do Email-->
-                    <div class="col-lg-4">
-                        <label class="control-label" for="email">Email para Login</label>
-                        <div ng-class="{'has-error': !usuario.email}">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input autofocus placeholder="Insira um email para login válido" maxlength="100" class="form-control" type="email" ng-model="usuario.email" id="email" required/>
-                            </div>
-                        </div>
+<div class="row">
+    <legend>
+        <h2>
+            <i class="fa fa-users"></i> Detalhe do Usuário
+            <button type="button" class="btn btn-danger pull-right" ng-click="open('sm')">
+                Remover
+            </button></a>
+        </h2>
+    </legend>
+    <script type="text/ng-template" id="modalConfirmacao.html">
+        <div class="modal-header">
+            <h3 align="center" class="modal-title">Confirmação:</h3>
+        </div>
+        <div align="center" class="modal-body">
+            Deseja Remover o Usuário?
+        </div>
+        <div class="modal-footer">
+            <button id="delete" class="btn btn-warning" ng-click="delete()">Sim</button>
+            <button class="btn btn-default" ng-click="cancelModal()">Cancelar</button>
+        </div>
+    </script>
+    <form ng-init="init()" class="form-horizontal" ng-submit="update()">
+        <div class="form-group">
+            <!--Input do Email-->
+            <div class="col-lg-4">
+                <label class="control-label" for="email">Email para Login</label>
+                <div ng-class="{'has-error': !usuario.email}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input autofocus placeholder="Insira um email para login válido" maxlength="100" class="form-control" type="email" ng-model="usuario.email" id="email" required/>
                     </div>
+                </div>
+            </div>
 
-                    <!--Input do Senha-->
-                    <div class="col-lg-4">
-                        <label class="control-label" for="senha">Senha</label>
-                        <div ng-class="{'has-error': !usuario.senha}">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                <input placeholder="Insira a senha" maxlength="20" class="form-control" type="password" ng-model="usuario.senha" id="senha" required/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Input Privilégio-->
-                    <div class="col-lg-3">
-                        <label class="control-label">Privilégio</label>
-                        <div ng-class="{'has-error': !usuario.privilegio}">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-bolt"></i></span>
-                                <select ng-model="usuario.privilegio" class="form-control">
-                                    <option value=1>Usuário</option>
-                                    <option value=2>Administrador</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Botões-->
-                    <div class="col-lg-12">
-                        <div class="control-group">
-                            <br>
-                            <button type="submit" id="save" class="btn btn-primary" ng-disabled="!usuario.email || !usuario.senha || !usuario.privilegio">
-                                Atualizar
-                            </button>
-                            <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
-                                Voltar
-                            </button>
-                        </div>
+            <!--Input do Senha-->
+            <div class="col-lg-4">
+                <label class="control-label" for="senha">Senha</label>
+                <div ng-class="{'has-error': !usuario.senha}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                        <input placeholder="Insira a senha" maxlength="20" class="form-control" type="password" ng-model="usuario.senha" id="senha" required/>
                     </div>
                 </div>
-            </form>
-        </fieldset>
-    </div>
+            </div>
+
+            <!--Input Privilégio-->
+            <div class="col-lg-3">
+                <label class="control-label">Privilégio</label>
+                <div ng-class="{'has-error': !usuario.privilegio}">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-bolt"></i></span>
+                        <select ng-model="usuario.privilegio" class="form-control">
+                            <option value=1>Usuário</option>
+                            <option value=2>Administrador</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!--Botões-->
+            <div class="col-lg-12">
+                <div class="control-group">
+                    <br>
+                    <button type="submit" id="save" class="btn btn-primary" ng-disabled="!usuario.email || !usuario.senha || !usuario.privilegio">
+                        Atualizar
+                    </button>
+                    <button type="reset" id="cancel" class="btn btn-default" ng-click="cancel()">
+                        Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
