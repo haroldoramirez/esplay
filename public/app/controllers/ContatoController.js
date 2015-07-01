@@ -28,7 +28,7 @@ angular.module('agenda')
             $location.path('/contatos');
         };
 
-  }).controller('ContatoListController', function ($scope, Contato, toastr){
+  }).controller('ContatoListController', function ($scope, Contato, toastr, $routeParams){
 
         $scope.contatos = [];
 
@@ -81,6 +81,14 @@ angular.module('agenda')
            }, function(data){
                toastr.error(data.data,'Não foi possível Remover');
            });
+        };
+
+        $scope.busca = function(){
+            $scope.nomeFiltro;
+            Contato.getFiltroContato({nome:$scope.nomeFiltro}, function(data){
+                $scope.contatos = data;
+            });
+            console.log($scope.nomeFiltro);
         };
 
   }).controller('ContatoDetailController', function ($scope, $modal, $routeParams, $location, Contato, toastr){
