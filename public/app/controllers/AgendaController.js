@@ -47,29 +47,29 @@ angular.module('agenda')
                     endsAt: new Date(compromisso.dataFim)
                 });
             })
-            console.log(data);
+            //console.log(data);
         });
       };
 
-            function showModal(action, event) {
-              $modal.open({
-                  templateUrl: 'modalCompromisso.html',
-                      controller: function($scope, $modalInstance) {
-                        $scope.$modalInstance = $modalInstance;
-                        $scope.action = action;
-                        $scope.event = event;
-                      }
-              });
-            }
+    function showModal(action, event) {
+      $modal.open({
+          templateUrl: 'modalCompromisso.html',
+              controller: function($scope, $modalInstance) {
+                $scope.$modalInstance = $modalInstance;
+                $scope.action = action;
+                $scope.event = event;
+              }
+      });
+    }
 
-                $scope.open = function (size) {
+    $scope.open = function (size) {
 
-                      $modalInstance = $modal.open({
-                          templateUrl: 'modalCompromisso.html',
-                          controller: 'AgendaController',
-                          size: size,
-                      });
-                };
+          $modalInstance = $modal.open({
+              templateUrl: 'modalCompromisso.html',
+              controller: 'AgendaController',
+              size: size,
+          });
+    };
 
     $scope.eventClicked = function(event) {
       showModal('Clicked', event);
