@@ -8,9 +8,10 @@
 
     <!--Input de Busca-->
     <div class="col-lg-5 input-group">
-        <input ng-model="nomeFiltro" autofocus type="search" class="form-control" placeholder="digite o nome do contato">
+        <input ng-model="nomeFiltro" autofocus type="search" class="form-control" placeholder="digite o nome ou email do contato">
             <span class="input-group-btn">
-                <button class="btn btn-primary" ng-click="busca();">Buscar</button>
+                <button ng-disabled="!nomeFiltro" class="btn btn-primary" ng-click="busca();">Buscar</button>
+                <button class="btn btn-default" ng-click="init();">Limpar</button>
             </span>
     </div>
     <br>

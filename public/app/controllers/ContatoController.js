@@ -33,11 +33,10 @@ angular.module('agenda')
     $scope.contatos = [];
 
     $scope.init = function(){
-
+    $scope.nomeFiltro = '';
       Contato.getAll(function(data){
         $scope.contatos = data;
       });
-
       $scope.pagina = 0;
       updateActivedPage(this);
     };
