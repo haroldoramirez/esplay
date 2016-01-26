@@ -46,7 +46,7 @@ public class LoginController extends Controller {
         String email = requestForm.data().get("email");
         String senha = requestForm.data().get("senha");
 
-        F.Option<Usuario> talvesUmUsuario = Usuarios.existe(email, Crypt.sha1(senha));
+        F.Option<Usuario> talvesUmUsuario = Usuarios.existe(email, senha);
 
         if (talvesUmUsuario.isDefined()) {
             session().put("email", talvesUmUsuario.get().getEmail());

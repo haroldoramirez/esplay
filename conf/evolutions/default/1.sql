@@ -13,10 +13,10 @@ create table categoria (
 create table compromisso (
   id                        bigint auto_increment not null,
   titulo                    varchar(255) not null,
-  data_inicio               datetime,
-  hora_inicio               datetime,
-  data_fim                  datetime,
-  hora_fim                  datetime,
+  data_inicio               timestamp,
+  hora_inicio               timestamp,
+  data_fim                  timestamp,
+  hora_fim                  timestamp,
   descricao                 varchar(255),
   observacoes               varchar(255),
   local                     varchar(255),
@@ -40,7 +40,7 @@ create table contato (
 
 create table log (
   id                        bigint auto_increment not null,
-  data_do_log               datetime,
+  data_do_log               timestamp,
   mensagem                  varchar(255),
   constraint pk_log primary key (id))
 ;
@@ -48,7 +48,7 @@ create table log (
 create table tipo (
   id                        bigint auto_increment not null,
   nome                      varchar(255) not null,
-  padrao_do_sistema         tinyint(1) default 0,
+  padrao_do_sistema         boolean,
   constraint pk_tipo primary key (id))
 ;
 
@@ -56,7 +56,7 @@ create table usuario (
   id                        bigint auto_increment not null,
   email                     varchar(255) not null,
   senha                     varchar(255) not null,
-  padrao_do_sistema         tinyint(1) default 0,
+  padrao_do_sistema         boolean,
   privilegio                integer,
   constraint uq_usuario_email unique (email),
   constraint pk_usuario primary key (id))
@@ -83,27 +83,27 @@ create index ix_contato_dono_6 on contato (dono_id);
 
 
 
-alter table compromisso_usuario add constraint fk_compromisso_usuario_compromisso_01 foreign key (compromisso_id) references compromisso (id) on delete restrict on update restrict;
+alter table compromisso_usuario add constraint fk_compromisso_usuario_compro_01 foreign key (compromisso_id) references compromisso (id) on delete restrict on update restrict;
 
-alter table compromisso_usuario add constraint fk_compromisso_usuario_usuario_02 foreign key (usuario_id) references usuario (id) on delete restrict on update restrict;
+alter table compromisso_usuario add constraint fk_compromisso_usuario_usuari_02 foreign key (usuario_id) references usuario (id) on delete restrict on update restrict;
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table categoria;
+drop table if exists categoria;
 
-drop table compromisso;
+drop table if exists compromisso;
 
-drop table compromisso_usuario;
+drop table if exists compromisso_usuario;
 
-drop table contato;
+drop table if exists contato;
 
-drop table log;
+drop table if exists log;
 
-drop table tipo;
+drop table if exists tipo;
 
-drop table usuario;
+drop table if exists usuario;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
 
