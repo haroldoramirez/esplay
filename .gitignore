@@ -10,5 +10,4 @@ RUNNING_PID
 project/project
 project/target
 tmp
-bower_components
 .cache
